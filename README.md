@@ -25,7 +25,7 @@
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 
 ---
-<!-- . -->
+
 ## 🛠️ Tasks
 If lost as to what to do, please go to tasks to view current tasks and reach out to others to see if they need help if you finish your tasks early!
 
