@@ -45,3 +45,7 @@ class OrderRepository:
         )
         db.session.execute(stmt)
         db.session.commit()
+        
+    def send_order(order):
+        Order.insert_order(order)
+        #TODO

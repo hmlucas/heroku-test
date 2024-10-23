@@ -48,3 +48,5 @@ class EmployeeRepository:
         )
         db.session.execute(stmt)
         db.session.commit()
+        
+    

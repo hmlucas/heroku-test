@@ -1,0 +1,5 @@
+from ..models import MenuItem
+from ..extensions import db
+
+class MenuItemRepository():
+    
