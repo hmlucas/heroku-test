@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from ..repos import EmployeeRepository
+from ..repos.employee_repository import EmployeeRepository
 
 employees_bp = Blueprint('employees_bp', __name__)
 

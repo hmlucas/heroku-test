@@ -49,3 +49,11 @@ class OrderRepository:
     def send_order(order):
         Order.insert_order(order)
         #TODO
+        
+    def insert_order(order):
+        db.session.add(order)
+        db.session.commit()
+        
+    def insert_menu_items(order):
+        #TODO insert menu items assoc w/ order
+        pass
