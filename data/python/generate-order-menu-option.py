@@ -203,15 +203,15 @@ def process_orders(options, employee_ids):
     # Generate orders until one million dollars have been reached
     while total_price < 1_000_000:
         total_price += generate_order(options, employee_ids)
-    with open(f"./data/csv/menu_items_{today}.csv", "w", newline='') as f:
+    with open(f"./data/csv/menu-items-{today}.csv", "w", newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["menuitem_id", "order_id", "menuitem_price", "meal_type", "premium_multiplier", "total_menuitem_price"])
         writer.writeheader()
         writer.writerows(meals.values())
-    with open(f"./data/csv/menuitem_options_join_{today}.csv", "w", newline='') as f:
+    with open(f"./data/csv/menuitem-options-join-{today}.csv", "w", newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["menuitem_option_id", "menuitem_id", "option"])
         writer.writeheader()
         writer.writerows(meal_options.values())
-    with open(f"./data/csv/orders_{today}.csv", "w", newline='') as f:
+    with open(f"./data/csv/orders-{today}.csv", "w", newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["order_id", "payment_method", "order_date", "price", "employee_id","is_completed"])
         writer.writeheader()
         writer.writerows(orders.values())
