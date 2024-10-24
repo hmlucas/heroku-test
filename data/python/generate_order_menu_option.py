@@ -16,7 +16,7 @@ orders = {}
 # Load all options from the options.csv instead of accessing the database
 def load_options():
     options = []
-    with open('./csv/options.csv', 'r') as csvfile:
+    with open('./data/csv/options.csv', 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             # All test data will not be seasonal items
@@ -31,7 +31,7 @@ def load_options():
 # Load all employees generated from the employees script
 def load_employees():
     employee_ids = []
-    with open('./csv/employees.csv', 'r') as csvfile:
+    with open('./data/csv/employees.csv', 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             employee_ids.append(int(row['employee_id']))
@@ -192,7 +192,7 @@ def generate_order(options, employee_ids):
         "order_date": date.isoformat(),
         "price": total_price,
         "employee_id": employee_id,
-        "is_completed": False
+        "is_completed": True
     }
     return total_price
 
@@ -203,16 +203,16 @@ def process_orders(options, employee_ids):
     # Generate orders until one million dollars have been reached
     while total_price < 1_000_000:
         total_price += generate_order(options, employee_ids)
-    with open(f"./csv/menu_items_{today}.csv", "w", newline='') as f:
+    with open(f"./data/csv/menu_items_{today}.csv", "w", newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["menuitem_id", "order_id", "menuitem_price", "meal_type", "premium_multiplier", "total_menuitem_price"])
         writer.writeheader()
         writer.writerows(meals.values())
-    with open(f"./csv/menuitem_options_join_{today}.csv", "w", newline='') as f:
+    with open(f"./data/csv/menuitem_options_join_{today}.csv", "w", newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["menuitem_option_id", "menuitem_id", "option"])
         writer.writeheader()
         writer.writerows(meal_options.values())
-    with open(f"./csv/orders_{today}.csv", "w", newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=["order_id", "payment_method", "order_date", "price", "employee_id"])
+    with open(f"./data/csv/orders_{today}.csv", "w", newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=["order_id", "payment_method", "order_date", "price", "employee_id","is_completed"])
         writer.writeheader()
         writer.writerows(orders.values())
 
