@@ -191,7 +191,8 @@ def generate_order(options, employee_ids):
         "payment_method": payment_method,
         "order_date": date.isoformat(),
         "price": total_price,
-        "employee_id": employee_id
+        "employee_id": employee_id,
+        "is_completed": False
     }
     return total_price
 
