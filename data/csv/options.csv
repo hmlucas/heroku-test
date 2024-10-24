@@ -1,0 +1,42 @@
+option,additional_charge,category,is_seasonal
+Chow_Mein,0.0,side,False
+Fried_Rice,0.0,side,False
+White_Rice,0.0,side,False
+Super_Greens,0.0,side,False
+1/2Chow_Mein 1/2Fried_Rice,0.0,side,False
+1/2Chow_Mein 1/2White_Rice,0.0,side,False
+1/2Chow_Mein 1/2Super_Greens,0.0,side,False
+1/2Fried_Rice 1/2White_Rice,0.0,side,False
+1/2Fried_Rice 1/2Super_Greens,0.0,side,False
+1/2White_Rice 1/2Super_Greens,0.0,side,False
+Orange_Chicken,0.0,entree,False
+Blazing_Burbon_Chicken,0.0,entree,False
+Black_Pepper_Steak,1.5,entree,False
+Honey_Walnut_Shrimp,1.5,entree,False
+Teriyaki_Chicken,0.0,entree,False
+Broccoli_Beef,0.0,entree,False
+Kung_Pao,0.0,entree,False
+Honey_Sesame,0.0,entree,False
+Beijing_Beef,0.0,entree,False
+Mushroom_Chicken,0.0,entree,False
+Sweetfire_Chicken,0.0,entree,False
+String_Bean_Chicken,0.0,entree,False
+Black_Pepper_Chicken,0.0,entree,False
+Egg_roll,0.0,app,False
+Veggie_roll,0.0,app,False
+Rangoon,0.0,app,False
+Apple_Pie_Roll,0.0,app,False
+S_Drink,2.10,drink,False
+M_Drink,2.30,drink,False
+L_Drink,2.50,drink,False
+Manga_Guava_Flavored_Tea,3.20,drink,False
+Peach_Lychee_Flavored_Refresher,3.20,drink,False
+Pomegranate_Pineapple_Flavored_Lemonade,3.20,drink,False
+Watermelon_Mango_Flavored_Refresher,3.20,drink,False
+Powerade_Fruit_Punch,2.70,drink,False
+Powerade_Berry_Blast,2.70,drink,False
+Minute_Maid_Apple_Juice,2.30,drink,False
+Coke_Mexico,3.00,drink,False
+Fanta_Orange_Mexico,3.00,drink,False
+Sprite_Mexico,3.00,drink,False
+Smartwater,3.00,drink,False

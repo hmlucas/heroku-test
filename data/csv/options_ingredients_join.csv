@@ -1,0 +1,236 @@
+option,ingredient
+Chow_Mein,Cabbage
+Chow_Mein,Enriched_wheat_flour
+Chow_Mein,Onion
+Chow_Mein,Soybean_oil
+Chow_Mein,Celery
+Chow_Mein,Toasted_sesame_oil
+Chow_Mein,Wheat_gluten
+Chow_Mein,Corn_starch
+Chow_Mein,Xanthan_gum
+Chow_Mein,Salt
+Fried_Rice,Cooked_white_rice
+Fried_Rice,Liquid_eggs
+Fried_Rice,Peas
+Fried_Rice,Carrot
+Fried_Rice,Soybean_oil
+Fried_Rice,Green_onions
+Fried_Rice,Salt
+Fried_Rice,Toasted_sesame_oil
+Fried_Rice,Modified_food_starch
+Fried_Rice,Onion_powder
+Fried_Rice,Celery
+White_Rice,Cooked_white_rice
+Super_Greens,Cabbage
+Super_Greens,Broccoli
+Super_Greens,Kale
+Super_Greens,Soybean_oil
+Super_Greens,Salt
+Orange_Chicken,Dark_meat_chicken
+Orange_Chicken,Soybean_oil
+Orange_Chicken,Distilled_vinegar
+Orange_Chicken,Corn_starch
+Orange_Chicken,Potato_starch
+Orange_Chicken,Wheat_flour
+Orange_Chicken,Toasted_sesame_oil
+Orange_Chicken,Sugar
+Black_Pepper_Steak,Sirloin_steak
+Black_Pepper_Steak,Baby_broccoli
+Black_Pepper_Steak,Mushrooms
+Black_Pepper_Steak,Yellow_Onion
+Black_Pepper_Steak,Soybean_oil
+Black_Pepper_Steak,Modified_corn_starch
+Black_Pepper_Steak,Black_pepper
+Black_Pepper_Steak,Shao_Xing_cooking_wine
+Black_Pepper_Steak,Toasted_sesame_oil
+Honey_Walnut_Shrimp,Shrimp
+Honey_Walnut_Shrimp,Soybean_oil
+Honey_Walnut_Shrimp,Rice_flour
+Honey_Walnut_Shrimp,Glazed_walnuts
+Honey_Walnut_Shrimp,Potato_dextrin
+Honey_Walnut_Shrimp,Bleached_wheat_flour
+Honey_Walnut_Shrimp,Potato_starch
+Honey_Walnut_Shrimp,Xanthan_gum
+Teriyaki_Chicken,Chicken_breast_strips
+Teriyaki_Chicken,Soy_sauce
+Teriyaki_Chicken,Soybean_oil
+Teriyaki_Chicken,Sugar
+Teriyaki_Chicken,Toasted_sesame_oil
+Teriyaki_Chicken,Shao_Xing_cooking_wine
+Broccoli_Beef,Beef
+Broccoli_Beef,Broccoli
+Broccoli_Beef,Soybean_oil
+Broccoli_Beef,Soy_sauce
+Broccoli_Beef,Corn_starch
+Broccoli_Beef,Shao_Xing_cooking_wine
+Broccoli_Beef,Toasted_sesame_oil
+Kung_Pao,Dark_meat_chicken
+Kung_Pao,Zucchini
+Kung_Pao,Red_bell_pepper
+Kung_Pao,Roasted_peanuts
+Kung_Pao,Soybean_oil
+Kung_Pao,Green_onions
+Kung_Pao,Soy_sauce
+Kung_Pao,Toasted_sesame_oil
+Kung_Pao,Corn_starch
+Kung_Pao,Shao_Xing_cooking_wine
+Honey_Sesame,Chicken_breast
+Honey_Sesame,Soybean_oil
+Honey_Sesame,Yellow_bell_pepper
+Honey_Sesame,Sugar
+Honey_Sesame,Corn_starch
+Honey_Sesame,Xanthan_gum
+Honey_Sesame,Lemon
+Honey_Sesame,Toasted_sesame_oil
+Beijing_Beef,Beef
+Beijing_Beef,Egg
+Beijing_Beef,Soy_sauce
+Beijing_Beef,Corn_starch
+Beijing_Beef,Salt
+Beijing_Beef,Yellow_Onion
+Beijing_Beef,Red_bell_pepper
+Beijing_Beef,Soybean_oil
+Beijing_Beef,Tomato_paste
+Beijing_Beef,Sugar
+Beijing_Beef,Distilled_vinegar
+Beijing_Beef,Xanthan_gum
+Mushroom_Chicken,Dark_meat_chicken
+Mushroom_Chicken,Mushrooms
+Mushroom_Chicken,Zucchini
+Mushroom_Chicken,Soybean_oil
+Mushroom_Chicken,Soy_sauce
+Mushroom_Chicken,Corn_starch
+Mushroom_Chicken,Toasted_sesame_oil
+Sweetfire_Chicken,Chicken_breast_bites
+Sweetfire_Chicken,Pineapple_chunks
+Sweetfire_Chicken,Red_bell_pepper
+Sweetfire_Chicken,Yellow_Onion
+Sweetfire_Chicken,Soybean_oil
+Sweetfire_Chicken,Bleached_wheat_flour
+Sweetfire_Chicken,Corn_starch
+Sweetfire_Chicken,Red_jalapenos
+Sweetfire_Chicken,Distilled_vinegar
+String_Bean_Chicken,Chicken_breast
+String_Bean_Chicken,Green_beans
+String_Bean_Chicken,Yellow_Onion
+String_Bean_Chicken,Soybean_oil
+String_Bean_Chicken,Soy_sauce
+String_Bean_Chicken,Toasted_sesame_oil
+String_Bean_Chicken,Corn_starch
+String_Bean_Chicken,Sugar
+Black_Pepper_Chicken,Dark_meat_chicken
+Black_Pepper_Chicken,Yellow_Onion
+Black_Pepper_Chicken,Celery
+Black_Pepper_Chicken,Soybean_oil
+Black_Pepper_Chicken,Black_pepper
+Black_Pepper_Chicken,Shao_Xing_cooking_wine
+Black_Pepper_Chicken,Toasted_sesame_oil
+Black_Pepper_Chicken,Corn_starch
+Black_Pepper_Chicken,Soy_sauce
+Egg_roll,Bleached_enriched_flour
+Egg_roll,Dark_meat_chicken
+Egg_roll,Cabbage
+Egg_roll,Onion
+Egg_roll,Napa_cabbage
+Egg_roll,Carrot
+Egg_roll,Green_onions
+Egg_roll,Mung_bean_vermicelli
+Egg_roll,Durum_flour
+Egg_roll,Soybean_oil
+Egg_roll,Soy_sauce
+Egg_roll,Toasted_sesame_oil
+Egg_roll,Egg
+Egg_roll,Corn_starch
+Veggie_roll,Cabbage
+Veggie_roll,Wheat_flour
+Veggie_roll,Celery
+Veggie_roll,Carrot
+Veggie_roll,Mung_bean_vermicelli
+Veggie_roll,Green_onions
+Veggie_roll,Corn_starch
+Veggie_roll,Toasted_sesame_oil
+Veggie_roll,Soy_sauce
+Rangoon,Cream_cheese
+Rangoon,Green_onions
+Rangoon,Enriched_flour
+Rangoon,Egg
+Rangoon,Corn_starch
+Apple_Pie_Roll,Wheat_flour
+Apple_Pie_Roll,Apple
+Apple_Pie_Roll,Sugar
+Apple_Pie_Roll,Soybean_oil
+Apple_Pie_Roll,Modified_food_starch
+Apple_Pie_Roll,Corn_starch
+Apple_Pie_Roll,Wheat_gluten
+Apple_Pie_Roll,Cinnamon
+Apple_Pie_Roll,Salt
+Apple_Pie_Roll,Xanthan_gum
+1/2Chow_Mein 1/2Fried_Rice,Cabbage
+1/2Chow_Mein 1/2Fried_Rice,Enriched_wheat_flour
+1/2Chow_Mein 1/2Fried_Rice,Onion
+1/2Chow_Mein 1/2Fried_Rice,Soybean_oil
+1/2Chow_Mein 1/2Fried_Rice,Celery
+1/2Chow_Mein 1/2Fried_Rice,Toasted_sesame_oil
+1/2Chow_Mein 1/2Fried_Rice,Wheat_gluten
+1/2Chow_Mein 1/2Fried_Rice,Corn_starch
+1/2Chow_Mein 1/2Fried_Rice,Xanthan_gum
+1/2Chow_Mein 1/2Fried_Rice,Salt
+1/2Chow_Mein 1/2Fried_Rice,Cooked_white_rice
+1/2Chow_Mein 1/2Fried_Rice,Liquid_eggs
+1/2Chow_Mein 1/2Fried_Rice,Peas
+1/2Chow_Mein 1/2Fried_Rice,Carrot
+1/2Chow_Mein 1/2Fried_Rice,Green_onions
+1/2Chow_Mein 1/2Fried_Rice,Modified_food_starch
+1/2Chow_Mein 1/2Fried_Rice,Onion_powder
+1/2Chow_Mein 1/2White_Rice,Cabbage
+1/2Chow_Mein 1/2White_Rice,Enriched_wheat_flour
+1/2Chow_Mein 1/2White_Rice,Onion
+1/2Chow_Mein 1/2White_Rice,Soybean_oil
+1/2Chow_Mein 1/2White_Rice,Celery
+1/2Chow_Mein 1/2White_Rice,Toasted_sesame_oil
+1/2Chow_Mein 1/2White_Rice,Wheat_gluten
+1/2Chow_Mein 1/2White_Rice,Corn_starch
+1/2Chow_Mein 1/2White_Rice,Xanthan_gum
+1/2Chow_Mein 1/2White_Rice,Salt
+1/2Chow_Mein 1/2White_Rice,Cooked_white_rice
+1/2Chow_Mein 1/2Super_Greens,Cabbage
+1/2Chow_Mein 1/2Super_Greens,Enriched_wheat_flour
+1/2Chow_Mein 1/2Super_Greens,Onion
+1/2Chow_Mein 1/2Super_Greens,Soybean_oil
+1/2Chow_Mein 1/2Super_Greens,Celery
+1/2Chow_Mein 1/2Super_Greens,Toasted_sesame_oil
+1/2Chow_Mein 1/2Super_Greens,Wheat_gluten
+1/2Chow_Mein 1/2Super_Greens,Corn_starch
+1/2Chow_Mein 1/2Super_Greens,Xanthan_gum
+1/2Chow_Mein 1/2Super_Greens,Salt
+1/2Chow_Mein 1/2Super_Greens,Broccoli
+1/2Chow_Mein 1/2Super_Greens,Kale
+1/2Fried_Rice 1/2White_Rice,Cooked_white_rice
+1/2Fried_Rice 1/2White_Rice,Liquid_eggs
+1/2Fried_Rice 1/2White_Rice,Peas
+1/2Fried_Rice 1/2White_Rice,Carrot
+1/2Fried_Rice 1/2White_Rice,Soybean_oil
+1/2Fried_Rice 1/2White_Rice,Green_onions
+1/2Fried_Rice 1/2White_Rice,Salt
+1/2Fried_Rice 1/2White_Rice,Toasted_sesame_oil
+1/2Fried_Rice 1/2White_Rice,Modified_food_starch
+1/2Fried_Rice 1/2White_Rice,Onion_powder
+1/2Fried_Rice 1/2White_Rice,Celery
+1/2Fried_Rice 1/2Super_Greens,Cooked_white_rice
+1/2Fried_Rice 1/2Super_Greens,Liquid_eggs
+1/2Fried_Rice 1/2Super_Greens,Peas
+1/2Fried_Rice 1/2Super_Greens,Carrot
+1/2Fried_Rice 1/2Super_Greens,Soybean_oil
+1/2Fried_Rice 1/2Super_Greens,Green_onions
+1/2Fried_Rice 1/2Super_Greens,Salt
+1/2Fried_Rice 1/2Super_Greens,Toasted_sesame_oil
+1/2Fried_Rice 1/2Super_Greens,Modified_food_starch
+1/2Fried_Rice 1/2Super_Greens,Onion_powder
+1/2Fried_Rice 1/2Super_Greens,Celery
+1/2Fried_Rice 1/2Super_Greens,Broccoli
+1/2Fried_Rice 1/2Super_Greens,Kale
+1/2White_Rice 1/2Super_Greens,Cooked_white_rice
+1/2White_Rice 1/2Super_Greens,Soybean_oil
+1/2White_Rice 1/2Super_Greens,Salt
+1/2White_Rice 1/2Super_Greens,Broccoli
+1/2White_Rice 1/2Super_Greens,Kale
