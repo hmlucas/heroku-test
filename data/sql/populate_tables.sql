@@ -15,3 +15,6 @@ SELECT setval(pg_get_serial_sequence('menu_items', 'menuitem_id'), (SELECT MAX(m
 -- POPULATE menuitem_options_join --------------------------------------------------
 \copy menuitem_options_join FROM './csv/menuitem_options_join_2024-10-14.csv' DELIMITER ',' CSV HEADER;
 SELECT setval(pg_get_serial_sequence('menuitem_options_join', 'menuitem_option_id'), (SELECT MAX(menuitem_option_id) FROM menuitem_options_join));
+-- POPULATE z_report_date --------------------------------------------------
+-- Use the oldest order as the date
+INSERT INTO z_report_date (z_date) SELECT order_date FROM orders ORDER BY order_date LIMIT 1;

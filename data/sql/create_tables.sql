@@ -53,7 +53,8 @@ CREATE TABLE IF NOT EXISTS ingredients(
     vendor varchar(64) NOT NULL,
     ingredient_measure varchar(32) NOT NULL,
     storage_method varchar(32) NOT NULL,
-    quantity_in_stock double precision NOT NULL
+    quantity_in_stock double precision NOT NULL,
+    quantity_threshold double precision NOT NULL
 );
 
 -- Join table for options and ingredients
@@ -65,3 +66,7 @@ CREATE TABLE IF NOT EXISTS options_ingredients_join(
     PRIMARY KEY (option, ingredient)
 );
 
+-- Report table for storing when the latest Z-report was generated.
+CREATE TABLE IF NOT EXISTS z_report_date(
+    z_date timestamp PRIMARY KEY NOT NULL
+)
