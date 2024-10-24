@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useEmployeeStore from "../store/useEmployeeStore";
+import usetore from "../store/useEmployeeStore";
 
 function HomeView() {
   const [employeeId, setEmployeeId] = useState("");

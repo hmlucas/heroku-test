@@ -1,10 +1,10 @@
-from ..models import MenuItem, Order
+from ..models.menu_item import MenuItem
 from ..extensions import db
 from sqlalchemy import select
 
-class MenuItemRepository():
+class MenuItemRepository:
     @staticmethod
-    def get_all():
+    def get_all_menu_items():
         stmt = select(MenuItem)
         result = (
             db.session.execute(stmt)
@@ -12,7 +12,9 @@ class MenuItemRepository():
             .all()
         )
         return result
-    def get_by_order_id(order_id):
+
+    @staticmethod
+    def get_menu_item_by_order_id(order_id):
         stmt = select(MenuItem).where(MenuItem.order_id == order_id)
         result = (
             db.session.execute(stmt)
