@@ -1,25 +1,23 @@
 import { Routes, Route } from "react-router-dom";
 
-import Employees from "./Employees";
-import MenuView from "./MenuView";
-import Inventory from "./Inventory";
-import OrderTrends from "./OrderTrends";
+import MEmployees from "./MEmployees";
+import MInventory from "./MInventory";
+import MMenuItems from "./MMenuItems";
+import MOrderTrends from "./MOrderTrends";
 
-function HomeView() {
+function ManagerHome() {
   return <h1>Home View</h1>;
 }
 
 function ManagerView() {
   return (
     <div>
-      {/*//TODO Shared manager components */}
-      <h2>Manager View</h2>
       <Routes>
-        <Route path="/" element={<HomeView />} />
-        <Route path="/employees" element={<Employees />} />
-        <Route path="/inventory" element={<Inventory />} />
-        <Route path="/order-trends" element={<OrderTrends />} />
-        <Route path="/menu-view" element={<MenuView />} />
+        <Route path="/" element={<ManagerHome />} />
+        <Route path="/employees" element={<MEmployees />} />
+        <Route path="/inventory" element={<MInventory />} />
+        <Route path="/menu-items" element={<MMenuItems />} />
+        <Route path="/order-trends" element={<MOrderTrends />} />
       </Routes>
     </div>
   );
