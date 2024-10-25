@@ -21,5 +21,7 @@ def get_employee_by_name():
     if not full_name:
         abort(400, description="Name parameter is required")
 
-    employee = EmployeeRepository.get_employee_name_or_404(full_name)
-    return jsonify(employee.to_dict()), 200
+    employees = EmployeeRepository.get_employee_name_or_404(full_name)
+    if len(employees) == 0:
+        abort(404, description="Employee not found")
+    return jsonify([employee.to_dict() for employee in employees]), 200
