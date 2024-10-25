@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomeView from "./pages/HomeView";
 import ManagerView from "./pages/ManagerView";
-import CashierView from "./pages/CashierView";
+import CashierView from "./pages/CashierView/CashierView";
 import CustomerView from "./pages/CustomerView";
 import MenuView from "./pages/MenuView";
 import KitchenView from "./pages/KitchenView";
