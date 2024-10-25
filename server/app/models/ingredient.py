@@ -22,18 +22,3 @@ class Ingredient(db.Model):
             "quantity_threshold": self.quantity_threshold
         }
         
-    def get_ingredients_by_option(option):
-        pass
-    #NOTE - create option ingred joint tbl
-    
-    def get_all_ingredients():
-        pass
-    
-    def insert_ingredient(ingredient):
-        pass
-    
-    def delete_ingredient(ingredient):
-        pass
-    
-    def edit_ingredient(ingredient):
-        pass
