@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomeView from "./pages/HomeView";
-import ManagerView from "./pages/ManagerView/_ManagerView";
+import ManagerView from "./pages/ManagerView/ManagerView";
 import CashierView from "./pages/CashierView";
 import CustomerView from "./pages/CustomerView";
 import MenuView from "./pages/MenuView";
