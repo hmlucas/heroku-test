@@ -1,6 +1,6 @@
 from ..models.employee import Employee
 from ..extensions import db
-from sqlalchemy import select, update
+from sqlalchemy import select, update, and_, or_
 from flask import abort
 
 class EmployeeRepository:
@@ -28,6 +28,41 @@ class EmployeeRepository:
 
         return employee
 
+    @staticmethod
+    def get_employee_name_or_404(employee_full_name):
+        # search first + last name, or first name / last name only
+        name_parts = employee_full_name.strip().split()
+        first_name = None
+        last_name = None
+        
+        if len(name_parts) > 0: 
+            first_name = name_parts[0]
+        if len(name_parts) > 1: 
+            last_name = name_parts[1]
+        
+        stmt = select(Employee)
+        
+        conditions = []
+        if first_name is not None:
+            conditions.append(or_(
+                Employee.first_name.ilike(f"%{first_name}%"),
+                Employee.last_name.ilike(f"%{first_name}%")
+            ))
+        if last_name is not None:
+            conditions.append(or_(
+                Employee.first_name.ilike(f"%{last_name}%"),
+                Employee.last_name.ilike(f"%{last_name}%")
+            ))
+            
+        if conditions:
+            stmt = stmt.where(and_(*conditions))
+            
+        employee = db.session.execute(stmt).scalars().all()
+        #raises 404 error if employee is None
+        if employee is None:
+            abort(404, description="Employee not found")
+
+        return employee
     
     @staticmethod
     def insert_employee(employee):
