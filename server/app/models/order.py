@@ -8,6 +8,7 @@ class Order(db.Model):
     order_date = db.Column(db.Date, nullable=False)
     price = db.Column(db.Float, nullable=False)
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.employee_id'), nullable=False)
+    is_complete = db.Column(db.Boolean, nullable=False, default=False)
     #TODO - ticket mgmt?
 
     def __repr__(self):
@@ -19,5 +20,6 @@ class Order(db.Model):
             "payment_method": self.payment_method,
             "order_date": self.order_date.isoformat(),
             "price": self.price,
-            "employee_id": self.employee_id   
+            "employee_id": self.employee_id,
+            "is_complete": self.is_complete
         }
