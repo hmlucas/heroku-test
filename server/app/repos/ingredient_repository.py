@@ -4,7 +4,6 @@ from ..extensions import db
 from sqlalchemy import select, update
 from flask import abort
 
-#NOTE - I did NOT test this
 class IngredientRepository:
     @staticmethod
     def get_all_ingredients():
