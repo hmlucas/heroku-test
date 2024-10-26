@@ -29,30 +29,25 @@ class EmployeeRepository:
         return employee
 
     @staticmethod
-    def get_employee_name_or_404(employee_full_name):
-        # search first + last name, or first name / last name only
-        name_parts = employee_full_name.strip().split()
-        first_name = None
-        last_name = None
-        
-        if len(name_parts) > 0: 
-            first_name = name_parts[0]
-        if len(name_parts) > 1: 
-            last_name = name_parts[1]
+    def get_employee_search_or_404(search): #search through given terms for id, or names
+        search = search.replace("%20", " ") #so it doesnt do weird things
+        terms = search.strip().split() # currently splitting by spaces, if the system requests a different format we can do
         
         stmt = select(Employee)
+        print(terms)
         
         conditions = []
-        if first_name is not None:
-            conditions.append(or_(
-                Employee.first_name.ilike(f"%{first_name}%"),
-                Employee.last_name.ilike(f"%{first_name}%")
-            ))
-        if last_name is not None:
-            conditions.append(or_(
-                Employee.first_name.ilike(f"%{last_name}%"),
-                Employee.last_name.ilike(f"%{last_name}%")
-            ))
+        for searchTerm in terms: #all search terms
+            try: #ints
+                searchInt = int(searchTerm)
+                conditions.append(Employee.employee_id == searchInt) #search via ID 
+            except ValueError: #all other search terms
+                conditions.append(
+                    or_(
+                        Employee.first_name.ilike(f"%{searchTerm}%"),# seach via name
+                        Employee.last_name.ilike(f"%{searchTerm}%")
+                    )
+                )
             
         if conditions:
             stmt = stmt.where(and_(*conditions))
