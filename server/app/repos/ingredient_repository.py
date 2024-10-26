@@ -37,15 +37,20 @@ class IngredientRepository:
     def get_ingredient_measure_search_or_404(search): 
         return SearchUtils.get_exact_search_or_404(db.session, Ingredient, search, None, "ingredient_measure")
     
+    # get the units of measurement for dropdown
+    @staticmethod
+    def get_ingredient_measure_types_or_404(): 
+        return SearchUtils.get_values_list(db.session, Ingredient, "ingredient_measure")
+    
     #get ingrdients by storage method ? might be useful to view incase of a super outbreak of zombies that attack the fridge
     @staticmethod
     def get_ingredient_storage_search_or_404(search): 
         return SearchUtils.get_exact_search_or_404(db.session, Ingredient, search, None, "storage_method")
     
-    # get the units of measurement for dropdown
+    # get the storage methodoses for dropdown
     @staticmethod
-    def get_ingredient_measure_types_or_404(): 
-        return SearchUtils.get_values_list(db.session, Ingredient, "ingredient_measure")
+    def get_ingredient_storage_types_or_404(): 
+        return SearchUtils.get_values_list(db.session, Ingredient, "storage_method")
     
     
     @staticmethod

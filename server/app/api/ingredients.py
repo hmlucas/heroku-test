@@ -23,7 +23,16 @@ def get_ingredients():
 @ingredients_bp.route('/measure-list/', methods=['GET'])
 def get_ingredient_measure():
     measures = IngredientRepository.get_ingredient_measure_types_or_404()
+    if len(measures) == 0:
+        abort(404, description="No measure types found")
     return jsonify(measures), 200
+
+@ingredients_bp.route('/storage-methods/', methods=['GET'])
+def get_storage_methods():
+    storage_types = IngredientRepository.get_ingredient_storage_types_or_404()
+    if len(storage_types) == 0:
+        abort(404, description="No storage types found")
+    return jsonify(storage_types), 200
 
 # @ingredients_bp.route('/<int:employee_id>/', methods=['GET'])
 # def get_employee(employee_id):
