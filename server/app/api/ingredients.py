@@ -33,8 +33,3 @@ def get_storage_methods():
     if len(storage_types) == 0:
         abort(404, description="No storage types found")
     return jsonify(storage_types), 200
-
-# @ingredients_bp.route('/<int:employee_id>/', methods=['GET'])
-# def get_employee(employee_id):
-#     employee = IngredientRepository.get_employee_or_404(employee_id)
-#     return jsonify(employee.to_dict()), 200
