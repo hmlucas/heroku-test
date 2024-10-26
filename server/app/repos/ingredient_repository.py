@@ -1,6 +1,9 @@
 from ..models.ingredient import Ingredient
+from .search_repository import SearchUtils
 from ..extensions import db
 from sqlalchemy import select, update
+from flask import abort
+
 #NOTE - I did NOT test this
 class IngredientRepository:
     @staticmethod
@@ -24,7 +27,27 @@ class IngredientRepository:
             abort(404, description="Ingredient not found")
 
         return ingredient
-
+    
+    @staticmethod #TODO I put vendor and ingredient together since they might want to search that, but its more likely these be seperate queries
+    def get_ingredient_search_or_404(search): 
+        return SearchUtils.get_search_or_404(db.session, Ingredient, search, None, "ingredient", "vendor")
+    
+    # get all ingredients of specific measure ? probably useless
+    @staticmethod
+    def get_ingredient_measure_search_or_404(search): 
+        return SearchUtils.get_exact_search_or_404(db.session, Ingredient, search, None, "ingredient_measure")
+    
+    #get ingrdients by storage method ? might be useful to view incase of a super outbreak of zombies that attack the fridge
+    @staticmethod
+    def get_ingredient_storage_search_or_404(search): 
+        return SearchUtils.get_exact_search_or_404(db.session, Ingredient, search, None, "storage_method")
+    
+    # get the units of measurement for dropdown
+    @staticmethod
+    def get_ingredient_measure_types_or_404(): 
+        return SearchUtils.get_values_list(db.session, Ingredient, "ingredient_measure")
+    
+    
     @staticmethod
     def insert_ingredient(ingredient):
         db.session.add(ingredient)

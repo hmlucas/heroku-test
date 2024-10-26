@@ -1,6 +1,7 @@
 from ..models.employee import Employee
+from .search_repository import SearchUtils
 from ..extensions import db
-from sqlalchemy import select, update, and_, or_
+from sqlalchemy import select, update
 from flask import abort
 
 class EmployeeRepository:
@@ -27,37 +28,10 @@ class EmployeeRepository:
             abort(404, description="Employee not found")
 
         return employee
-
+    
     @staticmethod
-    def get_employee_search_or_404(search): #search through given terms for id, or names
-        search = search.replace("%20", " ") #so it doesnt do weird things
-        terms = search.strip().split() # currently splitting by spaces, if the system requests a different format we can do
-        
-        stmt = select(Employee)
-        print(terms)
-        
-        conditions = []
-        for searchTerm in terms: #all search terms
-            try: #ints
-                searchInt = int(searchTerm)
-                conditions.append(Employee.employee_id == searchInt) #search via ID 
-            except ValueError: #all other search terms
-                conditions.append(
-                    or_(
-                        Employee.first_name.ilike(f"%{searchTerm}%"),# seach via name
-                        Employee.last_name.ilike(f"%{searchTerm}%")
-                    )
-                )
-            
-        if conditions:
-            stmt = stmt.where(and_(*conditions))
-            
-        employee = db.session.execute(stmt).scalars().all()
-        #raises 404 error if employee is None
-        if employee is None:
-            abort(404, description="Employee not found")
-
-        return employee
+    def get_employee_search_or_404(search):
+        return SearchUtils.get_search_or_404(db.session, Employee, search, "employee_id", "first_name", "last_name")
     
     @staticmethod
     def insert_employee(employee):
