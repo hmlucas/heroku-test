@@ -11,3 +11,5 @@
         /?category=<category> - list of menu options that belong to the given category
     /orders                   - list of all orders
         /<order_id>           - returns order with matching order_id
+            /mi               - returns list of menu items from order with given order_id
+            
