@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axiosInstance from "../api/axiosInstance";
 const menuOptionsStore = create((set) => ({
-    menuItmes:[],
+    menuItems:[],
 
     fetchEntrees: async () =>{
         set({ isLoading: true, error: null });
@@ -47,4 +47,4 @@ const menuOptionsStore = create((set) => ({
         },
 
 }));
-export default menuItemsStore;
+export default menuOptionsStore;

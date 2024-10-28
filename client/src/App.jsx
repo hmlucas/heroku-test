@@ -5,6 +5,7 @@ import ManagerView from "./pages/ManagerView/ManagerView";
 import CustomerView from "./pages/CustomerView";
 import MenuView from "./pages/MenuView";
 import KitchenView from "./pages/KitchenView";
+import TestOrderView from "./pages/TestOrderView";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/customer-view" element={<CustomerView />} />
         <Route path="/menu-view" element={<MenuView />} />
         <Route path="/kitchen-view" element={<KitchenView />} />
+        <Route path="/test-order" element={<TestOrderView />} />
       </Routes>
     </Router>
   );

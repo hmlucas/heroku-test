@@ -8,4 +8,5 @@ General Structure:
              query functions are organized by object. unless you're writing a
              new query function then don't worry about the implementation here,
              just use the appropriate api calls
-    /api - contains api calls, to get routes see /api/api_wiki.txt
+    /api - contains api calls (uses repo functions), to get routes see
+            /api/api_wiki.txt

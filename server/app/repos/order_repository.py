@@ -31,12 +31,6 @@ class OrderRepository:
         return order
 
     @staticmethod
-    def insert_order(order):
-        db.session.add(order)
-        
-        db.session.commit()
-
-    @staticmethod
     def delete_order(order):
         db.session.delete(order)
         db.session.commit()
