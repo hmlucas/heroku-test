@@ -1,13 +1,16 @@
 import { create } from "zustand";
 import axiosInstance from "../api/axiosInstance";
 const menuOptionsStore = create((set) => ({
-  menuItems: [],
+  menuEntrees: [],
+  menuSides: [],
+  menuApps: [],
+  menuDrinks: [],
 
   fetchEntrees: async () => {
     set({ isLoading: true, error: null });
     try {
       const response = await axiosInstance.get("/options/?category=entree");
-      set({ menuItems: response.data, isLoading: false });
+      set({ menuEntrees: response.data, isLoading: false });
     } catch (error) {
       console.error("Error fetching entrees:", error);
       set({ error: "Failed to fetch entrees", isLoading: false });
@@ -18,7 +21,7 @@ const menuOptionsStore = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await axiosInstance.get("/options/?category=side");
-      set({ menuItems: response.data, isLoading: false });
+      set({ menuSides: response.data, isLoading: false });
     } catch (error) {
       console.error("Error fetching entrees:", error);
       set({ error: "Failed to fetch entrees", isLoading: false });
@@ -29,7 +32,7 @@ const menuOptionsStore = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await axiosInstance.get("/options/?category=app");
-      set({ menuItems: response.data, isLoading: false });
+      set({ menuApps: response.data, isLoading: false });
     } catch (error) {
       console.error("Error fetching entrees:", error);
       set({ error: "Failed to fetch entrees", isLoading: false });
@@ -39,7 +42,7 @@ const menuOptionsStore = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await axiosInstance.get("/options/?category=drink");
-      set({ menuItems: response.data, isLoading: false });
+      set({ menuDrinks: response.data, isLoading: false });
     } catch (error) {
       console.error("Error fetching entrees:", error);
       set({ error: "Failed to fetch entrees", isLoading: false });
