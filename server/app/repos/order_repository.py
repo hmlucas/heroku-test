@@ -1,6 +1,8 @@
 from ..models.order import Order
 from ..models.menu_item import MenuItem
 from ..models.options import Options
+from ..models.join_tables import menuitem_options_join
+
 from ..extensions import db
 from sqlalchemy import select, update, Table, Column, Integer, ForeignKey, String
 from flask import abort
@@ -31,6 +33,7 @@ class OrderRepository:
     @staticmethod
     def insert_order(order):
         db.session.add(order)
+        
         db.session.commit()
 
     @staticmethod
