@@ -8,13 +8,13 @@
     height: 100vh;
     overflow: hidden;
 }
-.left-panel {
+.menu-left-panel {
     display: flex;
     flex-direction: column;
     width: 25%;
     height: 100%;
 }
-.explain-menu {
+.menu-explain-menu {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -33,26 +33,26 @@
     max-width: 100%;
     height: auto;
 }
-.middle-panel {
+.menu-middle-panel {
     display: flex;
     flex-direction: column;
     width: 50%;
     height: 100%;
 }
-.entree-menu{
+.menu-entree-menu{
     flex: 1;
     background-color: blue;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.right-panel {
+.menu-right-panel {
     display: flex;
     flex-direction: column;
     width: 25%;
     height: 100%;
 }
-.sideandapp-menu {
+.menu-sideandapp-menu {
     flex: 1;
     background-color: orange;
     display: flex;

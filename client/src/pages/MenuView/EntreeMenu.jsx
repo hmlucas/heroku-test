@@ -2,7 +2,7 @@ import "./MenuView.css";
 
 const EntreeMenu = () => {
   return (
-    <div className="entree-menu">
+    <div className="menu-entree-menu">
       <h1>EntreeMenu</h1>
     </div>
   );

@@ -2,7 +2,7 @@ import "./MenuView.css";
 
 const ExplainMenu = () => {
   return (
-    <div className="explain-menu">
+    <div className="menu-explain-menu">
       <div className="menu-item">
         <img
           src="src/pages/MenuView/Pictures/panda_bowl.jpg"
