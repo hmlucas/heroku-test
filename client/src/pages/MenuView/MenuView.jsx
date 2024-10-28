@@ -6,14 +6,14 @@ import SideAndAppMenu from "./SideAndAppMenu";
 const MenuView = () => {
   return (
     <div className="menu-view">
-      <div className="left-panel">
+      <div className="menu-left-panel">
         <ExplainMenu />
       </div>
 
-      <div className="middle-panel">
+      <div className="menu-middle-panel">
         <EntreeMenu />
       </div>
-      <div className="right-panel">
+      <div className="menu-right-panel">
         <SideAndAppMenu />
       </div>
     </div>
