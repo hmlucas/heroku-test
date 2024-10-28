@@ -8,6 +8,7 @@ function MenuView() {
   };
 
   return (
+
     <div>
       <h1>Menu Options</h1>
       <div>
@@ -29,6 +30,7 @@ function MenuView() {
           </ul>
         </div>
       )}
+
     </div>
   );
 }

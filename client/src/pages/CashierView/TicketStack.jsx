@@ -2,7 +2,7 @@ import "./CashierView.css";
 
 const TicketStack = () => {
   return (
-    <div className="ticket-stack">
+    <div className="cashier-ticket-stack">
       <h1>TicketStack</h1>
     </div>
   );
