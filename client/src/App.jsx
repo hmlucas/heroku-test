@@ -3,7 +3,7 @@ import HomeView from "./pages/HomeView";
 import CashierView from "./pages/CashierView/CashierView";
 import ManagerView from "./pages/ManagerView/ManagerView";
 import CustomerView from "./pages/CustomerView";
-import MenuView from "./pages/MenuView";
+import MenuView from "./pages/MenuView/MenuView";
 import KitchenView from "./pages/KitchenView";
 import TestOrderView from "./pages/TestOrderView";
 

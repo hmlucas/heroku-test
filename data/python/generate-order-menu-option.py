@@ -192,7 +192,6 @@ def generate_order(options, employee_ids):
         "order_date": date.isoformat(),
         "price": total_price,
         "employee_id": employee_id,
-        "is_completed": True
     }
     return total_price
 
@@ -212,7 +211,7 @@ def process_orders(options, employee_ids):
         writer.writeheader()
         writer.writerows(meal_options.values())
     with open(f"./data/csv/orders-{today}.csv", "w", newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=["order_id", "payment_method", "order_date", "price", "employee_id","is_completed"])
+        writer = csv.DictWriter(f, fieldnames=["order_id", "payment_method", "order_date", "price", "employee_id"])
         writer.writeheader()
         writer.writerows(orders.values())
 
