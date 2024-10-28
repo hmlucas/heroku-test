@@ -14,12 +14,24 @@
     width: 25%;
     height: 100%;
 }
-.explain-menu{
+.explain-menu {
     flex: 1;
-    background-color: green;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 7%;
+}
+
+.menu-item img {
+    max-width: 100%;
+    height: auto;
 }
 .middle-panel {
     display: flex;
