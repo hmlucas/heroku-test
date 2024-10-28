@@ -9,7 +9,7 @@ class Order(db.Model):
     price = db.Column(db.Float, nullable=False)
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.employee_id'), nullable=False)
     is_completed = db.Column(db.Boolean, nullable=False, default=False)
-    #TODO - ticket mgmt?
+    menu_items = db.relationship('MenuItem', backref='order', lazy=True)
 
     def __repr__(self):
         return f"<Order {self.order_id}>"
