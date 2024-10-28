@@ -8,6 +8,7 @@ class Order(db.Model):
     order_date = db.Column(db.Date, nullable=False)
     price = db.Column(db.Float, nullable=False)
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.employee_id'), nullable=False)
+    menu_items = db.relationship('MenuItem', backref='order', lazy=True)
 
     def __repr__(self):
         return f"<Order {self.order_id}>"
