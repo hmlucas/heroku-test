@@ -28,6 +28,18 @@ const useEmployeeStore = create((set) => ({
       set({ error: "Employee not found", isLoading: false });
     }
   },
+  fetchEmployeesByName: async (searchTerms) => {
+    set({ isLoading: true, error: null });
+    try {
+      const response = await axiosInstance.get(
+        `/employees?search=${searchTerms}/`
+      );
+      set({ employees: response.data, isLoading: false });
+    } catch (error) {
+      console.error("Error fetching employees:", error);
+      set({ error: "Failed to fetch employees", isLoading: false });
+    }
+  },
 }));
 
 export default useEmployeeStore;

@@ -1,4 +1,5 @@
 from ..models.employee import Employee
+from .search_repository import SearchUtils
 from ..extensions import db
 from sqlalchemy import select, update
 from flask import abort
@@ -27,7 +28,10 @@ class EmployeeRepository:
             abort(404, description="Employee not found")
 
         return employee
-
+    
+    @staticmethod
+    def get_employee_search_or_404(search):
+        return SearchUtils.get_search_or_404(db.session, Employee, search, "employee_id", "first_name", "last_name")
     
     @staticmethod
     def insert_employee(employee):
