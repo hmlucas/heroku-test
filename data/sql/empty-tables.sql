@@ -6,6 +6,7 @@ TRUNCATE TABLE
     employees,
     options,
     ingredients,
+    active_orders,
     z_report_date
 CASCADE;
 

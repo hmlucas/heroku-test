@@ -3,17 +3,17 @@
 -- POPULATE ingredients --------------------------------------------------
 \copy ingredients FROM '../csv/ingredients.csv' DELIMITER ',' CSV HEADER;
 -- POPULATE options_ingredients_join --------------------------------------------------
-\copy options_ingredients_join FROM '../csv/options_ingredients_join.csv' DELIMITER ',' CSV HEADER;
+\copy options_ingredients_join FROM '../csv/options-ingredients-join.csv' DELIMITER ',' CSV HEADER;
 -- POPULATE employees --------------------------------------------------
 \copy employees FROM '../csv/employees.csv' DELIMITER ',' CSV HEADER;
 -- POPULATE orders --------------------------------------------------
-\copy orders FROM '../csv/orders-2024-10-24.csv' DELIMITER ',' CSV HEADER;
+\copy orders FROM '../csv/orders-2024-10-28.csv' DELIMITER ',' CSV HEADER;
 SELECT setval(pg_get_serial_sequence('orders', 'order_id'), (SELECT MAX(order_id) FROM orders));
 -- POPULATE menu_items --------------------------------------------------
-\copy menu_items FROM '../csv/menu-items-2024-10-24.csv' DELIMITER ',' CSV HEADER;
+\copy menu_items FROM '../csv/menu-items-2024-10-28.csv' DELIMITER ',' CSV HEADER;
 SELECT setval(pg_get_serial_sequence('menu_items', 'menuitem_id'), (SELECT MAX(menuitem_id) FROM menu_items));
 -- POPULATE menuitem_options_join --------------------------------------------------
-\copy menuitem_options_join FROM '../csv/menuitem-options-join-2024-10-24.csv' DELIMITER ',' CSV HEADER;
+\copy menuitem_options_join FROM '../csv/menuitem-options-join-2024-10-28.csv' DELIMITER ',' CSV HEADER;
 SELECT setval(pg_get_serial_sequence('menuitem_options_join', 'menuitem_option_id'), (SELECT MAX(menuitem_option_id) FROM menuitem_options_join));
 -- POPULATE z_report_date --------------------------------------------------
 -- Use the oldest order as the date
