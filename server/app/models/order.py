@@ -8,7 +8,6 @@ class Order(db.Model):
     order_date = db.Column(db.Date, nullable=False)
     price = db.Column(db.Float, nullable=False)
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.employee_id'), nullable=False)
-    #TODO - ticket mgmt?
 
     def __repr__(self):
         return f"<Order {self.order_id}>"
