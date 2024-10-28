@@ -6,7 +6,7 @@ const menuOptionsStore = create((set) => ({
     fetchEntrees: async () =>{
         set({ isLoading: true, error: null });
         try {
-            const response = await axiosInstance.get("/option/?category=entree");
+            const response = await axiosInstance.get("/options/?category=entree");
             set({ employees: response.data, isLoading: false });
           } catch (error) {
             console.error("Error fetching employees:", error);
@@ -17,7 +17,7 @@ const menuOptionsStore = create((set) => ({
     fetchSides: async () =>{
         set({ isLoading: true, error: null });
         try {
-            const response = await axiosInstance.get("/option/?category=side");
+            const response = await axiosInstance.get("/options/?category=side");
             set({ employees: response.data, isLoading: false });
           } catch (error) {
             console.error("Error fetching employees:", error);
@@ -28,7 +28,7 @@ const menuOptionsStore = create((set) => ({
     fetchApps: async () =>{
         set({ isLoading: true, error: null });
         try {
-            const response = await axiosInstance.get("/option/?category=app");
+            const response = await axiosInstance.get("/options/?category=app");
             set({ employees: response.data, isLoading: false });
           } catch (error) {
             console.error("Error fetching employees:", error);
@@ -38,7 +38,7 @@ const menuOptionsStore = create((set) => ({
     fetchDrinks: async () =>{
         set({ isLoading: true, error: null });
         try {
-            const response = await axiosInstance.get("/option/?category=drink");
+            const response = await axiosInstance.get("/options/?category=drink");
             set({ employees: response.data, isLoading: false });
           } catch (error) {
             console.error("Error fetching employees:", error);
