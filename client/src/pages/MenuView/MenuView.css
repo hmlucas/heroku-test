@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.menu-view {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+}
+.explain-menu{
+    flex: 1;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.middle-panel {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+}
+.entree-menu{
+    flex: 1;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+}
+.sideandapp-menu {
+    flex: 1;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
