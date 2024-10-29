@@ -16,8 +16,12 @@ CREATE TABLE IF NOT EXISTS orders(
     -- Price is the sum of all menu_items's total_menuitem_price values
     price double precision NOT NULL,
     employee_id int NOT NULL,
-    is_completed boolean NOT NULL,
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+);
+
+CREATE TABLE IF NOT EXISTS active_orders(
+    order_id INT PRIMARY KEY,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
 
 CREATE TABLE IF NOT EXISTS menu_items(

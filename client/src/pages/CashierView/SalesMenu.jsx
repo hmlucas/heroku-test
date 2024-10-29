@@ -2,7 +2,7 @@ import "./CashierView.css";
 
 const SalesMenu = () => {
   return (
-    <div className="sales-menu">
+    <div className="cashier-sales-menu">
       <h1>SalesMenu</h1>
     </div>
   );

@@ -7,11 +7,11 @@ import MicroMenu from "./MicroMenu";
 const CashierView = () => {
   return (
     <div className="cashier-view">
-      <div className="left-panel">
+      <div className="cashier-left-panel">
         <TicketStack />
         <SalesMenu />
       </div>
-      <div className="right-panel">
+      <div className="cashier-right-panel">
         <NavBar />
         <MicroMenu />
       </div>

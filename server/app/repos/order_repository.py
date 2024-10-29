@@ -1,6 +1,10 @@
 from ..models.order import Order
 from ..models.menu_item import MenuItem
 from ..models.options import Options
+from ..models.active_order import ActiveOrder
+from ..repos.active_order_repository import ActiveOrderRepository
+from ..models.join_tables import menuitem_options_join
+
 from ..extensions import db
 from sqlalchemy import select, update, Table, Column, Integer, ForeignKey, String
 from flask import abort
@@ -27,11 +31,6 @@ class OrderRepository:
             abort(404, description="Order not found")
 
         return order
-
-    @staticmethod
-    def insert_order(order):
-        db.session.add(order)
-        db.session.commit()
 
     @staticmethod
     def delete_order(order):
@@ -73,4 +72,12 @@ class OrderRepository:
             .all()
         )
         return menu_items
+    def get_active_orders():
+        active_orders = ActiveOrderRepository.get_all_active_orders()
+        stmt = (
+            select(Order)
+            .where(Order.order_id.in_([order.order_id for order in active_orders]))
+        )
+        orders = db.session.execute(stmt).scalars().all() 
+        return orders      
         

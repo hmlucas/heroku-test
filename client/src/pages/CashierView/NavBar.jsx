@@ -2,7 +2,7 @@ import "./CashierView.css";
 
 const NavBar = () => {
   return (
-    <div className="nav-bar">
+    <div className="cashier-nav-bar">
       <h1>NavBar</h1>
     </div>
   );
