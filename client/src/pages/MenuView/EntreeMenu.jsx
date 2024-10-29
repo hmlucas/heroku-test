@@ -8,7 +8,7 @@ function MenuView() {
   };
 
   return (
-    <div>
+    <div className="menu-entree-menu">
       <h1>Menu Options</h1>
       <div>
         <button onClick={handleFetchEntrees}>Entrees</button>

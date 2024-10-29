@@ -13,7 +13,7 @@ function SideAndAppMenu() {
   };
 
   return (
-    <div>
+    <div className="menu-sideandapp-menu">
       <h1>Menu Options</h1>
       <div>
         <button onClick={handleFetchSides}>Sides</button>
