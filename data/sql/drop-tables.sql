@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS menuitem_options_join, options_ingredients_join, menu_items, orders, active_orders, employees, ingredients, options, z_report_date;
