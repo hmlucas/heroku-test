@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.cashier-view {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.cashier-left-panel {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+}
+
+.cashier-ticket-stack {
+    flex: 7;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cashier-sales-menu {
+    flex: 3;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cashier-right-panel {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+}
+
+.cashier-nav-bar {
+    flex: 1;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cashier-micro-menu {
+    flex: 9;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .cashier-view {
+        flex-direction: column;
+    }
+
+    .cashier-left-panel,
+    .cashier-right-panel {
+        width: 100%;
+        height: 50%;
+    }
+
+    .cashier-ticket-stack {
+        flex: 7;
+    }
+
+    .cashier-sales-menu {
+        flex: 3;
+    }
+
+    .cashier-nav-bar {
+        flex: 2;
+    }
+
+    .cashier-micro-menu {
+        flex: 8;
+    }
+}

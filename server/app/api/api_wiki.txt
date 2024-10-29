@@ -1,0 +1,15 @@
+/api
+    /employees                - returns all employees
+        /<employee_id>        - returns employee with given employee_id
+        /?search=<text>       - returns employees with id/first name/last name contained in <text>
+    /ingredients              - returns all ingredients
+        /measure-list         - returns list of measurement types (liter, pound, etc.)
+        /storage-methods      - returns list of all ingredient storage methods
+        /?search=<text>       - returns ingredients containing <text> in ingredient name or supplier
+    /menu_items               - list of all menu items (order components)
+    /options                  - list of all menu options (available menu selections)
+        /?category=<category> - list of menu options that belong to the given category
+    /orders                   - list of all orders
+        /<order_id>           - returns order with matching order_id
+            /mi               - returns list of menu items from order with given order_id
+            
