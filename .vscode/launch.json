@@ -1,0 +1,43 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Flask",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/server/run.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "FLASK_ENV": "development",
+                "FLASK_DEBUG": "1"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ]
+        },
+        {
+            "name": "Launch Frontend",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/client/node_modules/vite/bin/vite.js",
+            "args": [
+                "dev"
+            ],
+            "cwd": "${workspaceFolder}/client",
+            "console": "integratedTerminal",
+            "runtimeExecutable": "/Users/javibetancourt/.nvm/versions/node/v16.3.0/bin/node"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Launch Both",
+            "configurations": [
+                "Launch Flask",
+                "Launch Frontend"
+            ]
+        }
+    ]
+}

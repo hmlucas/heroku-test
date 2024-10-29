@@ -1,8 +1,3 @@
 __pycache__/
-node_modules/
-client/venv/
-server/venv/
 .env
-.vscode/
-dist/
-build/
+/server/venv
