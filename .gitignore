@@ -1,5 +1,12 @@
 __pycache__/
-.env
+node_modules/
 client/venv/
 server/venv/
+.env
+.vscode/
+dist/
+build/
+*.log
+.DS_Store
+Thumbs.db
 .vscode/launch.json
