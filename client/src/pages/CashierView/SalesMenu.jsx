@@ -1,11 +1,87 @@
 import "./CashierView.css";
+import "./SalesMenu.css";
+import { useEffect, useState } from "react";
+import useEmployeeStore from "../../store/useEmployeeStore";
+import PropTypes from "prop-types";
+import MenuEnum from "./MenuEnum";
 
-const SalesMenu = () => {
+const SalesMenu = ({ changeMenu }) => {
+  const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
+
+  //import states
+  //TODO not sure if this needs to change where it imports
+  const [hasIncompleteOrder, setHasIncompleteOrder] = useState(false);
+  const [hasTickets, setHasTickets] = useState(false);
+  const [hasSelectedOrder, setHasSelectedOrder] = useState(false);
+
+  useEffect(() => {
+    fetchEmployeeById(1); // fetch current active employee //TODO make this use current employee (remove the fetch?)
+
+    //TODO placeholder states - should update based on current order state
+    /*
+    Sales Menu States: 
+      - Incomplete order (edit or new one) - no checkout button
+      - No tickets - no delete no checkout
+      - No selected order (recent deletion) - no delete
+    */
+    setHasTickets(true);
+    setHasSelectedOrder(true);
+    setHasIncompleteOrder(false);
+  }, [fetchEmployeeById]);
+
+  // TODO Add click functionality
+  const optionsAction = () => {
+    changeMenu(MenuEnum.OPTIONS);
+  };
+  const deleteAction = () => {
+    alert("FIXME Delete Clicked!");
+  };
+  const checkoutAction = () => {
+    changeMenu(MenuEnum.CHECKOUT);
+  };
+
   return (
     <div className="cashier-sales-menu">
-      <h1>SalesMenu</h1>
+      <div className="cashier-sales-buttons">
+        <div className="cashier-delete-button">
+          <button
+            onClick={deleteAction}
+            disabled={!hasTickets || !hasSelectedOrder}
+          >
+            Delete Item
+          </button>
+        </div>
+        <div className="cashier-checkout-button">
+          <button
+            onClick={checkoutAction}
+            disabled={!hasTickets || hasIncompleteOrder}
+          >
+            Checkout
+          </button>
+        </div>
+        <div className="cashier-employee-name">
+          {selectedEmployee ? (
+            <p>
+              {selectedEmployee.first_name} {selectedEmployee.last_name}
+            </p>
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+        <div className="cashier-options-button">
+          <button onClick={optionsAction}>
+            <img
+              src="./src/img/placeholder.gif"
+              alt="Options"
+              className="cashier-options-image"
+            />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
-
+SalesMenu.propTypes = {
+  changeMenu: PropTypes.func.isRequired,
+};
 export default SalesMenu;
