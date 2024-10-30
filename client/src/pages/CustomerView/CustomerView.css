@@ -1,0 +1,50 @@
+.customer-navbar {
+    position: fixed;
+    height: 15vh;
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #d2d2d2;
+    box-sizing: border-box;
+}
+
+.checkout-button {
+    position: absolute;
+    height: 100%;
+    width: 150px;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+    background-color: #45a049;
+}
+
+.customer-menu {
+    position: fixed;
+    top: 15vh;
+    bottom: 10vh;
+    left: 0;
+    right: 0;
+    background-color: #cce5ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
