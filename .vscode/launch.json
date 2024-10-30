@@ -28,7 +28,7 @@
             ],
             "cwd": "${workspaceFolder}/client",
             "console": "integratedTerminal",
-            "runtimeExecutable": "node",
+            "runtimeExecutable": "node"
         }
     ],
     "compounds": [
