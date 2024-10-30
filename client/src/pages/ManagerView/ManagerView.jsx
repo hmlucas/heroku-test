@@ -6,7 +6,7 @@ import MMenuItems from "./MMenuItems";
 import MOrderTrends from "./MOrderTrends";
 
 function ManagerHome() {
-  return <h1>Home View</h1>;
+  return <h1>Manager View</h1>;
 }
 
 function ManagerView() {

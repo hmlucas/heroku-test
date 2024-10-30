@@ -1,0 +1,17 @@
+.scroll-pane {
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    height: 120vh;   
+    padding: 15px;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.template-box {
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+}
+
