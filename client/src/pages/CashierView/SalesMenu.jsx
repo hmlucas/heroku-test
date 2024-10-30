@@ -3,7 +3,7 @@ import "./SalesMenu.css";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
-import { Options as OptionImage } from "../Images"; //TODO update image
+import gearIcon from "../../assets/gear-svgrepo-com.svg";
 
 const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   //import states
@@ -70,7 +70,7 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
         <div className="cashier-options-button">
           <button onClick={optionsAction} className={optionsButton}>
             <img
-              src={OptionImage}
+              src={gearIcon}
               alt="Options"
               className="cashier-options-image"
             />
