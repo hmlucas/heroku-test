@@ -2,8 +2,10 @@ import "./CashierView.css";
 import "./SalesMenu.css";
 import { useEffect, useState } from "react";
 import useEmployeeStore from "../../store/useEmployeeStore";
+import PropTypes from "prop-types";
+import MenuEnum from "./MenuEnum";
 
-function SalesMenu() {
+const SalesMenu = ({ changeMenu }) => {
   const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
 
   //import states
@@ -22,20 +24,20 @@ function SalesMenu() {
       - No tickets - no delete no checkout
       - No selected order (recent deletion) - no delete
     */
-    setHasTickets(false);
+    setHasTickets(true);
     setHasSelectedOrder(true);
     setHasIncompleteOrder(false);
   }, [fetchEmployeeById]);
 
   // TODO Add click functionality
   const optionsAction = () => {
-    alert("FIXME Options Clicked!");
+    changeMenu(MenuEnum.OPTIONS);
   };
   const deleteAction = () => {
     alert("FIXME Delete Clicked!");
   };
   const checkoutAction = () => {
-    alert("FIXME Checkout Clicked!");
+    changeMenu(MenuEnum.CHECKOUT);
   };
 
   return (
@@ -78,6 +80,8 @@ function SalesMenu() {
       </div>
     </div>
   );
-}
-
+};
+SalesMenu.propTypes = {
+  changeMenu: PropTypes.func.isRequired,
+};
 export default SalesMenu;

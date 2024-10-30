@@ -17,7 +17,7 @@ const CashierView = () => {
     <div className="cashier-view">
       <div className="cashier-left-panel">
         <TicketStack />
-        <SalesMenu />
+        <SalesMenu changeMenu={changeMenu} />
       </div>
       <div className="cashier-right-panel">
         <NavBar activeMenu={activeMenu} changeMenu={changeMenu} />
