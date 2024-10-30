@@ -2,12 +2,12 @@ import "./CashierView.css";
 import "./SalesMenu.css";
 import { useEffect, useState } from "react";
 import useEmployeeStore from "../../store/useEmployeeStore";
-// import axios from "axios";
 
 function SalesMenu() {
   const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
 
   //import states
+  //TODO not sure if this needs to change where it imports
   const [hasIncompleteOrder, setHasIncompleteOrder] = useState(false);
   const [hasTickets, setHasTickets] = useState(false);
   const [hasSelectedOrder, setHasSelectedOrder] = useState(false);
