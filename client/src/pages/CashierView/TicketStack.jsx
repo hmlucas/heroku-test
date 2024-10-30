@@ -1,6 +1,6 @@
 import "./CashierView.css";
 
-const TicketStack = () => {
+const TicketStack = (tickets) => {
   return (
     <div className="cashier-ticket-stack">
       <h1>TicketStack</h1>
