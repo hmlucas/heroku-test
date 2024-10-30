@@ -3,9 +3,13 @@
   padding: 20px;
   height: 100vh; /* Ensure the container takes full vertical height */
 }
-
+.menu-left-panel,
+.menu-middle-panel,
+.menu-right-panel {
+  overflow-y: none; /* Enable scrolling if content exceeds max height */
+}
 .menu-left-panel {
-  flex: 0 0 25%; /* Fixed width of 25% */
+  flex: 0 0 24%; /* Fixed width of 25% */
   margin: 10px; 
 }
 
@@ -14,7 +18,7 @@
   margin: 10px; 
 }
 
-.menu-right-panel {
-  flex: 0 0 25%; /* Fixed width of 25% */
+.menu-right-panel { 
+  flex: 0 0 24%; /* Fixed width of 25% */
   margin: 10px; 
 }
