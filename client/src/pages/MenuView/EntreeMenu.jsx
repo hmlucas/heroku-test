@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import menuOptionsStore from "../../store/menuOptionsStore";
-import "./EntreeMenu.css"; // Ensure this is correctly imported
+import "./EntreeMenu.css";
 
 function EntreeMenu() {
   const { menuEntrees, fetchEntrees, isLoading, error } = menuOptionsStore();
@@ -8,8 +8,21 @@ function EntreeMenu() {
   useEffect(() => {
     fetchEntrees();
   }, [fetchEntrees]);
+  useEffect(() => {
+    const scrollInterval = setInterval(() => {
+      const menuContainer = document.querySelector('.menu-entree-menu');
+      if (menuContainer) {
+        if (menuContainer.scrollTop + menuContainer.clientHeight >= menuContainer.scrollHeight) {
+          menuContainer.scrollTop = 0; 
+        } else {
+          menuContainer.scrollTop += 2; // Scroll down
+        }
+      }
+    }, 80); // Adjust interval for scroll speed
 
-  // Mapping of menu item names to image paths
+    return () => clearInterval(scrollInterval); // Clean up on unmount
+  }, []);
+
   const imageMapping = {
     'Orange_Chicken': 'src/pages/MenuView/Pictures/EntreePics/Orange_Chicken.jpg',
     'Blazing_Burbon_Chicken': 'src/pages/MenuView/Pictures/EntreePics/Blazing_Burbon_Chicken.jpg',
@@ -28,9 +41,8 @@ function EntreeMenu() {
   };
   // Function to get the image source based on the item name
   const getImageSource = (item) => {
-    // Convert item.option to match keys in imageMapping
-    const key = item.option.replace(/ /g, "_"); // Ensure the format matches the keys
-    return imageMapping[key] || item.image; // Return mapped image or default image
+    const key = item.option.replace(/ /g, "_"); 
+    return imageMapping[key] || item.image; 
   };
 
   return (
