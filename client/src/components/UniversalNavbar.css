@@ -1,0 +1,16 @@
+.universal-navbar {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: gray;
+}
+
+.settings-icon {
+    width: 3rem;
+    height: auto;
+    padding: 0.5rem;
+}

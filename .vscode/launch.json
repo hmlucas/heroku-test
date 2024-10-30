@@ -23,6 +23,7 @@
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/client/node_modules/vite/bin/vite.js",
+            "envFile": "${workspaceFolder}/.env",
             "args": [
                 "dev"
             ],
