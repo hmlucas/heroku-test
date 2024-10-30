@@ -1,11 +1,37 @@
-import "./MenuView.css";
+import menuOptionsStore from "../../store/menuOptionsStore";
 
-const EntreeMenu = () => {
+function MenuView() {
+  const { menuEntrees, fetchEntrees, isLoading, error } = menuOptionsStore();
+
+  const handleFetchEntrees = () => {
+    fetchEntrees();
+  };
+
   return (
     <div className="menu-entree-menu">
-      <h1>EntreeMenu</h1>
+      <h1>Menu Options</h1>
+      <div>
+        <button onClick={handleFetchEntrees}>Entrees</button>
+      </div>
+
+      {isLoading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {menuEntrees.length > 0 && (
+        <div>
+          <h2>Menu Items:</h2>
+          <ul>
+            {menuEntrees.map((item) => (
+              <li key={item.option}>
+                {item.option.replace(/_/g, " ")}{" "}
+                {item.additional_charge > 0 && `(+${item.additional_charge})`}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
     </div>
   );
-};
+}
 
-export default EntreeMenu;
+export default MenuView;
