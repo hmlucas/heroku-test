@@ -1,7 +1,6 @@
 import "./CashierView.css";
 import "./SalesMenu.css";
 import { useEffect, useState } from "react";
-import useEmployeeStore from "../../store/useEmployeeStore";
 import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
 
@@ -83,5 +82,6 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
 SalesMenu.propTypes = {
   changeMenu: PropTypes.func.isRequired,
   activeMenu: PropTypes.number.isRequired,
+  selectedEmployee: PropTypes.func.isRequired,
 };
 export default SalesMenu;
