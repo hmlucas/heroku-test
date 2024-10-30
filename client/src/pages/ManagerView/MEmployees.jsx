@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-import "./css/MEmployees.css";
+import "./ManagerView.css";
 import InputField from "./components/InputField";
 
 function MEmployees() {

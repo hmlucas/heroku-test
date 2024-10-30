@@ -5,6 +5,11 @@
     padding: 15px;
 }
 
+#ingredient-scroll-pane{
+    height: 30vh;
+    border:3px solid #5d90c3;
+}
+
 .main-content {
     padding: 20px;
 }
