@@ -1,32 +1,41 @@
+import { useEffect } from "react";
 import menuOptionsStore from "../../store/menuOptionsStore";
+import "./SideAndAppmenu.css";
 
 function SideAndAppMenu() {
-  const { menuSides, fetchApps, isLoading, fetchSides, error } =
+  const { menuSides, menuApps, fetchApps, fetchSides, isLoading, error } =
     menuOptionsStore();
 
-  const handleFetchSides = () => {
+  useEffect(() => {
     fetchSides();
-  };
-
-  const handleFetchApps = () => {
     fetchApps();
-  };
-
+  }, [fetchSides, fetchApps]);
+  const filteredSides = menuSides.filter(item => !item.option.includes("1/2"));
   return (
     <div className="menu-sideandapp-menu">
-      <h1>Menu Options</h1>
-      <div>
-        <button onClick={handleFetchSides}>Sides</button>
-        <button onClick={handleFetchApps}>Appetizers</button>
-      </div>
 
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {menuSides.length > 0 && (
+
+      {filteredSides.length > 0 && (
         <div>
-          <h2>Menu Items:</h2>
+          <h2>Sides:</h2>
           <ul>
-            {menuSides.map((item) => (
+            {filteredSides.map((item) => (
+              <li key={item.option}>
+                {item.option.replace(/_/g, " ")}{" "}
+                {item.additional_charge > 0 && `(+${item.additional_charge})`}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {menuApps.length > 0 && (
+        <div>
+          <h2>Appetizers:</h2>
+          <ul>
+            {menuApps.map((item) => (
               <li key={item.option}>
                 {item.option.replace(/_/g, " ")}{" "}
                 {item.additional_charge > 0 && `(+${item.additional_charge})`}

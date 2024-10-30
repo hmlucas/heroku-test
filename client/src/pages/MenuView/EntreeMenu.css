@@ -1,0 +1,58 @@
+.header-container {
+    text-align: center; /* Center align text */
+    margin-bottom: 20px; /* Space between header and columns */
+}
+
+.menu-entree-menu {
+    display: flex; /* Use flexbox for the main container */
+    flex-direction: column; /* Stack children vertically */
+    padding: 20px; /* Optional padding around the container */
+}
+
+.menu-columns {
+    display: flex; /* Create a flex container for columns */
+    flex: 1; /* Allow columns to take full width */
+}
+
+.menu-column {
+    flex: 1; /* Each column takes up equal space */
+    padding: 10px; /* Padding for the columns */
+}
+
+.menu-column ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.menu-column li {
+    display: flex; /* Use flexbox for list items */
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center items horizontally */
+    padding: 10px; /* Padding for list items */
+    border: 1px solid #ccc; /* Optional border */
+    border-radius: 5px; /* Optional border radius */
+    background-color: #fff; /* Background color for items */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    width: 98%; /* Fixed width for list items */
+    height: 120px; /* Fixed height for list items */
+}
+
+.entree-image,
+.default-image {
+    width: 100px;  /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    background-color: #fff; /* White background for default image */
+    border: 1px solid #ccc; /* Optional border */
+    margin-bottom: 5px; /* Space between image and text */
+}
+
+.menu-column li:hover {
+    background-color: #eaeaea; /* Change background on hover */
+}
+
+.menu-column p {
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center text below the image */
+    flex-grow: 1; /* Allow text to fill available space */
+}

@@ -1,4 +1,4 @@
-import "./MenuView.css";
+import "./ExplainMenu.css";
 
 const ExplainMenu = () => {
   return (
