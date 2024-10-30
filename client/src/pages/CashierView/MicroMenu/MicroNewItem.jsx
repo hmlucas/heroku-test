@@ -38,7 +38,7 @@ const MicroNewItem = ({ changeMenu, addTicket }) => {
       id: Date.now(), // Use timestamp as a unique ID
       orderType,
       options: {
-        entrees: ["Orange Chicken"],
+        entrees: [],
         sides: [],
         drinks: [],
         apps: [],
