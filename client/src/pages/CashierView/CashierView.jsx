@@ -25,9 +25,17 @@ const CashierView = () => {
 
   //Nav bar micromenu interaction
   const [activeMenu, setActiveMenu] = useState(MenuEnum.NEW_ITEM);
+  const [tickets, setTickets] = useState([]);
+
   const changeMenu = (index) => {
     setActiveMenu(index);
   };
+
+  const addTicket = (newTicket) => {
+    setTickets((prevTickets) => [...prevTickets, newTicket]); // Add new ticket to the list
+    console.log(tickets);
+  };
+
   //TODO REMOVE Adn replace with functioning ticket stack
   const demoTickets = [
     {
@@ -93,7 +101,7 @@ const CashierView = () => {
   return (
     <div className="cashier-view">
       <div className="cashier-left-panel">
-        <TicketStack tickets={demoTickets} />
+        <TicketStack tickets={tickets} />
         <SalesMenu
           activeMenu={activeMenu}
           changeMenu={changeMenu}
@@ -109,6 +117,7 @@ const CashierView = () => {
           menuDrinks={menuDrinks}
           menuEntrees={menuEntrees}
           menuApps={menuApps}
+          addTicket={addTicket}
         />
       </div>
     </div>
