@@ -6,40 +6,30 @@ import InputField from "./components/InputField";
 function MOrderTrends() {
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="scroll-pane col-3">
-          {/* Dropdown Menu
-          <div className="dropdown mb-3">
-            <button
-              className="btn btn-secondary dropdown-toggle w-100"
-              type="button"
-              id="orderDropdown"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Quantity
-            </button>
-            <ul
-              className="dropdown-menu w-100"
-              aria-labelledby="orderDropdown"
-            >
-              <li>
-                <button className="dropdown-item" type="button">
-                  a quantity
-                </button>
-              </li>
-              <li>
-                <button className="dropdown-item" type="button">
-                  another quantity?
-                </button>
-              </li>
-            </ul>
-          </div> */}
-          <h2>Orders</h2>
-          {/* Example list of orders */}
-          {[...Array(30).keys()].map((i) => (
-            <p key={i}>Order {i + 1}</p>
-          ))}
+      <div className="row" style={{ height: "100vh", overflow: "hidden" }}>
+        <div className="col">
+          <h2 style={{"margin":"10px"}}>Orders</h2>
+          <div
+            className="scroll-pane"
+            style={{ height: "65vh", border: "3px solid lightblue" }}
+            id="order-scroll-pane"
+          >
+            {/* Example list of orders */}
+            {[...Array(30).keys()].map((i) => (
+              <p key={i}>Order {i + 1}</p>
+            ))}
+          </div>
+          <div id="order-info-box" style={{ height: "100%" }}>
+            <h2>Order Information</h2>
+            <div className="row">
+              <InputField labelText="Order ID" id="orderInfoID" />
+              <InputField labelText="Date" id="orderInfoDate" />
+            </div>
+            <div className="row">
+              <InputField labelText="Price" id="orderInfoPrice" />
+              <InputField labelText="Server" id="orderInfoServer" />
+            </div>
+          </div>
         </div>
 
         <div className="main-content col-8">
