@@ -10,14 +10,14 @@
     overflow: hidden;
 }
 
-.left-panel {
+.cashier-left-panel {
     display: flex;
     flex-direction: column;
     width: 30%;
     height: 100%;
 }
 
-.ticket-stack {
+.cashier-ticket-stack {
     flex: 7;
     background-color: red;
     display: flex;
@@ -25,22 +25,23 @@
     align-items: center;
 }
 
-.sales-menu {
+.cashier-sales-menu {
     flex: 3;
     background-color: green;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-.right-panel {
+.cashier-right-panel {
     display: flex;
     flex-direction: column;
     width: 70%;
     height: 100%;
 }
 
-.nav-bar {
+.cashier-nav-bar {
     flex: 1;
     background-color: yellow;
     display: flex;
@@ -48,7 +49,7 @@
     align-items: center;
 }
 
-.micro-menu {
+.cashier-micro-menu {
     flex: 9;
     background-color: blue;
     display: flex;
@@ -61,25 +62,34 @@
         flex-direction: column;
     }
 
-    .left-panel,
-    .right-panel {
+    .cashier-left-panel,
+    .cashier-right-panel {
         width: 100%;
         height: 50%;
     }
-
-    .ticket-stack {
+    .cashier-left-panel {
+        order: 1;
+    }
+    .cashier-right-panel {
+        order: 0;
+    }
+    .cashier-ticket-stack {
         flex: 7;
+        order: 0;
     }
 
-    .sales-menu {
+    .cashier-sales-menu {
         flex: 3;
+        order: 1;
     }
 
-    .nav-bar {
+    .cashier-nav-bar {
         flex: 2;
+        order: 0;
     }
 
-    .micro-menu {
+    .cashier-micro-menu {
         flex: 8;
+        order: 1;
     }
 }

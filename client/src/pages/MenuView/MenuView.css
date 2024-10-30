@@ -1,61 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-}
 .menu-view {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-.left-panel {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    height: 100%;
-}
-.explain-menu {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  padding: 20px;
+  height: 100vh; /* Ensure the container takes full vertical height */
 }
 
-.menu-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 7%;
+.menu-left-panel {
+  flex: 0 0 25%; /* Fixed width of 25% */
+  margin: 10px; 
 }
 
-.menu-item img {
-    max-width: 100%;
-    height: auto;
+.menu-middle-panel {
+  flex: 0 0 50%; /* Fixed width of 50% */
+  margin: 10px; 
 }
-.middle-panel {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-}
-.entree-menu{
-    flex: 1;
-    background-color: blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.right-panel {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    height: 100%;
-}
-.sideandapp-menu {
-    flex: 1;
-    background-color: orange;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.menu-right-panel {
+  flex: 0 0 25%; /* Fixed width of 25% */
+  margin: 10px; 
 }
