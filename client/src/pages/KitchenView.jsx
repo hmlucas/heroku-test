@@ -63,7 +63,7 @@ function KitchenView() {
       );
 
   return (
-    <div className="container">
+    <div className="container" style={{ paddingBottom: "5rem" }}>
       <h1>Kitchen View</h1>
       <div className="d-flex flex-wrap">
         {currentOrders.map((order) => (
