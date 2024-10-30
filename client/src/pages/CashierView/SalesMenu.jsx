@@ -5,7 +5,7 @@ import useEmployeeStore from "../../store/useEmployeeStore";
 import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
 
-const SalesMenu = ({ changeMenu }) => {
+const SalesMenu = ({ activeMenu, changeMenu }) => {
   const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
 
   //import states
@@ -40,6 +40,8 @@ const SalesMenu = ({ changeMenu }) => {
     changeMenu(MenuEnum.CHECKOUT);
   };
 
+  const checkoutButton = activeMenu === MenuEnum.CHECKOUT ? "selected" : "";
+  const optionsButton = activeMenu === MenuEnum.OPTIONS ? "selected" : "";
   return (
     <div className="cashier-sales-menu">
       <div className="cashier-sales-buttons">
@@ -55,6 +57,7 @@ const SalesMenu = ({ changeMenu }) => {
           <button
             onClick={checkoutAction}
             disabled={!hasTickets || hasIncompleteOrder}
+            className={checkoutButton}
           >
             Checkout
           </button>
@@ -69,7 +72,7 @@ const SalesMenu = ({ changeMenu }) => {
           )}
         </div>
         <div className="cashier-options-button">
-          <button onClick={optionsAction}>
+          <button onClick={optionsAction} className={optionsButton}>
             <img
               src="./src/img/placeholder.gif"
               alt="Options"
@@ -83,5 +86,6 @@ const SalesMenu = ({ changeMenu }) => {
 };
 SalesMenu.propTypes = {
   changeMenu: PropTypes.func.isRequired,
+  activeMenu: PropTypes.number.isRequired,
 };
 export default SalesMenu;

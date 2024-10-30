@@ -36,7 +36,6 @@ const MicroMenu = ({ activeMenu }) => {
 
   return (
     <div className="cashier-micro-menu">
-      <h1>MicroMenu</h1>
       <div className="menu-display">
         {renderMenu()} {/* Render the selected menu */}
       </div>
