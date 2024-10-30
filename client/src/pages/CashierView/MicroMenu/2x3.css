@@ -1,0 +1,70 @@
+.cashier-micro-new-item {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: repeat(3, 1fr);
+   row-gap: 2vh;
+   column-gap: 2vw;
+   height: 100%;
+   width: 100%;
+   padding: 10px;
+   box-sizing: border-box;
+   grid-auto-flow: column;
+}
+
+.cashier-micro-new-item button {
+   background-color: #f0f0f0;
+   color: black;
+   border: 1px solid #000000;
+   border-radius: 7.5px;
+   padding: 4.5vw;
+   font-size: 2vw;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.cashier-micro-new-item button:hover {
+   background-color: #cccbcb;
+}
+
+.cashier-micro-new-item .bowl {
+   grid-column: 1;
+   grid-row: 1;
+}
+
+.cashier-micro-new-item .plate {
+   grid-column: 1;
+   grid-row: 2;
+}
+
+.cashier-micro-new-item .bigger-plate {
+   grid-column: 1;
+   grid-row: 3;
+}
+
+@media (max-width: 768px) {
+   .cashier-micro-new-item {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      width: calc(100% - 20px);
+      margin-left: 0%;
+   }
+
+   .cashier-micro-new-item button {
+      font-size: 3vw;
+   }
+
+   .cashier-micro-new-item .bowl {
+      grid-column: 1;
+      grid-row: 1;
+   }
+
+   .cashier-micro-new-item .plate {
+      grid-column: 2;
+      grid-row: 1;
+   }
+
+   .cashier-micro-new-item .bigger-plate {
+      grid-column: 1;
+      grid-row: 2;
+   }
+}

@@ -10,11 +10,11 @@ import MicroALaCarte from "./MicroMenu/MicroALaCarte";
 import MenuEnum from "./MenuEnum";
 import PropTypes from "prop-types";
 
-const MicroMenu = ({ activeMenu }) => {
+const MicroMenu = ({ activeMenu, changeMenu }) => {
   const renderMenu = () => {
     switch (activeMenu) {
       case MenuEnum.NEW_ITEM:
-        return <MicroNewItem />;
+        return <MicroNewItem changeMenu={changeMenu} />;
       case MenuEnum.ENTREES:
         return <MicroEntrees />;
       case MenuEnum.SIDES:
@@ -26,7 +26,7 @@ const MicroMenu = ({ activeMenu }) => {
       case MenuEnum.A_LA_CARTE:
         return <MicroALaCarte />;
       case MenuEnum.CHECKOUT:
-        return <MicroCheckout />;
+        return <MicroCheckout changeMenu={changeMenu} />;
       case MenuEnum.OPTIONS:
         return <MicroOptions />;
       default:
@@ -44,5 +44,6 @@ const MicroMenu = ({ activeMenu }) => {
 };
 MicroMenu.propTypes = {
   activeMenu: PropTypes.number.isRequired, // activeMenu should be a required string
+  changeMenu: PropTypes.func.isRequired,
 };
 export default MicroMenu;

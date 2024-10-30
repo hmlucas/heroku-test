@@ -5,9 +5,7 @@ import useEmployeeStore from "../../store/useEmployeeStore";
 import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
 
-const SalesMenu = ({ activeMenu, changeMenu }) => {
-  const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
-
+const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   //import states
   //TODO not sure if this needs to change where it imports
   const [hasIncompleteOrder, setHasIncompleteOrder] = useState(false);
@@ -15,8 +13,6 @@ const SalesMenu = ({ activeMenu, changeMenu }) => {
   const [hasSelectedOrder, setHasSelectedOrder] = useState(false);
 
   useEffect(() => {
-    fetchEmployeeById(1); // fetch current active employee //TODO make this use current employee (remove the fetch?)
-
     //TODO placeholder states - should update based on current order state
     /*
     Sales Menu States: 
@@ -27,7 +23,7 @@ const SalesMenu = ({ activeMenu, changeMenu }) => {
     setHasTickets(true);
     setHasSelectedOrder(true);
     setHasIncompleteOrder(false);
-  }, [fetchEmployeeById]);
+  });
 
   // TODO Add click functionality
   const optionsAction = () => {
