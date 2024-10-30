@@ -1,9 +1,9 @@
-import "../CashierView.css"; // Original import
-import "./dynamicButtons.css"; // New import for dynamic grid layout
+import "../CashierView.css";
+import "./DynamicButtons.css"; // Updated import to match the new naming convention
 import PropTypes from "prop-types";
+import MenuEnum from "../MenuEnum";
 
-const MicroAlaCarte = ({ menuEntrees, menuSides }) => {
-  // Filter out options with "1/2"
+const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
   const filteredEntrees = menuEntrees.filter(
     (entree) => !entree.option.includes("1/2")
   );
@@ -11,31 +11,39 @@ const MicroAlaCarte = ({ menuEntrees, menuSides }) => {
     (side) => !side.option.includes("1/2")
   );
 
-  // Combine filtered entrees and sides
   const combinedOptions = [...filteredEntrees, ...filteredSides];
 
-  // Determine grid layout class based on number of items
   const getGridClass = () => {
     const length = combinedOptions.length;
     if (length >= 26) return "grid-6x6";
     if (length >= 17) return "grid-5x5";
     if (length >= 9) return "grid-4x4";
-    return "grid-3x3"; // Default for 1-8 items
+    return "grid-3x3";
   };
+
+  const renderOptions = () =>
+    //TODO UPDATE TICKET TRACK AMOUNT AND CLEAR SELECTION
+    combinedOptions.length > 0 ? (
+      <div className={`alacarte-buttons ${getGridClass()}`}>
+        {combinedOptions.map((item, index) => (
+          <button key={index} className="alacarte-button">
+            {item.option.replace(/_/g, " ")}
+          </button>
+        ))}
+      </div>
+    ) : (
+      <p>No items available.</p>
+    );
 
   return (
     <div className="cashier-micro-alacarte">
-      {combinedOptions.length > 0 ? (
-        <div className={`alacarte-buttons ${getGridClass()}`}>
-          {combinedOptions.map((item, index) => (
-            <button key={index} className="alacarte-button">
-              {item.option.replace(/_/g, " ")}
-            </button>
-          ))}
-        </div>
-      ) : (
-        <p>No items available.</p>
-      )}
+      {renderOptions()}
+      <button
+        className="continue-button"
+        onClick={() => changeMenu(MenuEnum.NEW_ITEM)}
+      >
+        Continue
+      </button>
     </div>
   );
 };
@@ -43,6 +51,7 @@ const MicroAlaCarte = ({ menuEntrees, menuSides }) => {
 MicroAlaCarte.propTypes = {
   menuEntrees: PropTypes.array.isRequired,
   menuSides: PropTypes.array.isRequired,
+  changeMenu: PropTypes.func.isRequired,
 };
 
 export default MicroAlaCarte;
