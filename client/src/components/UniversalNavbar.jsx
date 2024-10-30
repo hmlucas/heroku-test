@@ -15,40 +15,48 @@ const Weather = () => {
   }
 
   return (
-    <div>
+    <>
       {weatherData == null ? (
         <p>{error}</p>
       ) : (
-        <p>
-          {weatherData.location.name} {weatherData.current.temp_f}°F{" "}
-          {weatherData.current.condition.text}
-        </p>
+        <>
+          <p>
+            {weatherData.location.name} {weatherData.current.temp_f}°F{" "}
+          </p>
+          <p>{weatherData.current.condition.text}</p>
+        </>
       )}
-    </div>
+    </>
   );
 };
 
 const Time = () => {
   const [currentDateTime, setCurrentDateTime] = useState("");
 
-  const updateDateTime = () => {
-    const now = new Date();
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
+  // Use effect prevents infinite loops, do not remove
+  useEffect(() => {
+    const updateDateTime = () => {
+      const now = new Date();
+      const options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      };
+      setCurrentDateTime(now.toLocaleString("en-US", options));
     };
-    setCurrentDateTime(now.toLocaleString("en-US", options));
-  };
 
-  // const intervalId = setInterval(updateDateTime, 1000);
+    // Update the time immediately on mount
+    updateDateTime();
 
-  updateDateTime();
+    // Set up an interval to update the time every second
+    const intervalId = setInterval(updateDateTime, 1000);
 
-  // return () => clearInterval(intervalId);
+    // Clean up the interval on unmount
+    return () => clearInterval(intervalId);
+  }, []); // Empty dependency array ensures this only runs once on mount
 
   return <p>{currentDateTime}</p>;
 };
@@ -56,11 +64,16 @@ const Time = () => {
 function UniversalNavbar() {
   return (
     <div className="universal-navbar">
-      <img
-        className="settings-icon"
-        src="/src/components/gear-svgrepo-com.svg"
-      />
-      <Weather />
+      <button className="settings-button">
+        <img
+          className="settings-icon"
+          src="/src/components/gear-svgrepo-com.svg"
+        />
+      </button>
+      <div>
+        <Weather />
+        <Time />
+      </div>
     </div>
   );
 }

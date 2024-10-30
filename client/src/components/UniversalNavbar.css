@@ -9,6 +9,15 @@
     background-color: gray;
 }
 
+.settings-button {
+    background: none;
+    border: none;
+    padding: none;
+}
+
+.settings-button:hover {
+}
+
 .settings-icon {
     width: 3rem;
     height: auto;
