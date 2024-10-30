@@ -4,6 +4,11 @@ import { useState, useEffect } from "react";
 import useWeatherStore from "../store/useWeatherStore";
 import Popup from "./Popup";
 
+/**
+ * ------------------------------------------------
+ * Weather Component
+ * ------------------------------------------------
+ */
 const Weather = () => {
   const { weatherData, error, loading, fetchWeather } = useWeatherStore();
 
@@ -31,6 +36,11 @@ const Weather = () => {
   );
 };
 
+/**
+ * ------------------------------------------------
+ * Time Component
+ * ------------------------------------------------
+ */
 const Time = () => {
   const [currentDateTime, setCurrentDateTime] = useState("");
 
@@ -62,6 +72,11 @@ const Time = () => {
   return <p>{currentDateTime}</p>;
 };
 
+/**
+ * ------------------------------------------------
+ * Universal Navbar
+ * ------------------------------------------------
+ */
 function UniversalNavbar() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 

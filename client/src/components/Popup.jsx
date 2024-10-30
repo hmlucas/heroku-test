@@ -1,10 +1,13 @@
 import "./Popup.css";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const Popup = ({ onClose }) => {
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Login event :)");
+    navigate(`/`);
     onClose();
   };
 
@@ -16,12 +19,8 @@ const Popup = ({ onClose }) => {
             <label htmlFor="inputField" className="form-label">
               Manager Logout
             </label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputField"
-              required
-            />
+            <input type="text" className="form-control" id="inputField" />
+            {/* Add "required" to input to make input required */}
           </div>
           <button type="submit" className="btn btn-primary">
             Submit
