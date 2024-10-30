@@ -35,7 +35,8 @@
 }
 
 .cashier-sales-buttons button:enabled:hover{
-   background-color: #e0e0e0;
+   background-color: #cccbcb;
+   transition: background-color 0.3s, color 0.3s;
 }
 
 .cashier-options-button .cashier-options-image {
@@ -51,4 +52,5 @@
    opacity: 0.6;
    border: 1px solid #000000;
    user-select: none;
+   transition: background-color 0.3s, color 0.3s;
 }

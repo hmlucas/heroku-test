@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./CashierView.css";
 import MicroNewItem from "./MicroMenu/MicroNewItem";
 import MicroOptions from "./MicroMenu/MicroOptions";
@@ -9,15 +8,9 @@ import MicroCheckout from "./MicroMenu/MicroCheckout";
 import MicroAppetizers from "./MicroMenu/MicroAppetizers";
 import MicroALaCarte from "./MicroMenu/MicroALaCarte";
 import MenuEnum from "./MenuEnum";
+import PropTypes from "prop-types";
 
-const MicroMenu = () => {
-  const [activeMenu, setActiveMenu] = useState(MenuEnum.NEW_ITEM);
-  const changeMenu = (index) => {
-    if (index in MenuEnum) {
-      setActiveMenu(index); // Update the state with the selected component
-    }
-  };
-
+const MicroMenu = ({ activeMenu }) => {
   const renderMenu = () => {
     switch (activeMenu) {
       case MenuEnum.NEW_ITEM:
@@ -43,12 +36,14 @@ const MicroMenu = () => {
 
   return (
     <div className="cashier-micro-menu">
-      <h1>MicroMenu=</h1>
+      <h1>MicroMenu</h1>
       <div className="menu-display">
         {renderMenu()} {/* Render the selected menu */}
       </div>
     </div>
   );
 };
-
+MicroMenu.propTypes = {
+  activeMenu: PropTypes.number.isRequired, // activeMenu should be a required string
+};
 export default MicroMenu;
