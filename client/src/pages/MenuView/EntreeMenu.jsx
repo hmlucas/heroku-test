@@ -24,21 +24,22 @@ function EntreeMenu() {
   }, []);
 
   const imageMapping = {
-    'Orange_Chicken': 'src/pages/MenuView/Pictures/EntreePics/Orange_Chicken.jpg',
-    'Blazing_Burbon_Chicken': 'src/pages/MenuView/Pictures/EntreePics/Blazing_Burbon_Chicken.jpg',
-    'Black_Pepper_Steak': 'src/pages/MenuView/Pictures/EntreePics/Black_Pepper_Steak.jpg',
-    'Honey_Walnut_Shrimp': 'src/pages/MenuView/Pictures/EntreePics/Honey_Walnut_Shrimp.jpg',
-    'Teriyaki_Chicken': 'src/pages/MenuView/Pictures/EntreePics/Teriyaki_Chicken.jpg',
-    'Broccoli_Beef': 'src/pages/MenuView/Pictures/EntreePics/Broccoli_Beef.jpg',
-    'Kung_Pao': 'src/pages/MenuView/Pictures/EntreePics/Kung_Pao.jpg',
-    'Honey_Sesame': 'src/pages/MenuView/Pictures/EntreePics/Honey_Sesame.jpg',
-    'Beijing_Beef': 'src/pages/MenuView/Pictures/EntreePics/Beijing_Beef.jpg',
-    'Mushroom_Chicken': 'src/pages/MenuView/Pictures/EntreePics/Mushroom_Chicken.jpg',
-    'Sweetfire_Chicken': 'src/pages/MenuView/Pictures/EntreePics/Sweetfire_Chicken.jpg',
-    'String_Bean_Chicken': 'src/pages/MenuView/Pictures/EntreePics/String_Bean_Chicken.jpg',
-    'Black_Pepper_Chicken': 'src/pages/MenuView/Pictures/EntreePics/Black_Pepper_Chicken.jpg',
+    'Orange_Chicken': 'src/Pictures/MenuViewPics/Orange_Chicken.jpg',
+    'Blazing_Burbon_Chicken': 'src/Pictures/MenuViewPics/Blazing_Burbon_Chicken.jpg',
+    'Black_Pepper_Steak': 'src/Pictures/MenuViewPics/Black_Pepper_Steak.jpg',
+    'Honey_Walnut_Shrimp': 'src/Pictures/MenuViewPics/Honey_Walnut_Shrimp.jpg',
+    'Teriyaki_Chicken': 'src/Pictures/MenuViewPics/Teriyaki_Chicken.jpg',
+    'Broccoli_Beef': 'src/Pictures/MenuViewPics/Broccoli_Beef.jpg',
+    'Kung_Pao': 'src/Pictures/MenuViewPics/Kung_Pao.jpg',
+    'Honey_Sesame': 'src/Pictures/MenuViewPics/Honey_Sesame.jpg',
+    'Beijing_Beef': 'src/Pictures/MenuViewPics/Beijing_Beef.jpg',
+    'Mushroom_Chicken': 'src/Pictures/MenuViewPics/Mushroom_Chicken.jpg',
+    'Sweetfire_Chicken': 'src/Pictures/MenuViewPics/Sweetfire_Chicken.jpg',
+    'String_Bean_Chicken': 'src/Pictures/MenuViewPics/String_Bean_Chicken.jpg',
+    'Black_Pepper_Chicken': 'src/Pictures/MenuViewPics/Black_Pepper_Chicken.jpg',
     // Add other mappings as needed
-  };
+};
+
   // Function to get the image source based on the item name
   const getImageSource = (item) => {
     const key = item.option.replace(/ /g, "_"); 

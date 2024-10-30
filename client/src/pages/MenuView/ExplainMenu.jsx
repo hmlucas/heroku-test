@@ -5,7 +5,7 @@ const ExplainMenu = () => {
     <div className="menu-explain-menu">
       <div className="menu-item">
         <img
-          src="src/pages/MenuView/Pictures/panda_bowl.jpg"
+          src="src/Pictures/MenuViewPics/panda_bowl.jpg"
           alt="Panda Bowl"
         />
         <p>Panda Bowl</p>
@@ -13,7 +13,7 @@ const ExplainMenu = () => {
       </div>
       <div className="menu-item">
         <img
-          src="src/pages/MenuView/Pictures/panda_plate.jpg"
+          src="src/Pictures/MenuViewPics/panda_plate.jpg"
           alt="Panda Plate"
         />
         <p>Panda Plate</p>
@@ -21,7 +21,7 @@ const ExplainMenu = () => {
       </div>
       <div className="menu-item">
         <img
-          src="src/pages/MenuView/Pictures/panda_bigger_plate.jpg"
+          src="src/Pictures/MenuViewPics/panda_bigger_plate.jpg"
           alt="Panda Bigger Plate"
         />
         <p>Panda Bigger Plate</p>
