@@ -28,6 +28,14 @@ const CashierView = () => {
   const changeMenu = (index) => {
     setActiveMenu(index);
   };
+
+  const demoTickets = [
+    { id: 1, itemName: "Orange Chicken", mealType: "Entree", price: 15.99 },
+    { id: 2, itemName: "Fried Rice", mealType: "Side", price: 3.5 },
+    { id: 3, itemName: "Spring Rolls", mealType: "Appetizer", price: 7.25 },
+    { id: 4, itemName: "Peach Iced Tea", mealType: "Drink", price: 2.5 },
+  ];
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -54,7 +62,7 @@ const CashierView = () => {
   return (
     <div className="cashier-view">
       <div className="cashier-left-panel">
-        <TicketStack />
+        <TicketStack tickets={demoTickets} />
         <SalesMenu
           activeMenu={activeMenu}
           changeMenu={changeMenu}

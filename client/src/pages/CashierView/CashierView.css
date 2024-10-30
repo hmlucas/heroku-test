@@ -19,7 +19,8 @@
 
 .cashier-ticket-stack {
     flex: 7;
-    background-color: red;
+    background-color: #ffffff9c;
+    border: solid, 1px;
     display: flex;
     justify-content: center;
     align-items: center;
