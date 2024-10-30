@@ -1,0 +1,39 @@
+.cashier-sales-buttons {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: repeat(2, 1fr);
+   width: 100%;
+   height: 100%;
+   font-size: 1.5vw;
+}
+
+.cashier-sales-buttons>div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #f0f0f0;
+   border: 1px solid #ccc;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.cashier-sales-buttons .cashier-employee-name {
+   border: 1px solid #ccc;
+   cursor: default;
+   transition: background-color 0.3s;
+   user-select: none; /* idk if we want to make it so you can select the text*/
+}
+
+.cashier-sales-buttons button {
+   background: transparent;
+   border: none;
+   cursor: pointer;
+   font-size: 1.5vw;
+   width: 100%;
+   height: 100%;
+   padding: 0;
+}
+
+.cashier-sales-buttons>div:hover button {
+   background-color: #e0e0e0;
+}
