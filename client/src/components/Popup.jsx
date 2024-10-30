@@ -1,5 +1,6 @@
 import "./Popup.css";
 
+// eslint-disable-next-line react/prop-types
 const Popup = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
