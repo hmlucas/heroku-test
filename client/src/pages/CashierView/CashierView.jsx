@@ -28,14 +28,45 @@ const CashierView = () => {
   const changeMenu = (index) => {
     setActiveMenu(index);
   };
-
+  //TODO REMOVE Adn replace with functioning ticket stack
   const demoTickets = [
-    { id: 1, itemName: "Orange Chicken", mealType: "Entree", price: 15.99 },
-    { id: 2, itemName: "Fried Rice", mealType: "Side", price: 3.5 },
-    { id: 3, itemName: "Spring Rolls", mealType: "Appetizer", price: 7.25 },
-    { id: 4, itemName: "Peach Iced Tea", mealType: "Drink", price: 2.5 },
+    {
+      id: 1,
+      orderType: "Bowl",
+      options: {
+        entrees: ["Orange Chicken", "Beijing Beef"],
+        sides: ["Fried Rice"],
+      },
+      price: 15.99,
+    },
+    {
+      id: 2,
+      orderType: "Plate",
+      options: {
+        entrees: ["Kung Pao Chicken"],
+        sides: ["Chow Mein", "Egg Roll"],
+      },
+      price: 12.5,
+    },
+    {
+      id: 3,
+      orderType: "Drink",
+      options: { drinks: ["Peach Iced Tea", "Lemonade"] },
+      price: 2.5,
+    },
+    {
+      id: 4,
+      orderType: "Appetizer",
+      options: { apps: ["Spring Rolls", "Crab Rangoon"] },
+      price: 7.25,
+    },
+    {
+      id: 5,
+      orderType: "A La Carte",
+      options: { entrees: ["Broccoli Beef"], sides: ["White Rice"] },
+      price: 8.99,
+    },
   ];
-
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -1,0 +1,25 @@
+.cashier-ticket-stack {
+   display: flex;
+   /* Use flexbox for layout */
+   flex-direction: column;
+   /* Arrange items in a column */
+   /* Set a fixed height for the stack */
+   border: 1px solid #000000;
+}
+
+.ticket-list {
+   overflow-y: auto;
+   /* Enable vertical scrolling for the ticket list */
+   flex-grow: 1;
+   /* Allow the ticket list to grow and take available space */
+}
+
+.total-panel {
+   padding: 10px;
+   /* Padding inside the panel */
+   background-color: #f0f0f0;
+   /* Light gray background */
+   /* Optional: add a border on top */
+   text-align: center;
+   /* Center the text */
+}

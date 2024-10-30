@@ -18,12 +18,18 @@
 }
 
 .cashier-ticket-stack {
-    flex: 7;
-    background-color: #ffffff9c;
-    border: solid, 1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 70%; /* Set a maximum height */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Optional: add a border for better visibility */
+  padding: 10px; /* Optional: add some padding */
+}
+.cashier-ticket-stack {
+    /* Set a maximum height */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    border: 1px solid #ccc;
+    /* Optional: add a border for better visibility */
+
 }
 
 .cashier-sales-menu {
