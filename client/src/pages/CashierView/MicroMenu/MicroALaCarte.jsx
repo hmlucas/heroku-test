@@ -1,4 +1,5 @@
-import "../CashierView.css";
+import "../CashierView.css"; // Original import
+import "./dynamicButtons.css"; // New import for dynamic grid layout
 import PropTypes from "prop-types";
 
 const MicroAlaCarte = ({ menuEntrees, menuSides }) => {
@@ -13,19 +14,27 @@ const MicroAlaCarte = ({ menuEntrees, menuSides }) => {
   // Combine filtered entrees and sides
   const combinedOptions = [...filteredEntrees, ...filteredSides];
 
+  // Determine grid layout class based on number of items
+  const getGridClass = () => {
+    const length = combinedOptions.length;
+    if (length >= 26) return "grid-6x6";
+    if (length >= 17) return "grid-5x5";
+    if (length >= 9) return "grid-4x4";
+    return "grid-3x3"; // Default for 1-8 items
+  };
+
   return (
     <div className="cashier-micro-alacarte">
       {combinedOptions.length > 0 ? (
-        <div className="alacarte-buttons">
+        <div className={`alacarte-buttons ${getGridClass()}`}>
           {combinedOptions.map((item, index) => (
             <button key={index} className="alacarte-button">
-              {item.option.replace(/_/g, " ")}{" "}
-              {/* Display the option, replacing underscores */}
+              {item.option.replace(/_/g, " ")}
             </button>
           ))}
         </div>
       ) : (
-        <p>No items available.</p> // Fallback message if no items are fetched
+        <p>No items available.</p>
       )}
     </div>
   );
