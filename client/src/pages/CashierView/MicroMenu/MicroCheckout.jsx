@@ -1,7 +1,7 @@
 import "../CashierView.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
-import "./2x2.css";
+import "./MicroCheckout.css";
 
 const MicroCheckout = ({ changeMenu }) => {
   const selection = [

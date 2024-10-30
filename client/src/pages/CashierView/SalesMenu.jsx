@@ -3,6 +3,7 @@ import "./SalesMenu.css";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
+import { Options as OptionImage } from "../Images"; //TODO update image
 
 const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   //import states
@@ -69,7 +70,7 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
         <div className="cashier-options-button">
           <button onClick={optionsAction} className={optionsButton}>
             <img
-              src="./src/img/placeholder.gif"
+              src={OptionImage}
               alt="Options"
               className="cashier-options-image"
             />
