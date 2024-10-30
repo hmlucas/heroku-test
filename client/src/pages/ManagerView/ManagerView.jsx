@@ -3,6 +3,7 @@ import MEmployees from "./MEmployees";
 import MInventory from "./MInventory";
 import MMenuItems from "./MMenuItems";
 import MOrderTrends from "./MOrderTrends";
+import UniversalNavbar from "../../components/UniversalNavbar";
 import ManagerHome from "./ManagerHome";
 
 function ManagerView() {
@@ -15,6 +16,7 @@ function ManagerView() {
         <Route path="menu-items" element={<MMenuItems />} />
         <Route path="order-trends" element={<MOrderTrends />} />
       </Routes>
+      <UniversalNavbar />
     </div>
   );
 }
