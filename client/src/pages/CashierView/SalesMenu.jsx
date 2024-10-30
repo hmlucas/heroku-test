@@ -6,8 +6,8 @@ import useEmployeeStore from "../../store/useEmployeeStore";
 
 function SalesMenu() {
   const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
-  // const [imageName, setImageName] = useState("./src/img/placeholder.gif");
 
+  //import states
   const [hasIncompleteOrder, setHasIncompleteOrder] = useState(false);
   const [hasTickets, setHasTickets] = useState(false);
   const [hasSelectedOrder, setHasSelectedOrder] = useState(false);
@@ -16,7 +16,13 @@ function SalesMenu() {
     fetchEmployeeById(1); // fetch current active employee //TODO make this use current employee (remove the fetch?)
 
     //TODO placeholder states - should update based on current order state
-    setHasTickets(true);
+    /*
+    Sales Menu States: 
+      - Incomplete order (edit or new one) - no checkout button
+      - No tickets - no delete no checkout
+      - No selected order (recent deletion) - no delete
+    */
+    setHasTickets(false);
     setHasSelectedOrder(true);
     setHasIncompleteOrder(false);
   }, [fetchEmployeeById]);
@@ -31,12 +37,7 @@ function SalesMenu() {
   const checkoutAction = () => {
     alert("FIXME Checkout Clicked!");
   };
-  /*
-  Sales Menu States: 
-    - Incomplete order (edit or new one) - no checkout button
-    - No tickets - no delete no checkout
-    - No selected order (recent deletion) - no delete
-*/
+
   return (
     <div className="cashier-sales-menu">
       <div className="cashier-sales-buttons">
