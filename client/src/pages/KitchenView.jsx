@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import UniversalNavbar from "../components/UniversalNavbar";
 
 const initialOrders = [
   { id: 1, name: "Order 1" },
@@ -133,6 +134,7 @@ function KitchenView() {
           </div>
         )}
       </div>
+      <UniversalNavbar />
     </div>
   );
 }

@@ -23,12 +23,13 @@
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/client/node_modules/vite/bin/vite.js",
+            "envFile": "${workspaceFolder}/.env",
             "args": [
                 "dev"
             ],
             "cwd": "${workspaceFolder}/client",
             "console": "integratedTerminal",
-            "runtimeExecutable": "node",
+            "runtimeExecutable": "node"
         }
     ],
     "compounds": [

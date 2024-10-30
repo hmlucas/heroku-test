@@ -2,6 +2,7 @@ import "./MenuView.css";
 import ExplainMenu from "./ExplainMenu";
 import EntreeMenu from "./EntreeMenu";
 import SideAndAppMenu from "./SideAndAppMenu";
+import UniversalNavbar from "../../components/UniversalNavbar";
 
 const MenuView = () => {
   return (
@@ -16,6 +17,7 @@ const MenuView = () => {
       <div className="menu-right-panel">
         <SideAndAppMenu />
       </div>
+      <UniversalNavbar />
     </div>
   );
 };

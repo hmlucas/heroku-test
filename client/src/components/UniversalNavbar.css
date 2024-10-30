@@ -1,0 +1,59 @@
+.universal-navbar {
+  position: fixed;
+  height: 10vh;
+  max-height: 100px;
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #d2d2d2;
+  box-sizing: border-box;
+}
+
+.settings-button {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.settings-button:hover {
+  cursor: pointer;
+}
+
+.settings-button:focus {
+  outline: none;
+}
+
+.settings-icon {
+  height: 60%;
+  width: auto;
+  max-height: 80px;
+  min-height: 30px;
+  transition: transform 0.2s ease;
+}
+
+.weather-time-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  flex-grow: 1;
+  padding-right: 1rem;
+  overflow: hidden;
+}
+
+.weather-time-info p {
+  margin: 0;
+  font-size: clamp(0.8rem, 2vh, 1.2rem);
+  line-height: 1.2;
+  text-align: right;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
