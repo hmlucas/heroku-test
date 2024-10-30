@@ -8,7 +8,7 @@ function MOrderTrends() {
     <div className="container-fluid">
       <div className="row" style={{ height: "100vh", overflow: "hidden" }}>
         <div className="col">
-          <h2 style={{"margin":"10px"}}>Orders</h2>
+          <h2 style={{ margin: "10px" }}>Orders</h2>
           <div
             className="scroll-pane"
             style={{ height: "65vh", border: "3px solid lightblue" }}
@@ -53,6 +53,26 @@ function MOrderTrends() {
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            className="under-query"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "25px",
+            }}
+          >
+            <button type="button" className="btn btn-primary w-10">
+              X-Report
+            </button>
+            <button type="button" className="btn btn-primary w-10">
+              Z-Report
+            </button>
+            <button type="button" className="btn btn-primary w-10">
+              Daily Trends
+            </button>
           </div>
         </div>
       </div>
