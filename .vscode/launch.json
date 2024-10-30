@@ -28,7 +28,7 @@
             ],
             "cwd": "${workspaceFolder}/client",
             "console": "integratedTerminal",
-            "runtimeExecutable": "/Users/javibetancourt/.nvm/versions/node/v16.3.0/bin/node"
+            "runtimeExecutable": "node"
         }
     ],
     "compounds": [
