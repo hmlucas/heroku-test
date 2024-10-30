@@ -3,25 +3,88 @@ import TicketStack from "./TicketStack";
 import SalesMenu from "./SalesMenu";
 import NavBar from "./NavBar";
 import MicroMenu from "./MicroMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MenuEnum from "./MenuEnum";
+import useEmployeeStore from "../../store/useEmployeeStore";
+import menuOptionsStore from "../../store/menuOptionsStore";
 
 const CashierView = () => {
+  const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
+  const {
+    fetchEntrees,
+    fetchApps,
+    fetchSides,
+    fetchDrinks,
+    menuSides,
+    menuEntrees,
+    menuDrinks,
+    menuApps,
+    isLoading,
+    error,
+  } = menuOptionsStore();
+
   //Nav bar micromenu interaction
   const [activeMenu, setActiveMenu] = useState(MenuEnum.NEW_ITEM);
+  const [tickets, setTickets] = useState([]);
+
   const changeMenu = (index) => {
     setActiveMenu(index);
   };
 
+  const addTicket = (newTicket) => {
+    setTickets((prevTickets) => [...prevTickets, newTicket]); // Add new ticket to the list
+    console.log(tickets);
+  };
+
+  const removeAllTickets = () => {
+    setTickets([]); // Clear the tickets array
+  };
+  //TODO REMOVE Adn replace with functioning ticket stack
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await Promise.all([
+          fetchEmployeeById(99),
+          fetchSides(),
+          fetchEntrees(),
+          fetchApps(),
+          fetchDrinks(),
+        ]);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        // Optionally set an error state here if needed
+      }
+    };
+
+    fetchData();
+  }, [fetchEmployeeById, fetchSides, fetchEntrees, fetchApps, fetchDrinks]);
+
+  useEffect(() => {
+    console.log("Retrieved menuSides:", menuSides);
+  }, [menuSides]);
+
   return (
     <div className="cashier-view">
       <div className="cashier-left-panel">
-        <TicketStack />
-        <SalesMenu changeMenu={changeMenu} />
+        <TicketStack tickets={tickets} />
+        <SalesMenu
+          activeMenu={activeMenu}
+          changeMenu={changeMenu}
+          selectedEmployee={selectedEmployee}
+        />
       </div>
       <div className="cashier-right-panel">
         <NavBar activeMenu={activeMenu} changeMenu={changeMenu} />
-        <MicroMenu activeMenu={activeMenu} />
+        <MicroMenu
+          activeMenu={activeMenu}
+          changeMenu={changeMenu}
+          menuSides={menuSides}
+          menuDrinks={menuDrinks}
+          menuEntrees={menuEntrees}
+          menuApps={menuApps}
+          addTicket={addTicket}
+          removeAllTickets={removeAllTickets}
+        />
       </div>
     </div>
   );

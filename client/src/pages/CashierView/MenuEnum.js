@@ -1,7 +1,7 @@
 const MenuEnum = {
   NEW_ITEM: 0,
-  ENTREES: 1,
-  SIDES: 2,
+  ENTREES: 2,
+  SIDES: 1,
   DRINKS: 3,
   APPETIZERS: 4,
   A_LA_CARTE: 5,

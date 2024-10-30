@@ -1,3 +1,4 @@
+/* TODOclean up resizing nav bar no! */
 .cashier-nav-bar {
    display: grid;
    grid-template-columns: repeat(7, 1fr);

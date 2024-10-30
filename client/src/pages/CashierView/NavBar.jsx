@@ -6,8 +6,8 @@ import MenuEnum from "./MenuEnum";
 const NavBar = ({ activeMenu, changeMenu }) => {
   const menuOptions = [
     { label: "New Item", value: MenuEnum.NEW_ITEM },
-    { label: "Entrees", value: MenuEnum.ENTREES },
     { label: "Sides", value: MenuEnum.SIDES },
+    { label: "Entrees", value: MenuEnum.ENTREES },
     { label: "Drinks", value: MenuEnum.DRINKS },
     { label: "Appetizers", value: MenuEnum.APPETIZERS },
     { label: "A La Carte", value: MenuEnum.A_LA_CARTE },

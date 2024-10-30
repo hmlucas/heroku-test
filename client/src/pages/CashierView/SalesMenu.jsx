@@ -1,13 +1,11 @@
 import "./CashierView.css";
 import "./SalesMenu.css";
 import { useEffect, useState } from "react";
-import useEmployeeStore from "../../store/useEmployeeStore";
 import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
+import gearIcon from "../../assets/gear-svgrepo-com.svg";
 
-const SalesMenu = ({ changeMenu }) => {
-  const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
-
+const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   //import states
   //TODO not sure if this needs to change where it imports
   const [hasIncompleteOrder, setHasIncompleteOrder] = useState(false);
@@ -15,8 +13,6 @@ const SalesMenu = ({ changeMenu }) => {
   const [hasSelectedOrder, setHasSelectedOrder] = useState(false);
 
   useEffect(() => {
-    fetchEmployeeById(1); // fetch current active employee //TODO make this use current employee (remove the fetch?)
-
     //TODO placeholder states - should update based on current order state
     /*
     Sales Menu States: 
@@ -27,7 +23,7 @@ const SalesMenu = ({ changeMenu }) => {
     setHasTickets(true);
     setHasSelectedOrder(true);
     setHasIncompleteOrder(false);
-  }, [fetchEmployeeById]);
+  });
 
   // TODO Add click functionality
   const optionsAction = () => {
@@ -40,6 +36,8 @@ const SalesMenu = ({ changeMenu }) => {
     changeMenu(MenuEnum.CHECKOUT);
   };
 
+  const checkoutButton = activeMenu === MenuEnum.CHECKOUT ? "selected" : "";
+  const optionsButton = activeMenu === MenuEnum.OPTIONS ? "selected" : "";
   return (
     <div className="cashier-sales-menu">
       <div className="cashier-sales-buttons">
@@ -55,6 +53,7 @@ const SalesMenu = ({ changeMenu }) => {
           <button
             onClick={checkoutAction}
             disabled={!hasTickets || hasIncompleteOrder}
+            className={checkoutButton}
           >
             Checkout
           </button>
@@ -69,9 +68,9 @@ const SalesMenu = ({ changeMenu }) => {
           )}
         </div>
         <div className="cashier-options-button">
-          <button onClick={optionsAction}>
+          <button onClick={optionsAction} className={optionsButton}>
             <img
-              src="./src/img/placeholder.gif"
+              src={gearIcon}
               alt="Options"
               className="cashier-options-image"
             />
@@ -83,5 +82,7 @@ const SalesMenu = ({ changeMenu }) => {
 };
 SalesMenu.propTypes = {
   changeMenu: PropTypes.func.isRequired,
+  activeMenu: PropTypes.number.isRequired,
+  selectedEmployee: PropTypes.func.isRequired,
 };
 export default SalesMenu;

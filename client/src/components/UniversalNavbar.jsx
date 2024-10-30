@@ -1,5 +1,5 @@
 import "./UniversalNavbar.css";
-import "./gear-svgrepo-com.svg";
+import gearIcon from "../assets/gear-svgrepo-com.svg";
 import { useState, useEffect } from "react";
 import useWeatherStore from "../store/useWeatherStore";
 import Popup from "./Popup";
@@ -92,10 +92,7 @@ function UniversalNavbar() {
   return (
     <div className="universal-navbar">
       <button className="settings-button" onClick={togglePopup}>
-        <img
-          className="settings-icon"
-          src="/src/components/gear-svgrepo-com.svg"
-        />
+        <img className="settings-icon" src={gearIcon} />
       </button>
       <div className="weather-time-info">
         <Weather />

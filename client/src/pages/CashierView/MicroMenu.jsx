@@ -10,25 +10,52 @@ import MicroALaCarte from "./MicroMenu/MicroALaCarte";
 import MenuEnum from "./MenuEnum";
 import PropTypes from "prop-types";
 
-const MicroMenu = ({ activeMenu }) => {
+const MicroMenu = ({
+  activeMenu,
+  changeMenu,
+  menuSides,
+  menuDrinks,
+  menuEntrees,
+  menuApps,
+  addTicket,
+  removeAllTickets,
+}) => {
   const renderMenu = () => {
     switch (activeMenu) {
       case MenuEnum.NEW_ITEM:
-        return <MicroNewItem />;
+        return <MicroNewItem changeMenu={changeMenu} addTicket={addTicket} />;
       case MenuEnum.ENTREES:
-        return <MicroEntrees />;
+        return (
+          <MicroEntrees menuEntrees={menuEntrees} changeMenu={changeMenu} />
+        );
       case MenuEnum.SIDES:
-        return <MicroSides />;
+        return <MicroSides menuSides={menuSides} changeMenu={changeMenu} />;
       case MenuEnum.DRINKS:
-        return <MicroDrinks />;
+        return <MicroDrinks menuDrinks={menuDrinks} changeMenu={changeMenu} />;
       case MenuEnum.APPETIZERS:
-        return <MicroAppetizers />;
+        return <MicroAppetizers menuApps={menuApps} changeMenu={changeMenu} />;
       case MenuEnum.A_LA_CARTE:
-        return <MicroALaCarte />;
+        return (
+          <MicroALaCarte
+            menuEntrees={menuEntrees}
+            menuSides={menuSides}
+            changeMenu={changeMenu}
+          />
+        );
       case MenuEnum.CHECKOUT:
-        return <MicroCheckout />;
+        return (
+          <MicroCheckout
+            changeMenu={changeMenu}
+            removeAllTickets={removeAllTickets}
+          />
+        );
       case MenuEnum.OPTIONS:
-        return <MicroOptions />;
+        return (
+          <MicroOptions
+            changeMenu={changeMenu}
+            removeAllTickets={removeAllTickets}
+          />
+        );
       default:
         return null;
     }
@@ -36,14 +63,20 @@ const MicroMenu = ({ activeMenu }) => {
 
   return (
     <div className="cashier-micro-menu">
-      <h1>MicroMenu</h1>
       <div className="menu-display">
         {renderMenu()} {/* Render the selected menu */}
       </div>
     </div>
   );
 };
+
 MicroMenu.propTypes = {
-  activeMenu: PropTypes.number.isRequired, // activeMenu should be a required string
+  activeMenu: PropTypes.number.isRequired, // activeMenu should be a required number
+  changeMenu: PropTypes.func.isRequired,
+  menuSides: PropTypes.array.isRequired,
+  menuEntrees: PropTypes.array.isRequired,
+  menuApps: PropTypes.array.isRequired,
+  menuDrinks: PropTypes.array.isRequired,
 };
+
 export default MicroMenu;

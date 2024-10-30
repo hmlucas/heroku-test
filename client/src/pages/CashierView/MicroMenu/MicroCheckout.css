@@ -1,0 +1,29 @@
+.cashier-micro-checkout {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: repeat(2, 1fr);
+   row-gap: 2vh;
+   column-gap: 2vw;
+   height: 100%;
+   width: 100%;
+   padding: 10px;
+   box-sizing: border-box;
+   grid-auto-flow: column;
+}
+
+.cashier-micro-checkout button {
+   background-color: #f0f0f0;
+   /* Same styles as before */
+   color: black;
+   border: 1px solid #000000;
+   border-radius: 7.5px;
+   padding: 7vw;
+   font-size: 3vw;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.cashier-micro-checkout button:hover {
+   background-color: #cccbcb;
+   /* Same hover effect */
+}

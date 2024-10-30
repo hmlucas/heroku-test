@@ -1,0 +1,19 @@
+.cashier-ticket-stack {
+   display: flex;
+   flex-direction: column;
+   border: 1px solid #000000;
+   height: 100%; /* Ensure the parent has a height for the panel to sit at the bottom */
+}
+
+.ticket-list {
+   overflow-y: auto;
+   flex-grow: 1; /* This will ensure it takes up available space */
+}
+
+.total-panel {
+   padding: 10px;
+   background-color: #f0f0f0;
+   text-align: center;
+   /* Optional: add a border on top */
+   border-top: 1px solid #000000; /* Add this for visual separation */
+}

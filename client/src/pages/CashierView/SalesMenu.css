@@ -16,7 +16,18 @@
    cursor: pointer;
    transition: background-color 0.3s;
 }
+.cashier-sales-buttons button.selected {
+   background-color: #007bff;
+   color: white;
+   border: 1px solid #007bff;
+   transition: background-color 0.3s, color 0.3s;
+}
 
+.cashier-sales-buttons button:not(.selected) {
+   background-color: #f0f0f0;
+   color: black;
+   transition: background-color 0.3s, color 0.3s;
+}
 .cashier-sales-buttons .cashier-employee-name {
    border: 1px solid #000000;
    cursor: default;
@@ -34,13 +45,18 @@
    padding: 0;
 }
 
-.cashier-sales-buttons button:enabled:hover{
+.cashier-sales-buttons button:not(.selected):enabled:hover {
    background-color: #cccbcb;
    transition: background-color 0.3s, color 0.3s;
 }
 
+.cashier-sales-buttons button.selected:enabled:hover {
+   background-color: #0056b3;
+   transition: background-color 0.3s, color 0.3s;
+}
+
 .cashier-options-button .cashier-options-image {
-   width: 7.5vw;
+   width: 5.5vw;
    height: auto;
    object-fit: contain;
 }
@@ -48,7 +64,7 @@
 .cashier-sales-buttons button:disabled {
    background-color: #353535;
    color: #a0a0a0;
-   cursor: not-allowed;
+   cursor: default;
    opacity: 0.6;
    border: 1px solid #000000;
    user-select: none;
