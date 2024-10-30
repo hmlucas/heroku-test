@@ -28,6 +28,7 @@ const useEmployeeStore = create((set) => ({
       set({ error: "Employee not found", isLoading: false });
     }
   },
+
   fetchEmployeesByName: async (searchTerms) => {
     set({ isLoading: true, error: null });
     try {
@@ -38,6 +39,20 @@ const useEmployeeStore = create((set) => ({
     } catch (error) {
       console.error("Error fetching employees:", error);
       set({ error: "Failed to fetch employees", isLoading: false });
+    }
+  },
+
+  addEmployee: async (employee) => {
+    set({ isLoading: true, error: null });
+    try {
+      const response = await axiosInstance.post("/employees/", employee);
+      set((state) => ({
+        employees: [...state.employees, response.data],
+        isLoading: false,
+      }));
+    } catch (error) {
+      console.error("Error adding employee:", error);
+      set({ error: "Failed to add employee", isLoading: false });
     }
   },
 }));
