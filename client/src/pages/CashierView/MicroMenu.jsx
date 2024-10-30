@@ -10,21 +10,30 @@ import MicroALaCarte from "./MicroMenu/MicroALaCarte";
 import MenuEnum from "./MenuEnum";
 import PropTypes from "prop-types";
 
-const MicroMenu = ({ activeMenu, changeMenu }) => {
+const MicroMenu = ({
+  activeMenu,
+  changeMenu,
+  menuSides,
+  menuDrinks,
+  menuEntrees,
+  menuApps,
+}) => {
   const renderMenu = () => {
     switch (activeMenu) {
       case MenuEnum.NEW_ITEM:
         return <MicroNewItem changeMenu={changeMenu} />;
       case MenuEnum.ENTREES:
-        return <MicroEntrees />;
+        return <MicroEntrees menuEntrees={menuEntrees} />;
       case MenuEnum.SIDES:
-        return <MicroSides />;
+        return <MicroSides menuSides={menuSides} />;
       case MenuEnum.DRINKS:
-        return <MicroDrinks />;
+        return <MicroDrinks menuDrinks={menuDrinks} />;
       case MenuEnum.APPETIZERS:
-        return <MicroAppetizers />;
+        return <MicroAppetizers menuApps={menuApps} />;
       case MenuEnum.A_LA_CARTE:
-        return <MicroALaCarte />;
+        return (
+          <MicroALaCarte menuEntrees={menuEntrees} menuSides={menuSides} />
+        );
       case MenuEnum.CHECKOUT:
         return <MicroCheckout changeMenu={changeMenu} />;
       case MenuEnum.OPTIONS:
@@ -43,7 +52,11 @@ const MicroMenu = ({ activeMenu, changeMenu }) => {
   );
 };
 MicroMenu.propTypes = {
-  activeMenu: PropTypes.number.isRequired, // activeMenu should be a required string
+  activeMenu: PropTypes.number.isRequired, // activeMenu should be a required number
   changeMenu: PropTypes.func.isRequired,
+  menuSides: PropTypes.array.isRequired,
+  menuEntrees: PropTypes.array.isRequired,
+  menuApps: PropTypes.array.isRequired,
+  menuDrinks: PropTypes.array.isRequired,
 };
 export default MicroMenu;

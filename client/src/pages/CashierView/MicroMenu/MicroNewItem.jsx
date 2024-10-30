@@ -13,9 +13,9 @@ const MicroNewItem = ({ changeMenu }) => {
       selectCount: 3,
       className: "bigger-plate",
     },
+    { label: "Drink", nav: MenuEnum.DRINKS },
     { label: "Appetizer", nav: MenuEnum.APPETIZERS },
     { label: "A La Carte", nav: MenuEnum.A_LA_CARTE },
-    { label: "Drink", nav: MenuEnum.DRINKS },
   ];
 
   const renderButtons = () =>
