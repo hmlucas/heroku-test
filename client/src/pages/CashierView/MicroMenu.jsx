@@ -18,6 +18,7 @@ const MicroMenu = ({
   menuEntrees,
   menuApps,
   addTicket,
+  removeAllTickets,
 }) => {
   const renderMenu = () => {
     switch (activeMenu) {
@@ -42,9 +43,19 @@ const MicroMenu = ({
           />
         );
       case MenuEnum.CHECKOUT:
-        return <MicroCheckout changeMenu={changeMenu} />;
+        return (
+          <MicroCheckout
+            changeMenu={changeMenu}
+            removeAllTickets={removeAllTickets}
+          />
+        );
       case MenuEnum.OPTIONS:
-        return <MicroOptions changeMenu={changeMenu} />;
+        return (
+          <MicroOptions
+            changeMenu={changeMenu}
+            removeAllTickets={removeAllTickets}
+          />
+        );
       default:
         return null;
     }

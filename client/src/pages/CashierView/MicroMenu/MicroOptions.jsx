@@ -1,7 +1,8 @@
 import "../CashierView.css";
 import "./MicroOptions.css";
+import MenuEnum from "../MenuEnum";
 
-const MicroOptions = () => {
+const MicroOptions = ({ changeMenu, removeAllTickets }) => {
   const selection = [{ label: "Clear Order" }, { label: "Logout" }];
 
   const renderButtons = () =>
@@ -10,7 +11,8 @@ const MicroOptions = () => {
         key={option.label}
         onClick={() => {
           if (option.label === "Clear Order") {
-            alert("TODO Clear Order "); //TODO SEND A CLEAR ORDER!!!!
+            removeAllTickets();
+            changeMenu(MenuEnum.NEW_ITEM);
           } else if (option.label === "Logout") {
             window.location.href = "/";
           }

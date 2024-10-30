@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import "./MicroCheckout.css";
 
-const MicroCheckout = ({ changeMenu }) => {
+const MicroCheckout = ({ changeMenu, removeAllTickets }) => {
   const selection = [
     { label: "Cash" },
     { label: "Credit" },
@@ -11,10 +11,15 @@ const MicroCheckout = ({ changeMenu }) => {
     { label: "Student Card" },
   ];
 
-  //TODO Checkout and send current order to database
+  const handleCheckout = () => {
+    // TODO: Implement checkout logic (e.g., sending order to the database)
+    removeAllTickets(); // Call to remove all tickets on checkout
+    changeMenu(MenuEnum.NEW_ITEM); // Navigate back to new item menu
+  };
+
   const renderButtons = () =>
     selection.map((option) => (
-      <button key={option.label} onClick={() => changeMenu(MenuEnum.NEW_ITEM)}>
+      <button key={option.label} onClick={handleCheckout}>
         {option.label} {/* Display label directly */}
       </button>
     ));
