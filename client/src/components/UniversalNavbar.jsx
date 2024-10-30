@@ -1,7 +1,8 @@
 import "./UniversalNavbar.css";
 import "./gear-svgrepo-com.svg";
-import useWeatherStore from "../store/useWeatherStore";
 import { useState, useEffect } from "react";
+import useWeatherStore from "../store/useWeatherStore";
+import Popup from "./Popup";
 
 const Weather = () => {
   const { weatherData, error, loading, fetchWeather } = useWeatherStore();
@@ -62,18 +63,30 @@ const Time = () => {
 };
 
 function UniversalNavbar() {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  // Handle popup state
+  const togglePopup = () => {
+    setIsPopupVisible((prev) => !prev);
+  };
+
+  const closePopup = () => {
+    setIsPopupVisible(false);
+  };
+
   return (
     <div className="universal-navbar">
-      <button className="settings-button">
+      <button className="settings-button" onClick={togglePopup}>
         <img
           className="settings-icon"
           src="/src/components/gear-svgrepo-com.svg"
         />
       </button>
-      <div>
+      <div className="weather-time-info">
         <Weather />
         <Time />
       </div>
+      {isPopupVisible && <Popup onClose={closePopup} />}
     </div>
   );
 }
