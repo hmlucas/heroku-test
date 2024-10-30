@@ -1,35 +1,47 @@
-import "../CashierView.css"; // Original import
-import "./dynamicButtons.css"; // New import for dynamic grid layout
+import "../CashierView.css";
+import "./DynamicButtons.css";
 import PropTypes from "prop-types";
+import MenuEnum from "../MenuEnum";
 
-const MicroDrinks = ({ menuDrinks }) => {
+const MicroDrinks = ({ menuDrinks, changeMenu }) => {
   const getGridClass = () => {
     const length = menuDrinks.length;
     if (length >= 30) return "grid-6x6";
     if (length >= 20) return "grid-5x5";
     if (length >= 12) return "grid-4x4";
-    return "grid-3x3"; // Default for 1-8 items
+    return "grid-3x3";
+  };
+
+  const renderDrinks = () => {
+    //TODO Update ticket!
+    return menuDrinks?.length > 0 ? (
+      <div className={`drinks-buttons ${getGridClass()}`}>
+        {menuDrinks.map((drink, index) => (
+          <button
+            key={index}
+            className="drink-button"
+            onClick={() => changeMenu(MenuEnum.NEW_ITEM)}
+            aria-label={`Select ${drink.option.replace(/_/g, " ")}`}
+          >
+            {drink.option.replace(/_/g, " ")}
+          </button>
+        ))}
+      </div>
+    ) : (
+      <p>No drinks available.</p>
+    );
   };
 
   return (
     <div className="cashier-micro-drinks">
-      {menuDrinks && menuDrinks.length > 0 ? (
-        <div className={`drinks-buttons ${getGridClass()}`}>
-          {menuDrinks.map((drink, index) => (
-            <button key={index} className="drink-button">
-              {drink.option.replace(/_/g, " ")}
-            </button>
-          ))}
-        </div>
-      ) : (
-        <p>No drinks available.</p>
-      )}
+      {renderDrinks()} {/* Call the render function here */}
     </div>
   );
 };
 
 MicroDrinks.propTypes = {
   menuDrinks: PropTypes.array.isRequired,
+  changeMenu: PropTypes.func.isRequired,
 };
 
 export default MicroDrinks;

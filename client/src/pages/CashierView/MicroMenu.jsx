@@ -23,21 +23,27 @@ const MicroMenu = ({
       case MenuEnum.NEW_ITEM:
         return <MicroNewItem changeMenu={changeMenu} />;
       case MenuEnum.ENTREES:
-        return <MicroEntrees menuEntrees={menuEntrees} />;
+        return (
+          <MicroEntrees menuEntrees={menuEntrees} changeMenu={changeMenu} />
+        );
       case MenuEnum.SIDES:
-        return <MicroSides menuSides={menuSides} />;
+        return <MicroSides menuSides={menuSides} changeMenu={changeMenu} />;
       case MenuEnum.DRINKS:
-        return <MicroDrinks menuDrinks={menuDrinks} />;
+        return <MicroDrinks menuDrinks={menuDrinks} changeMenu={changeMenu} />;
       case MenuEnum.APPETIZERS:
-        return <MicroAppetizers menuApps={menuApps} />;
+        return <MicroAppetizers menuApps={menuApps} changeMenu={changeMenu} />;
       case MenuEnum.A_LA_CARTE:
         return (
-          <MicroALaCarte menuEntrees={menuEntrees} menuSides={menuSides} />
+          <MicroALaCarte
+            menuEntrees={menuEntrees}
+            menuSides={menuSides}
+            changeMenu={changeMenu}
+          />
         );
       case MenuEnum.CHECKOUT:
         return <MicroCheckout changeMenu={changeMenu} />;
       case MenuEnum.OPTIONS:
-        return <MicroOptions />;
+        return <MicroOptions changeMenu={changeMenu} />;
       default:
         return null;
     }
@@ -51,6 +57,7 @@ const MicroMenu = ({
     </div>
   );
 };
+
 MicroMenu.propTypes = {
   activeMenu: PropTypes.number.isRequired, // activeMenu should be a required number
   changeMenu: PropTypes.func.isRequired,
@@ -59,4 +66,5 @@ MicroMenu.propTypes = {
   menuApps: PropTypes.array.isRequired,
   menuDrinks: PropTypes.array.isRequired,
 };
+
 export default MicroMenu;
