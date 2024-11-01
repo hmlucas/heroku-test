@@ -3,7 +3,7 @@ from app.extensions import db
 class Employee(db.Model):
     __tablename__ = 'employees'
 
-    employee_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    employee_id = db.Column(db.Integer, primary_key=True,autoincrement=True, nullable=False)
     first_name = db.Column(db.String(64), nullable=False)
     last_name = db.Column(db.String(64), nullable=False)
     employee_role = db.Column(db.String(32), nullable=False)
