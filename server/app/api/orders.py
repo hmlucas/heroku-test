@@ -25,26 +25,21 @@ def get_order_menu_items(order_id):
     return jsonify(menu_item_options), 200
 @orders_bp.route('/new', methods=['POST'])
 def add_order():
-    ###
-    # replace w 
-    # data = request.get_json()
-    # new_order = Order(
-    #   payment_method = data['payment_method']
-    #   order_date = data['order_date']
-    #   price = data['price']
-    #   employee_id = data['employee_id']
-    # i wonder how i will make the menu items work ....... later problem :)
-    # incomplete section (don't replace yet)
-    # )
-    # ###
+    data = request.get_json()
+
+    if not data or 'payment_method' not in data or 'order_date' not in data or 'price' not in data or 'employee_id' not in data:
+        return jsonify({"error": "Missing required fields"}), 400
+
     new_order = Order(
-        payment_method = 'cash',
-        order_date = '2021-01-01',
-        price = 100.00,
-        employee_id = 99
+        payment_method=data['payment_method'],
+        order_date=data['order_date'],
+        price=data['price'],
+        employee_id=data['employee_id']
     )
+
     OrderRepository.insert_order(new_order)
-    return new_order.to_dict(), 201
+    return jsonify(new_order.to_dict()), 201
+
 @orders_bp.route('/active', methods=['GET'])
 def get_active_orders():
     active_orders = OrderRepository.get_active_orders()

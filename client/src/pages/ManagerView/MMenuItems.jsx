@@ -80,7 +80,7 @@ function MMenuItems() {
           <div className="row my-3">
             <div className="template-box row">
               <h2>Ingredient Manager</h2>
-              <div id="ingredient-scroll-pane" className="col scroll-pane ">
+              <div id="ingredient-scroll-pane" className="col scroll-pane " style={{height: "30vh"}}>
                 {[...Array(30).keys()].map((i) => (
                   <p key={i}>Ingredient {i + 1}</p>
                 ))}
