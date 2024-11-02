@@ -56,7 +56,8 @@ class IngredientRepository:
     @staticmethod
     def insert_ingredient(data):
         """Insert a new ingredient into the database."""
-        # Create a new Ingredient instance from the provided data
+        
+
         new_ingredient = Ingredient(
             ingredient=data.get("ingredient"),
             vendor=data.get("vendor"),

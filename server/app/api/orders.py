@@ -44,3 +44,9 @@ def add_order():
 def get_active_orders():
     active_orders = OrderRepository.get_active_orders()
     return jsonify([order.to_dict() for order in active_orders]), 200
+
+@orders_bp.route('/new/', methods=['POST'])
+def create_order():
+    data = request.get_json()
+    order = OrderRepository.insert_order(data)
+    return jsonify(order.to_dict()), 201

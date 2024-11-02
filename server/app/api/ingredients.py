@@ -36,6 +36,11 @@ def get_storage_methods():
 
 @ingredients_bp.route('/new/', methods=['POST'])
 def add_ingredient():
+    
     data = request.get_json()
-    ingredient = IngredientRepository.insert_ingredient(data)
-    return jsonify(ingredient.to_dict()), 201
+    try:
+        IngredientRepository.get_ingredient_or_404(data['ingredient'])
+    except:
+        ingredient = IngredientRepository.insert_ingredient(data)
+        return jsonify(ingredient.to_dict()), 201
+    return "Ingredient already exists", 409

@@ -8,3 +8,4 @@ menu_items_bp = Blueprint('menu_items_bp', __name__)
 def get_menu_items():
     menu_items = MenuItemRepository.get_all_menu_items()
     return jsonify([menu_item.to_dict() for menu_item in menu_items]), 200
+
