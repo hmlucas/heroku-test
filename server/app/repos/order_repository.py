@@ -47,18 +47,19 @@ class OrderRepository:
         )
         db.session.execute(stmt)
         db.session.commit()
-        
+    @staticmethod  
     def send_order(order):
         Order.insert_order(order)
         #TODO
-        
+    @staticmethod   
     def insert_order(order):
         db.session.add(order)
         db.session.commit()
-        
+    @staticmethod  
     def get_order_menu_items(order_id):
         menu_items = MenuItemRepository.get_menu_item_by_order_id(order_id)
         return menu_items
+    @staticmethod
     def get_active_orders():    
         active_orders = ActiveOrderRepository.get_all_active_orders()
         stmt = (
@@ -66,5 +67,5 @@ class OrderRepository:
             .where(Order.order_id.in_([order.order_id for order in active_orders]))
         )
         orders = db.session.execute(stmt).scalars().all() 
-        return orders      
+        return orders     
         

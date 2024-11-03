@@ -3,45 +3,38 @@ from ..repos.option_repository import OptionRepository
 from ..models.options_model import Options
 from ..extensions import db
 from sqlalchemy import select,update
-from flask import jsonify
+from flask import abort
 class MenuItemRepository:
     @staticmethod
     def get_all_menu_items():
-        stmt = select(MenuItem)
-        result = (
-            db.session.execute(stmt)
-            .scalars()
-            .all()
-        )
+        stmt = select(MenuItem).limit(10)#limited for testing, remove later
+        try:
+            result = (
+                db.session.execute(stmt)
+                .scalars()
+                .all()
+            )
+        except Exception as e:
+            print(e)
+            err = "failed to get all menu items"
+            abort(404, description=err)
         return result
 
     @staticmethod
     def get_menu_item_by_order_id(order_id):
         stmt = select(MenuItem).where(MenuItem.order_id == order_id)
-        result = (
-            db.session.execute(stmt)
-            .scalars()
-            .all()
-        )
-        return result
-    
-    """inserts single menu item from menu_item json (data)"""
-    @staticmethod
-    def insert_menu_item(data):
-        menu_item = MenuItem(
-            menuitem_id = data.get("menuitem_id"),
-            order_id = data.get("order_id"),
-            menuitem_price = data.get("menuitem_price"),
-            meal_type = data.get("meal_type"),
-            premium_multiplier = data.get("premium_multiplier"),
-            total_menuitem_price = data.get("total_menuitem_price")
-        )
         try:
-            db.session.add(menu_item)
-            db.session.commit()
+            result = (
+                db.session.execute(stmt)
+                .scalars()
+                .all()
+            )
         except Exception as e:
             print(e)
-            return jsonify({"error": "failed to add menu_item"}), 500
+            err = f"failed to find menu_item (order_id:{order_id})"
+            abort(404, description=err)
+        return result
+    
         
     """returns single menu item with given id"""
     @staticmethod
@@ -55,35 +48,48 @@ class MenuItemRepository:
             return result
         except Exception as e:
             print(e)
-            return jsonify({"error": f"failed to find menu_item (id:{menuitem_id})"}), 500
-        
-    """adds provided options list to menu_item w/ given id"""
+            err = f"menu_item (id:{menuitem_id}) does not exist!"
+            abort(404, description=err)
     @staticmethod
-    def update_menu_item_options(options, menuitem_id):
-        menu_item = MenuItemRepository.get_menu_item_by_id(menuitem_id)
-        opt_list = []
+    def create_menu_item(data):
+        """creates new menu item"""
+        options_list = OptionRepository.parse_options(data.get("options", []))  
+        menu_item = MenuItem(
+            order_id=data.get("order_id"),
+            menuitem_price=data.get("menuitem_price"),
+            meal_type=data.get("meal_type"),
+            premium_multiplier=data.get("premium_multiplier"),
+            total_menuitem_price=data.get("total_menuitem_price"),
+            options=options_list
+        )
+        
+        try:
+            db.session.add(menu_item)
+            db.session.commit()
+            return menu_item
+        except Exception as e:
+            print(e)
+            db.session.rollback() 
+            return None
 
-        for opt in options:
-            existing_option = OptionRepository.get_option_or_404(opt.get("option"))
-            if existing_option:
-                opt_list.append(existing_option)
-            else:
-                new_option = Options(
-                    option=opt.get("option"),
-                    additional_charge=opt.get("additional_charge"),
-                    category=opt.get("category"),
-                    is_seasonal=opt.get("is_seasonal")
-                )
-                db.session.add(new_option)
-                opt_list.append(new_option)
+    @staticmethod
+    def update_menu_item(menuitem_id, data):
+        """updates existing menu_item with menu_item.id = menuitem_id."""
+        menu_item = MenuItemRepository.get_menu_item_by_id(menuitem_id)        
+        menu_item.menuitem_price = data.get("menuitem_price", menu_item.menuitem_price)
+        menu_item.meal_type = data.get("meal_type", menu_item.meal_type)
+        menu_item.premium_multiplier = data.get("premium_multiplier", menu_item.premium_multiplier)
+        menu_item.total_menuitem_price = data.get("total_menuitem_price", menu_item.total_menuitem_price)
 
-        menu_item.options = opt_list
-        db.session.commit()
-        return menu_item
-
+        options_list = OptionRepository.parse_options(data.get("options", []))
+        menu_item.options = options_list  
+        try:
+            db.session.commit()  
+            return menu_item
+        except Exception as e:
+            print(e)
+            db.session.rollback() 
+            return None
 
                 
             
-            
-            
-        

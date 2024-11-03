@@ -17,7 +17,7 @@ class OptionRepository:
             )
         return result 
     #for options table, "option" is the PK
-    """retuns a single option matching provided option object"""
+    """retuns a single option matching provided option name"""
     @staticmethod
     def get_option_or_404(option):
         stmt = select(Options).where(Options.option == option)
@@ -50,4 +50,11 @@ class OptionRepository:
         except Exception as e:
             db.session.rollback()
             print(e)
-            return jsonify({"error": "failed to add option"}), 500
+            abort(500, description="Failed to add option")
+    """helper method for adding menu items, takes list of option names and returns option object list"""
+    @staticmethod
+    def parse_options(options):
+        opt_list = []
+        for o in options:
+            opt_list.append(OptionRepository.get_option_or_404(o))
+        return opt_list
