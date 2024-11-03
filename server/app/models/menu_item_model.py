@@ -1,6 +1,6 @@
 from app.extensions import db
 from sqlalchemy.orm import relationship
-from ..models.join_tables import menuitem_options_join
+from .join_tables_model import menuitem_options_join
 
 class MenuItem(db.Model):
     __tablename__ = 'menu_items'

@@ -1,4 +1,4 @@
-from ..models.ingredient import Ingredient
+from ..models.ingredient_model import Ingredient
 from .search_repository import SearchUtils
 from ..extensions import db
 from sqlalchemy import select, update

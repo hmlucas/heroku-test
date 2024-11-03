@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, request
-from ..models.menu_item import MenuItem
+from ..models.menu_item_model import MenuItem
 from ..repos.menu_item_repository import MenuItemRepository
 from ..repos.order_repository import OrderRepository
-from ..models.options import Options
+from ..models.options_model import Options
 menu_items_bp = Blueprint('menu_items_bp', __name__)
 
 @menu_items_bp.route('/', methods=['GET'])

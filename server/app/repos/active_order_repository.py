@@ -1,6 +1,6 @@
 from ..extensions import db
 from sqlalchemy import select
-from ..models.active_order import ActiveOrder
+from ..models.active_order_model import ActiveOrder
 from flask import abort
 
 class ActiveOrderRepository:

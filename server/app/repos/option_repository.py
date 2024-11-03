@@ -1,4 +1,4 @@
-from ..models.options import Options
+from ..models.options_model import Options
 from .search_repository import SearchUtils
 from ..extensions import db
 from sqlalchemy import select, update

@@ -1,4 +1,4 @@
-from ..models.employee import Employee
+from ..models.employee_model import Employee
 from .search_repository import SearchUtils
 from ..extensions import db
 from sqlalchemy import select, update

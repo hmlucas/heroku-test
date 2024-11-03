@@ -1,10 +1,10 @@
-from ..models.order import Order
-from ..models.menu_item import MenuItem
-from ..models.options import Options
-from ..models.active_order import ActiveOrder
+from ..models.order_model import Order
+from ..models.menu_item_model import MenuItem
+from ..models.options_model import Options
+from ..models.active_order_model import ActiveOrder
 from ..repos.active_order_repository import ActiveOrderRepository
 from ..repos.menu_item_repository import MenuItemRepository
-from ..models.join_tables import menuitem_options_join
+from ..models.join_tables_model import menuitem_options_join
 
 from ..extensions import db
 from sqlalchemy import select, update, Table, Column, Integer, ForeignKey, String
