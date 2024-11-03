@@ -27,23 +27,13 @@ def get_order_menu_items(order_id):
 @orders_bp.route('/new', methods=['POST'])
 def add_order():
     data = request.get_json()
-    new_order = Order(
-        payment_method=data['payment_method'],
-        order_date=data['order_date'],
-        price=data['price'],
-        employee_id=data['employee_id']
-    )
-    new_order.menu_items = MenuItemRepository.parse_menu_items(data.get('menu_items', []))
-    OrderRepository.insert_order(new_order)
+    try:
+        new_order = OrderRepository.insert_order(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
     return jsonify(new_order.to_dict()), 201
 
 @orders_bp.route('/active', methods=['GET'])
 def get_active_orders():
     active_orders = OrderRepository.get_active_orders()
     return jsonify([order.to_dict() for order in active_orders]), 200
-
-@orders_bp.route('/new/', methods=['POST'])
-def create_order():
-    data = request.get_json()
-    order = OrderRepository.insert_order(data)
-    return jsonify(order.to_dict()), 201

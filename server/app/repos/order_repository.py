@@ -52,9 +52,25 @@ class OrderRepository:
         Order.insert_order(order)
         #TODO
     @staticmethod   
-    def insert_order(order):
-        db.session.add(order)
-        db.session.commit()
+    def insert_order(data):
+        new_order = Order(
+            payment_method=data.get('payment_method'),
+            order_date=data.get('order_date'),
+            price=data.get('price'),
+            employee_id=data.get('employee_id'),
+        )
+        new_order.menu_items = MenuItemRepository.parse_menu_items(data.get('menu_items', []))
+        try:
+            db.session.add(new_order)
+            db.session.commit()          
+            ActiveOrderRepository.insert_active_order(new_order.order_id)
+
+            return new_order
+        except Exception as e:
+            print(e)
+            abort(500, description="Failed to add order")
+            db.session.rollback()
+            return None
     @staticmethod  
     def get_order_menu_items(order_id):
         menu_items = MenuItemRepository.get_menu_item_by_order_id(order_id)
