@@ -13,7 +13,7 @@ from flask import abort
 class OrderRepository:
     @staticmethod
     def get_all_orders():
-        stmt = select(Order)
+        stmt = select(Order).limit(25)#toooootally fix this later trust
         result = (
             db.session.execute(stmt)
             .scalars()

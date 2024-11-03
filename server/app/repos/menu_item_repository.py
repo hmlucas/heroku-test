@@ -7,7 +7,7 @@ from flask import abort
 class MenuItemRepository:
     @staticmethod
     def get_all_menu_items():
-        stmt = select(MenuItem).limit(10)#limited for testing, remove later
+        stmt = select(MenuItem).limit(100)#i totally fix (add pagination) this later trust
         try:
             result = (
                 db.session.execute(stmt)

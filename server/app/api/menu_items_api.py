@@ -7,7 +7,6 @@ menu_items_bp = Blueprint('menu_items_bp', __name__)
 
 @menu_items_bp.route('/', methods=['GET'])
 def get_menu_items():
-    print("you want all menu items.........too bad!!!!")
     menu_items = MenuItemRepository.get_all_menu_items()
     return jsonify([menu_item.to_dict() for menu_item in menu_items]), 200
 """inserts menu_item"""
