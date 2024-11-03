@@ -20,12 +20,21 @@ def get_options():
         
     return jsonify([option.to_dict() for option in options]), 200
 
-@options_bp.route('/new/', methods = ['POST'])
+@options_bp.route('/new/', methods=['POST'])
 def add_option():
     data = request.get_json()
-    try:
-        OptionRepository.get_option_or_404(data.get("option"))
-        return "Error: option already exists",409
-    except:#only insert if try returns 404
-        option = OptionRepository.insert_option(data)
-        return jsonify(option.to_dict()), 201
+    
+    if "options" not in data:
+        return jsonify({"error": "No options provided"}), 400 
+    created_options = []
+    
+    for opt in data["options"]:
+        try:
+            OptionRepository.get_option_or_404(opt.get("option"))
+            print(f"Option {opt.get('option')} already exists, continuing")
+            continue #skip if exists
+        except:
+            new_option = OptionRepository.insert_option({"options": [opt]})
+            if new_option:
+                created_options.append(new_option[0]) 
+    return jsonify([option.to_dict() for option in created_options]), 201

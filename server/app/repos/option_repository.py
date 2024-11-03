@@ -38,17 +38,18 @@ class OptionRepository:
     def get_option_exact_search_or_404(search): 
         return SearchUtils.get_exact_search_or_404(db.session, Options, search, "category")
     
-    """inserts option and returns it if successful"""
+    """adds option"""
     @staticmethod
     def insert_option(data):
+        new_options = []
         option = Options(
             option = data.get("option"),
             additional_charge = data.get("additional_charge"),
             category = data.get("category"),
             is_seasonal = data.get("is_seasonal")
-        )
+            )
+        new_options.append(option)  
         try:
-            db.session.add(option)
             db.session.commit()
             return option
         except Exception as e:
