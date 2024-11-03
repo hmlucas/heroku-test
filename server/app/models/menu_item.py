@@ -10,13 +10,13 @@ class MenuItem(db.Model):
     meal_type = db.Column(db.String(32), nullable=False)
     premium_multiplier = db.Column(db.Integer, nullable=False)
     total_menuitem_price = db.Column(db.Float, nullable=False)
-    
     # Many-to-many relationship with Options through the join table
-    options = relationship(
+    options = db.relationship(
         'Options',
         secondary=menuitem_options_join,
         backref='menu_items'
     )
+    order = db.relationship('Order', back_populates='menu_items')
 
     def __repr__(self):
         return f"<MenuItem {self.menuitem_id}>"
@@ -29,5 +29,5 @@ class MenuItem(db.Model):
             "meal_type": self.meal_type,
             "premium_multiplier": self.premium_multiplier,
             "total_menuitem_price": self.total_menuitem_price,
-            "options": [option.option for option in self.options]    
+            "options": [option.to_dict() for option in self.options ]
         }

@@ -19,3 +19,13 @@ def get_options():
         abort(404, description="Options not found")
         
     return jsonify([option.to_dict() for option in options]), 200
+
+@options_bp.route('/new/', methods = ['POST'])
+def add_option():
+    data = request.get_json()
+    try:
+        OptionRepository.get_option_or_404(data.get("option"))
+        return "Error: option already exists",409
+    except:#only insert if try returns 404
+        option = OptionRepository.insert_option(data)
+        return jsonify(option.to_dict()), 201
