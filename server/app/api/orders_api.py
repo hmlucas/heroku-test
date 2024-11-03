@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from ..models.order_model import Order
 from ..repos.order_repository import OrderRepository
+from ..repos.menu_item_repository import MenuItemRepository
 
 orders_bp = Blueprint('orders_bp', __name__)
 
@@ -26,17 +27,13 @@ def get_order_menu_items(order_id):
 @orders_bp.route('/new', methods=['POST'])
 def add_order():
     data = request.get_json()
-
-    if not data or 'payment_method' not in data or 'order_date' not in data or 'price' not in data or 'employee_id' not in data:
-        return jsonify({"error": "Missing required fields"}), 400
-
     new_order = Order(
         payment_method=data['payment_method'],
         order_date=data['order_date'],
         price=data['price'],
         employee_id=data['employee_id']
     )
-
+    new_order.menu_items = MenuItemRepository.parse_menu_items(data.get('menu_items', []))
     OrderRepository.insert_order(new_order)
     return jsonify(new_order.to_dict()), 201
 

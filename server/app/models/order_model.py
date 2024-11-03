@@ -5,7 +5,7 @@ class Order(db.Model):
 
     order_id = db.Column(db.Integer, primary_key=True, nullable=False)
     payment_method = db.Column(db.String(32), nullable=False)
-    order_date = db.Column(db.Date, nullable=False)
+    order_date = db.Column(db.DateTime, nullable=False)
     price = db.Column(db.Float, nullable=False)
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.employee_id'), nullable=False)
     #one-to-many

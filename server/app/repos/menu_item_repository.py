@@ -90,6 +90,22 @@ class MenuItemRepository:
             print(e)
             db.session.rollback() 
             return None
-
+    """return list of menu item objects"""
+    @staticmethod
+    def parse_menu_items(menu_items):
+        mi_list = []
+        for mi in menu_items:
+            opt_list = []
+            for o in mi.get("options", []):
+                opt_list.append(o["option"])
+            mi_list.append(MenuItem(
+                order_id=mi.get("order_id"),
+                menuitem_price=mi.get("menuitem_price"),
+                meal_type=mi.get("meal_type"),
+                premium_multiplier=mi.get("premium_multiplier"),
+                total_menuitem_price=mi.get("total_menuitem_price"),
+                options=OptionRepository.parse_options(opt_list)
+            ))
+        return mi_list
                 
             

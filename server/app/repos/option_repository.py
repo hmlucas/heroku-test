@@ -21,12 +21,16 @@ class OptionRepository:
     @staticmethod
     def get_option_or_404(option):
         stmt = select(Options).where(Options.option == option)
-        result = (
-            db.session.execute(stmt)
-            .scalar()
-        )
-        if result is None:
-            abort(404, "Option not found")
+        try:
+            result = (
+                db.session.execute(stmt)
+                .scalar()
+            )
+            if result is None:
+                abort(404, description=f"Option {option} not found")
+        except Exception as e:
+            print(e)
+            abort(500, description=f"i dont even know wtf could cause this")
         return result
     
     """get all options of a certain category"""
