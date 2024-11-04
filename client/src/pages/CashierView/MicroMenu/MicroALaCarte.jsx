@@ -5,7 +5,7 @@ import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
 
 const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
-  const { orderInProgress } = useCashierStore();
+  const { updateInProgress, selectTicket } = useCashierStore();
   const filteredEntrees = menuEntrees.filter(
     (entree) => !entree.option.includes("1/2")
   );
@@ -44,7 +44,8 @@ const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
         className="continue-button"
         onClick={() => {
           changeMenu(MenuEnum.NEW_ITEM);
-          orderInProgress(false);
+          updateInProgress(false);
+          selectTicket(null);
         }}
       >
         Continue

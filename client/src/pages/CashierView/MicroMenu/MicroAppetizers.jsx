@@ -5,7 +5,7 @@ import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
 
 const MicroApps = ({ menuApps, changeMenu }) => {
-  const { orderInProgress } = useCashierStore();
+  const { updateInProgress, selectTicket } = useCashierStore();
   const getGridClass = () => {
     const length = menuApps.length;
     if (length >= 30) return "grid-6x6";
@@ -24,7 +24,8 @@ const MicroApps = ({ menuApps, changeMenu }) => {
             className="app-button"
             onClick={() => {
               changeMenu(MenuEnum.NEW_ITEM);
-              orderInProgress(false);
+              updateInProgress(false);
+              selectTicket(null);
             }}
             aria-label={`Select ${app.option.replace(/_/g, " ")}`}
           >

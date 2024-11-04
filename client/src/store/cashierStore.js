@@ -10,9 +10,14 @@ const useCashierStore = create((set) => ({
   currentMicroMenu: 0,
   emptyTickets: true,
   orderInProgress: false,
+  setCurrentMicroMenu: (menu) =>
+    set(() => ({
+      currentMicroMenu: menu,
+    })),
   addNewTicket: (ticket) =>
     set((state) => {
       const newTotal = state.total + ticket.price;
+      console.log(ticket);
       return {
         orderInProgress: true,
         currentTicket: ticket,
@@ -21,6 +26,33 @@ const useCashierStore = create((set) => ({
         total: newTotal,
       };
     }),
+  addOptionToTicket: (option) =>
+    set((state) => {
+      if (!state.currentTicket) {
+        console.warn("No current ticket selected.");
+        return state;
+      }
+
+      const updatedTicket = {
+        ...state.currentTicket,
+        total_menuitem_price:
+          state.currentTicket.total_menuitem_price + option.additional_charge,
+        options: [...state.currentTicket.options, option.option],
+      };
+
+      const updatedTickets = state.tickets.map((ticket) =>
+        ticket.ticket_id === state.currentTicket.ticket_id
+          ? updatedTicket
+          : ticket
+      );
+
+      return {
+        currentTicket: updatedTicket,
+        tickets: updatedTickets,
+        total: state.total + option.additional_charge,
+      };
+    }),
+
   removeTicket: () =>
     set((state) => {
       if (state.currentTicket == null) {

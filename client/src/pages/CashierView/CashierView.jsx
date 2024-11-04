@@ -7,8 +7,10 @@ import { useEffect, useState } from "react";
 import MenuEnum from "./MenuEnum";
 import useEmployeeStore from "../../store/useEmployeeStore";
 import menuOptionsStore from "../../store/menuOptionsStore";
+import useCashierStore from "../../store/cashierStore";
 
 const CashierView = () => {
+  const { setCurrentMicroMenu, currentTicket } = useCashierStore();
   const { selectedEmployeeID, selectedEmployee, fetchEmployeeById } =
     useEmployeeStore();
   const {
@@ -29,12 +31,12 @@ const CashierView = () => {
   const [tickets, setTickets] = useState([]);
 
   const changeMenu = (index) => {
+    setCurrentMicroMenu(index);
     setActiveMenu(index);
   };
 
   const addTicket = (newTicket) => {
     setTickets((prevTickets) => [...prevTickets, newTicket]); // Add new ticket to the list
-    console.log(tickets);
   };
 
   const removeAllTickets = () => {

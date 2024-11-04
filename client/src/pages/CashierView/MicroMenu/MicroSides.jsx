@@ -2,8 +2,10 @@ import "../CashierView.css";
 import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
+import useCashierStore from "../../../store/cashierStore";
 
 const MicroSides = ({ menuSides, changeMenu }) => {
+  const { currentTicket } = useCashierStore();
   const getGridClass = () => {
     const length = menuSides.length;
     if (length >= 30) return "grid-6x6";

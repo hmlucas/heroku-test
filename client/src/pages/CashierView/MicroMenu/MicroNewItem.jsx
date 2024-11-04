@@ -30,9 +30,9 @@ const MicroNewItem = ({ changeMenu }) => {
       className: "bigger-plate",
       price: 11.3,
     },
-    { label: "Drink", nav: MenuEnum.DRINKS, price: 3.5 },
-    { label: "Appetizer", nav: MenuEnum.APPETIZERS, price: 2 },
-    { label: "A La Carte", nav: MenuEnum.A_LA_CARTE, price: 5.4 },
+    { label: "Drink", nav: MenuEnum.DRINKS, price: 0 },
+    { label: "Appetizer", nav: MenuEnum.APPETIZERS, price: 0 },
+    { label: "A La Carte", nav: MenuEnum.A_LA_CARTE, price: 0 },
   ];
 
   const handleButtonClick = (mealType, nav, price) => {
@@ -41,7 +41,7 @@ const MicroNewItem = ({ changeMenu }) => {
       menuitem_price: price,
       meal_type: mealType,
       total_menuitem_price: price,
-      options: {},
+      options: [],
     };
     addNewTicket(newTicket);
     //addTicket(newTicket);
