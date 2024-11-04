@@ -5,10 +5,11 @@ class Order(db.Model):
 
     order_id = db.Column(db.Integer, primary_key=True, nullable=False)
     payment_method = db.Column(db.String(32), nullable=False)
-    order_date = db.Column(db.Date, nullable=False)
+    order_date = db.Column(db.DateTime, nullable=False)
     price = db.Column(db.Float, nullable=False)
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.employee_id'), nullable=False)
-    menu_items = db.relationship('MenuItem', backref='order', lazy=True)
+    #one-to-many
+    menu_items = db.relationship('MenuItem', back_populates='order')
 
     def __repr__(self):
         return f"<Order {self.order_id}>"
@@ -20,4 +21,5 @@ class Order(db.Model):
             "order_date": self.order_date.isoformat(),
             "price": self.price,
             "employee_id": self.employee_id,
+            "menu_items": [menu_item.to_dict() for menu_item in self.menu_items]
         }

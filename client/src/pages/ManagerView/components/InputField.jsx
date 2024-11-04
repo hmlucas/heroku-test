@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-function InputField({ labelText, id }) {
+function InputField({ labelText, id}) {
   return (
     <div className="col">
       <label htmlFor={id} className="form-label">
