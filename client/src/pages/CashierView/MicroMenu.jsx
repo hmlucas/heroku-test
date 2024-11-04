@@ -17,13 +17,12 @@ const MicroMenu = ({
   menuDrinks,
   menuEntrees,
   menuApps,
-  addTicket,
   removeAllTickets,
 }) => {
   const renderMenu = () => {
     switch (activeMenu) {
       case MenuEnum.NEW_ITEM:
-        return <MicroNewItem changeMenu={changeMenu} addTicket={addTicket} />;
+        return <MicroNewItem changeMenu={changeMenu} />;
       case MenuEnum.ENTREES:
         return (
           <MicroEntrees menuEntrees={menuEntrees} changeMenu={changeMenu} />

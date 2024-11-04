@@ -4,6 +4,8 @@ import axiosInstance from "../api/axiosInstance";
 const useEmployeeStore = create((set) => ({
   employees: [],
   selectedEmployee: null,
+  selectedEmployeeID: null,
+  selectedCashier: (id) => set({ selectedEmployeeID: id }),
   isLoading: false,
   error: null,
 

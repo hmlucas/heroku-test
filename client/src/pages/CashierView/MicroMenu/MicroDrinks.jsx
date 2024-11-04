@@ -2,8 +2,12 @@ import "../CashierView.css";
 import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
+import useCashierStore from "../../../store/cashierStore";
 
 const MicroDrinks = ({ menuDrinks, changeMenu }) => {
+  const { updateInProgress, selectTicket, addOptionToTicket } =
+    useCashierStore();
+
   const getGridClass = () => {
     const length = menuDrinks.length;
     if (length >= 30) return "grid-6x6";
@@ -11,7 +15,12 @@ const MicroDrinks = ({ menuDrinks, changeMenu }) => {
     if (length >= 12) return "grid-4x4";
     return "grid-3x3";
   };
-
+  const handleDrinkClick = (drink) => {
+    addOptionToTicket(drink);
+    changeMenu(MenuEnum.NEW_ITEM);
+    updateInProgress(false);
+    selectTicket(null);
+  };
   const renderDrinks = () => {
     //TODO Update ticket!
     return menuDrinks?.length > 0 ? (
@@ -20,7 +29,7 @@ const MicroDrinks = ({ menuDrinks, changeMenu }) => {
           <button
             key={index}
             className="drink-button"
-            onClick={() => changeMenu(MenuEnum.NEW_ITEM)}
+            onClick={() => handleDrinkClick(drink)}
             aria-label={`Select ${drink.option.replace(/_/g, " ")}`}
           >
             {drink.option.replace(/_/g, " ")}

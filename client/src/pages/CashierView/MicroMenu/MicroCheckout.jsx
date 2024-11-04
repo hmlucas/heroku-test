@@ -2,8 +2,10 @@ import "../CashierView.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import "./MicroCheckout.css";
+import useCashierStore from "../../../store/cashierStore";
 
-const MicroCheckout = ({ changeMenu, removeAllTickets }) => {
+const MicroCheckout = ({ changeMenu }) => {
+  const { removeAllTickets } = useCashierStore();
   const selection = [
     { label: "Cash" },
     { label: "Credit" },

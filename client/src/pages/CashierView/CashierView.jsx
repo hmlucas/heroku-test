@@ -7,9 +7,12 @@ import { useEffect, useState } from "react";
 import MenuEnum from "./MenuEnum";
 import useEmployeeStore from "../../store/useEmployeeStore";
 import menuOptionsStore from "../../store/menuOptionsStore";
+import useCashierStore from "../../store/cashierStore";
 
 const CashierView = () => {
-  const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
+  const { setCurrentMicroMenu, currentTicket } = useCashierStore();
+  const { selectedEmployeeID, selectedEmployee, fetchEmployeeById } =
+    useEmployeeStore();
   const {
     fetchEntrees,
     fetchApps,
@@ -28,12 +31,12 @@ const CashierView = () => {
   const [tickets, setTickets] = useState([]);
 
   const changeMenu = (index) => {
+    setCurrentMicroMenu(index);
     setActiveMenu(index);
   };
 
   const addTicket = (newTicket) => {
     setTickets((prevTickets) => [...prevTickets, newTicket]); // Add new ticket to the list
-    console.log(tickets);
   };
 
   const removeAllTickets = () => {
@@ -44,7 +47,7 @@ const CashierView = () => {
     const fetchData = async () => {
       try {
         await Promise.all([
-          fetchEmployeeById(99),
+          fetchEmployeeById(selectedEmployeeID),
           fetchSides(),
           fetchEntrees(),
           fetchApps(),
@@ -57,7 +60,14 @@ const CashierView = () => {
     };
 
     fetchData();
-  }, [fetchEmployeeById, fetchSides, fetchEntrees, fetchApps, fetchDrinks]);
+  }, [
+    selectedEmployeeID,
+    fetchEmployeeById,
+    fetchSides,
+    fetchEntrees,
+    fetchApps,
+    fetchDrinks,
+  ]);
 
   useEffect(() => {
     console.log("Retrieved menuSides:", menuSides);

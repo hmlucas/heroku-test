@@ -11,7 +11,6 @@ function HomeView() {
   const handleDropdownChange = (e) => {
     const selectedValue = e.target.value;
     setDropdownValue(selectedValue);
-    
   };
 
   const handleSubmit = () => {
@@ -51,7 +50,7 @@ function HomeView() {
           >
             <option value="">Select</option>
             <option value="manager-view">Manager View</option>
-            <option value="cashier-view">Cashier View</option>
+            <option value="cashier-login">Cashier View</option>
             <option value="customer-view">Customer View</option>
             <option value="kitchen-view">Kitchen View</option>
             <option value="menu-view">Menu View</option>
@@ -59,7 +58,9 @@ function HomeView() {
         </div>
 
         {/* Button */}
-        <button className="btn btn-primary w-100" onClick={handleSubmit}>Submit</button>
+        <button className="btn btn-primary w-100" onClick={handleSubmit}>
+          Submit
+        </button>
       </div>
     </div>
   );

@@ -2,8 +2,11 @@ import "../CashierView.css";
 import "./DynamicButtons.css"; // Updated import to match the new naming convention
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
+import useCashierStore from "../../../store/cashierStore";
 
 const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
+  const { updateInProgress, selectTicket, addOptionToTicket } =
+    useCashierStore();
   const filteredEntrees = menuEntrees.filter(
     (entree) => !entree.option.includes("1/2")
   );
@@ -11,6 +14,9 @@ const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
     (side) => !side.option.includes("1/2")
   );
 
+  const handleAlaClick = (item) => {
+    addOptionToTicket(item);
+  };
   const combinedOptions = [...filteredEntrees, ...filteredSides];
 
   const getGridClass = () => {
@@ -26,8 +32,12 @@ const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
     combinedOptions.length > 0 ? (
       <div className={`alacarte-buttons ${getGridClass()}`}>
         {combinedOptions.map((item, index) => (
-          <button key={index} className="alacarte-button">
-            {item.option.replace(/_/g, " ")}
+          <button
+            key={index}
+            className="alacarte-button"
+            onClick={() => handleAlaClick(item)}
+          >
+            {item.option.replace(/_/g, " ")}{" "}
           </button>
         ))}
       </div>
@@ -40,7 +50,11 @@ const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
       {renderOptions()}
       <button
         className="continue-button"
-        onClick={() => changeMenu(MenuEnum.NEW_ITEM)}
+        onClick={() => {
+          changeMenu(MenuEnum.NEW_ITEM);
+          updateInProgress(false);
+          selectTicket(null);
+        }}
       >
         Continue
       </button>

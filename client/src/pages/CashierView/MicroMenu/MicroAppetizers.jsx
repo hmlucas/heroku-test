@@ -2,8 +2,11 @@ import "../CashierView.css";
 import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
+import useCashierStore from "../../../store/cashierStore";
 
 const MicroApps = ({ menuApps, changeMenu }) => {
+  const { updateInProgress, selectTicket, addOptionToTicket } =
+    useCashierStore();
   const getGridClass = () => {
     const length = menuApps.length;
     if (length >= 30) return "grid-6x6";
@@ -11,7 +14,12 @@ const MicroApps = ({ menuApps, changeMenu }) => {
     if (length >= 12) return "grid-4x4";
     return "grid-3x3";
   };
-
+  const handleAppClick = (app) => {
+    addOptionToTicket(app);
+    changeMenu(MenuEnum.NEW_ITEM);
+    updateInProgress(false);
+    selectTicket(null);
+  };
   const renderApps = () => {
     //TODO UPDATE TICKETS
     return menuApps?.length > 0 ? (
@@ -20,7 +28,7 @@ const MicroApps = ({ menuApps, changeMenu }) => {
           <button
             key={index}
             className="app-button"
-            onClick={() => changeMenu(MenuEnum.NEW_ITEM)}
+            onClick={() => handleAppClick(app)}
             aria-label={`Select ${app.option.replace(/_/g, " ")}`}
           >
             {app.option.replace(/_/g, " ")}
