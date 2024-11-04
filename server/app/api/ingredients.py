@@ -33,14 +33,3 @@ def get_storage_methods():
     if len(storage_types) == 0:
         abort(404, description="No storage types found")
     return jsonify(storage_types), 200
-
-@ingredients_bp.route('/new/', methods=['POST'])
-def add_ingredient():
-    
-    data = request.get_json()
-    try:
-        IngredientRepository.get_ingredient_or_404(data['ingredient'])
-    except:
-        ingredient = IngredientRepository.insert_ingredient(data)
-        return jsonify(ingredient.to_dict()), 201
-    return "Ingredient already exists", 409

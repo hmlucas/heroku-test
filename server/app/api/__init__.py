@@ -1,8 +1,8 @@
-from .employees_api import employees_bp
-from .options_api import options_bp
-from .orders_api import orders_bp
-from .menu_items_api import menu_items_bp
-from .ingredients_api import ingredients_bp
+from .employees import employees_bp
+from .options import options_bp
+from .orders import orders_bp
+from .menu_items import menu_items_bp
+from .ingredients import ingredients_bp
 
 def register_blueprints(app):
     app.register_blueprint(employees_bp, url_prefix='/api/employees')

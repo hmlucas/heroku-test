@@ -10,9 +10,11 @@ def fetch_employees(search_terms):
 
 @employees_bp.route('/', methods=['GET'])
 def get_employees():
+    #check if GET is requesting a search
     search_terms = request.args.get('search')
     employees = fetch_employees(search_terms)
     
+    #no employees to return
     if len(employees) == 0:
         abort(404, description="Employee not found")
         
@@ -22,9 +24,3 @@ def get_employees():
 def get_employee(employee_id):
     employee = EmployeeRepository.get_employee_or_404(employee_id)
     return jsonify(employee.to_dict()), 200
-
-@employees_bp.route('/new/', methods=['POST'])
-def add_employee():
-    data = request.get_json()
-    employee = EmployeeRepository.insert_employee(data)
-    return jsonify(employee.to_dict()), 201

@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS employees(
-    employee_id SERIAL PRIMARY KEY NOT NULL,
+    employee_id int PRIMARY KEY NOT NULL,
     first_name varchar(64) NOT NULL,
     last_name varchar(64) NOT NULL,
     employee_role varchar(32) NOT NULL,

@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, request
-from ..models.order_model import Order
+from ..models.order import Order
 from ..repos.order_repository import OrderRepository
-from ..repos.menu_item_repository import MenuItemRepository
 
 orders_bp = Blueprint('orders_bp', __name__)
 
@@ -26,13 +25,26 @@ def get_order_menu_items(order_id):
     return jsonify(menu_item_options), 200
 @orders_bp.route('/new', methods=['POST'])
 def add_order():
-    data = request.get_json()
-    try:
-        new_order = OrderRepository.insert_order(data)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    return jsonify(new_order.to_dict()), 201
-
+    ###
+    # replace w 
+    # data = request.get_json()
+    # new_order = Order(
+    #   payment_method = data['payment_method']
+    #   order_date = data['order_date']
+    #   price = data['price']
+    #   employee_id = data['employee_id']
+    # i wonder how i will make the menu items work ....... later problem :)
+    # incomplete section (don't replace yet)
+    # )
+    # ###
+    new_order = Order(
+        payment_method = 'cash',
+        order_date = '2021-01-01',
+        price = 100.00,
+        employee_id = 99
+    )
+    OrderRepository.insert_order(new_order)
+    return new_order.to_dict(), 201
 @orders_bp.route('/active', methods=['GET'])
 def get_active_orders():
     active_orders = OrderRepository.get_active_orders()

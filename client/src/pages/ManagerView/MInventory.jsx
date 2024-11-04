@@ -3,16 +3,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import "./ManagerView.css";
 import InputField from "./components/InputField";
-// import { useEffect } from "react";
-
-// postIngredient= event => {
-//   const requestOptions = {
-//     event.preventDefault();
-//     method: "POST",
-    
-//   };
-// };
-
 function MInventory() {
   return (
     <div className="container-fluid">
@@ -63,7 +53,7 @@ function MInventory() {
               </div>
               <div className="row mt-3">
                 <div className="col-12">
-                  <button type="button" className="btn btn-primary w-10"  >
+                  <button type="button" className="btn btn-primary w-10">
                     Search
                   </button>
                 </div>

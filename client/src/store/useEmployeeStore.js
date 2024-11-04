@@ -44,10 +44,10 @@ const useEmployeeStore = create((set) => ({
     }
   },
 
-  postEmployee: async (employee) => {
+  addEmployee: async (employee) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axiosInstance.post("/employees/new/", employee);
+      const response = await axiosInstance.post("/employees/", employee);
       set((state) => ({
         employees: [...state.employees, response.data],
         isLoading: false,

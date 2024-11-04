@@ -6,7 +6,6 @@
 \copy options_ingredients_join FROM '../csv/options-ingredients-join.csv' DELIMITER ',' CSV HEADER;
 -- POPULATE employees --------------------------------------------------
 \copy employees FROM '../csv/employees.csv' DELIMITER ',' CSV HEADER;
-SELECT setval(pg_get_serial_sequence('employees', 'employee_id'), (SELECT MAX(employee_id) FROM employees));
 -- POPULATE orders --------------------------------------------------
 \copy orders FROM '../csv/orders-2024-10-28.csv' DELIMITER ',' CSV HEADER;
 SELECT setval(pg_get_serial_sequence('orders', 'order_id'), (SELECT MAX(order_id) FROM orders));
