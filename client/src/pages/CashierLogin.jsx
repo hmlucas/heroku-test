@@ -2,22 +2,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useEmployeeStore from "../store/useEmployeeStore";
+import UniversalNavbar from "../components/UniversalNavbar";
 
-function HomeView() {
+function CashierLogin() {
   const [inputText, setInputText] = useState("");
-  const [dropdownValue, setDropdownValue] = useState("");
   const navigate = useNavigate();
 
-  const handleDropdownChange = (e) => {
-    const selectedValue = e.target.value;
-    setDropdownValue(selectedValue);
-  };
-
   const handleSubmit = () => {
-    if (dropdownValue) {
-      navigate(`/${dropdownValue}`);
+    if (inputText) {
+      setCashier(inputText);
     }
+    navigate(`/cashier-view`);
   };
+  // to transfer to cashier view
+  const setCashier = useEmployeeStore((state) => state.selectedCashier);
 
   return (
     <div className="container-fluid d-flex justify-content-center align-items-center vh-100">
@@ -37,33 +36,14 @@ function HomeView() {
           />
         </div>
 
-        {/* Dropdown */}
-        <div className="mb-3">
-          <label htmlFor="dropdown" className="form-label">
-            Select a view:
-          </label>
-          <select
-            id="dropdown"
-            className="form-select"
-            value={dropdownValue}
-            onChange={handleDropdownChange}
-          >
-            <option value="">Select</option>
-            <option value="manager-view">Manager View</option>
-            <option value="cashier-login">Cashier View</option>
-            <option value="customer-view">Customer View</option>
-            <option value="kitchen-view">Kitchen View</option>
-            <option value="menu-view">Menu View</option>
-          </select>
-        </div>
-
         {/* Button */}
         <button className="btn btn-primary w-100" onClick={handleSubmit}>
           Submit
         </button>
       </div>
+      <UniversalNavbar />
     </div>
   );
 }
 
-export default HomeView;
+export default CashierLogin;

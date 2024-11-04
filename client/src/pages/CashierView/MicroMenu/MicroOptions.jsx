@@ -14,7 +14,7 @@ const MicroOptions = ({ changeMenu, removeAllTickets }) => {
             removeAllTickets();
             changeMenu(MenuEnum.NEW_ITEM);
           } else if (option.label === "Logout") {
-            window.location.href = "/";
+            window.location.href = "/cashier-login";
           }
         }}
       >
