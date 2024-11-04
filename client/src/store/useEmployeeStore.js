@@ -4,6 +4,8 @@ import axiosInstance from "../api/axiosInstance";
 const useEmployeeStore = create((set) => ({
   employees: [],
   selectedEmployee: null,
+  selectedEmployeeID: null,
+  selectedCashier: (id) => set({ selectedEmployeeID: id }),
   isLoading: false,
   error: null,
 
@@ -50,7 +52,6 @@ const useEmployeeStore = create((set) => ({
         employees: [...state.employees, response.data],
         isLoading: false,
       }));
-      
     } catch (error) {
       console.error("Error adding employee:", error);
       set({ error: "Failed to add employee", isLoading: false });

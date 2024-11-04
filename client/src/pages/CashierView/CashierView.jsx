@@ -9,7 +9,8 @@ import useEmployeeStore from "../../store/useEmployeeStore";
 import menuOptionsStore from "../../store/menuOptionsStore";
 
 const CashierView = () => {
-  const { selectedEmployee, fetchEmployeeById } = useEmployeeStore();
+  const { selectedEmployeeID, selectedEmployee, fetchEmployeeById } =
+    useEmployeeStore();
   const {
     fetchEntrees,
     fetchApps,
@@ -44,7 +45,7 @@ const CashierView = () => {
     const fetchData = async () => {
       try {
         await Promise.all([
-          fetchEmployeeById(99),
+          fetchEmployeeById(selectedEmployeeID),
           fetchSides(),
           fetchEntrees(),
           fetchApps(),
@@ -57,7 +58,14 @@ const CashierView = () => {
     };
 
     fetchData();
-  }, [fetchEmployeeById, fetchSides, fetchEntrees, fetchApps, fetchDrinks]);
+  }, [
+    selectedEmployeeID,
+    fetchEmployeeById,
+    fetchSides,
+    fetchEntrees,
+    fetchApps,
+    fetchDrinks,
+  ]);
 
   useEffect(() => {
     console.log("Retrieved menuSides:", menuSides);
