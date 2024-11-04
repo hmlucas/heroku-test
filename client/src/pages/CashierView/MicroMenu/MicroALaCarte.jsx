@@ -14,6 +14,9 @@ const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
     (side) => !side.option.includes("1/2")
   );
 
+  const handleAlaClick = (item) => {
+    addOptionToTicket(item);
+  };
   const combinedOptions = [...filteredEntrees, ...filteredSides];
 
   const getGridClass = () => {
@@ -29,8 +32,12 @@ const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
     combinedOptions.length > 0 ? (
       <div className={`alacarte-buttons ${getGridClass()}`}>
         {combinedOptions.map((item, index) => (
-          <button key={index} className="alacarte-button">
-            {item.option.replace(/_/g, " ")}
+          <button
+            key={index}
+            className="alacarte-button"
+            onClick={() => handleAlaClick(item)}
+          >
+            {item.option.replace(/_/g, " ")}{" "}
           </button>
         ))}
       </div>
