@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
 import gearIcon from "../../assets/gear-svgrepo-com.svg";
+import useCashierStore from "../../store/cashierStore";
 
 const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   //import states
   //TODO not sure if this needs to change where it imports
+  const { emptyTickets, orderInProgress, currentTicket, removeTicket } =
+    useCashierStore();
+
   const [hasIncompleteOrder, setHasIncompleteOrder] = useState(false);
   const [hasTickets, setHasTickets] = useState(false);
   const [hasSelectedOrder, setHasSelectedOrder] = useState(false);
@@ -20,17 +24,19 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
       - No tickets - no delete no checkout
       - No selected order (recent deletion) - no delete
     */
-    setHasTickets(true);
-    setHasSelectedOrder(true);
-    setHasIncompleteOrder(false);
-  });
+    console.log(emptyTickets);
+    setHasTickets(!emptyTickets);
+    setHasSelectedOrder(currentTicket !== null);
+    setHasIncompleteOrder(orderInProgress);
+  }, [emptyTickets, currentTicket, orderInProgress]);
 
   // TODO Add click functionality
   const optionsAction = () => {
     changeMenu(MenuEnum.OPTIONS);
   };
   const deleteAction = () => {
-    alert("FIXME Delete Clicked!");
+    removeTicket();
+    changeMenu(MenuEnum.NEW_ITEM);
   };
   const checkoutAction = () => {
     changeMenu(MenuEnum.CHECKOUT);
@@ -64,7 +70,7 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
               {selectedEmployee.first_name} {selectedEmployee.last_name}
             </p>
           ) : (
-            <p>Loading...</p>
+            <p>Demo</p>
           )}
         </div>
         <div className="cashier-options-button">

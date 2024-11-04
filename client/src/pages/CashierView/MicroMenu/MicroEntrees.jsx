@@ -2,8 +2,10 @@ import "../CashierView.css";
 import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
+import useCashierStore from "../../../store/cashierStore";
 
 const MicroEntrees = ({ menuEntrees, changeMenu }) => {
+  const { updateInProgress, selectTicket } = useCashierStore();
   const getGridClass = () => {
     const length = menuEntrees.length;
     if (length >= 30) return "grid-6x6";
@@ -20,7 +22,11 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
           <button
             key={index}
             className="entree-button"
-            onClick={() => changeMenu(MenuEnum.NEW_ITEM)}
+            onClick={() => {
+              changeMenu(MenuEnum.NEW_ITEM);
+              updateInProgress(false);
+              selectTicket(null);
+            }}
             aria-label={`Select ${entree.option.replace(/_/g, " ")}`}
           >
             {entree.option.replace(/_/g, " ")}

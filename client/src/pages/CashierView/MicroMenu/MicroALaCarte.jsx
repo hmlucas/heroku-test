@@ -2,8 +2,10 @@ import "../CashierView.css";
 import "./DynamicButtons.css"; // Updated import to match the new naming convention
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
+import useCashierStore from "../../../store/cashierStore";
 
 const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
+  const { orderInProgress } = useCashierStore();
   const filteredEntrees = menuEntrees.filter(
     (entree) => !entree.option.includes("1/2")
   );
@@ -40,7 +42,10 @@ const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
       {renderOptions()}
       <button
         className="continue-button"
-        onClick={() => changeMenu(MenuEnum.NEW_ITEM)}
+        onClick={() => {
+          changeMenu(MenuEnum.NEW_ITEM);
+          orderInProgress(false);
+        }}
       >
         Continue
       </button>

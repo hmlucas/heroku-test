@@ -1,10 +1,11 @@
 import "../CashierView.css";
 import "./MicroOptions.css";
 import MenuEnum from "../MenuEnum";
+import useCashierStore from "../../../store/cashierStore";
 
-const MicroOptions = ({ changeMenu, removeAllTickets }) => {
+const MicroOptions = ({ changeMenu }) => {
   const selection = [{ label: "Clear Order" }, { label: "Logout" }];
-
+  const { removeAllTickets } = useCashierStore();
   const renderButtons = () =>
     selection.map((option) => (
       <button

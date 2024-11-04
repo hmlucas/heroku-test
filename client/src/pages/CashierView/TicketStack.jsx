@@ -1,9 +1,12 @@
 import "./CashierView.css";
+import useCashierStore from "../../store/cashierStore";
 
-const TicketStack = ({ tickets }) => {
+const TicketStack = () => {
+  const { tickets } = useCashierStore();
+
   // Calculate total price of all tickets
   const total = tickets
-    .reduce((acc, ticket) => acc + ticket.price, 0)
+    .reduce((acc, ticket) => acc + ticket.menuitem_price, 0)
     .toFixed(2);
 
   return (
@@ -11,30 +14,15 @@ const TicketStack = ({ tickets }) => {
       <div className="ticket-list">
         <ul>
           {tickets.map((ticket) => (
-            <li key={ticket.id}>
+            <li key={ticket.ticket_id}>
               <h4>
-                {ticket.orderType} - ${ticket.price.toFixed(2)}
+                {ticket.meal_type} - ${ticket.menuitem_price.toFixed(2)}
               </h4>
               <ul>
-                {ticket.orderType === "Drink" &&
-                  ticket.options.drinks.map((drink, index) => (
-                    <li key={index}>{drink}</li>
-                  ))}
-                {(ticket.orderType === "Bowl" ||
-                  ticket.orderType === "Plate" ||
-                  ticket.orderType === "A La Carte") &&
-                  ticket.options.entrees.map((entree, index) => (
-                    <li key={index}>{entree}</li>
-                  ))}
-                {(ticket.orderType === "Bowl" ||
-                  ticket.orderType === "Plate" ||
-                  ticket.orderType === "A La Carte") &&
-                  ticket.options.sides.map((side, index) => (
-                    <li key={index}>{side}</li>
-                  ))}
-                {ticket.orderType === "Appetizer" &&
-                  ticket.options.apps.map((app, index) => (
-                    <li key={index}>{app}</li>
+                {Object.values(ticket.options)
+                  .flat()
+                  .map((item, index) => (
+                    <li key={index}>{item}</li>
                   ))}
               </ul>
             </li>

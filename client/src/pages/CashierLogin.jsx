@@ -24,7 +24,7 @@ function CashierLogin() {
         {/* Text Input */}
         <div className="mb-3">
           <label htmlFor="textInput" className="form-label">
-            Employee ID
+            Cashier Login
           </label>
           <input
             type="text"

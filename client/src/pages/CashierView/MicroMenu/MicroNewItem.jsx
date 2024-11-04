@@ -2,8 +2,11 @@ import "../CashierView.css";
 import MenuEnum from "../MenuEnum.js";
 import PropTypes from "prop-types";
 import "./MicroNewItem.css";
+import useCashierStore from "../../../store/cashierStore";
 
-const MicroNewItem = ({ changeMenu, addTicket }) => {
+const MicroNewItem = ({ changeMenu }) => {
+  const { addNewTicket } = useCashierStore();
+
   const selection = [
     //TODO CHANGE manual pricing
     {
@@ -32,22 +35,17 @@ const MicroNewItem = ({ changeMenu, addTicket }) => {
     { label: "A La Carte", nav: MenuEnum.A_LA_CARTE, price: 5.4 },
   ];
 
-  const handleButtonClick = (orderType, nav, price) => {
-    // Create a new ticket with default values
+  const handleButtonClick = (mealType, nav, price) => {
     const newTicket = {
-      id: Date.now(), // Use timestamp as a unique ID
-      orderType,
-      options: {
-        entrees: [],
-        sides: [],
-        drinks: [],
-        apps: [],
-      },
-      price: price, // Default price can be set here
+      ticket_id: Date.now(),
+      menuitem_price: price,
+      meal_type: mealType,
+      total_menuitem_price: price,
+      options: {},
     };
-
-    addTicket(newTicket); // Call the function to add a new ticket
-    changeMenu(nav); // Change the menu after adding the ticket
+    addNewTicket(newTicket);
+    //addTicket(newTicket);
+    changeMenu(nav);
   };
   const renderButtons = () =>
     selection.map((option) => (
