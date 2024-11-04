@@ -22,7 +22,7 @@ const TicketStack = () => {
                 {Object.values(ticket.options)
                   .flat()
                   .map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index}>{item.replace(/_/g, " ")}</li> // Replace underscores with spaces
                   ))}
               </ul>
             </li>

@@ -5,7 +5,8 @@ import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
 
 const MicroAlaCarte = ({ menuEntrees, menuSides, changeMenu }) => {
-  const { updateInProgress, selectTicket } = useCashierStore();
+  const { updateInProgress, selectTicket, addOptionToTicket } =
+    useCashierStore();
   const filteredEntrees = menuEntrees.filter(
     (entree) => !entree.option.includes("1/2")
   );

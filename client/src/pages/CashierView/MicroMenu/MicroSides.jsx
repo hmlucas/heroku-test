@@ -5,13 +5,18 @@ import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
 
 const MicroSides = ({ menuSides, changeMenu }) => {
-  const { currentTicket } = useCashierStore();
+  const { addOptionToTicket } = useCashierStore();
   const getGridClass = () => {
     const length = menuSides.length;
     if (length >= 30) return "grid-6x6";
     if (length >= 20) return "grid-5x5";
     if (length >= 12) return "grid-4x4";
     return "grid-3x3";
+  };
+
+  const handleSideClick = (side) => {
+    addOptionToTicket(side);
+    changeMenu(MenuEnum.ENTREES);
   };
 
   const renderSides = () => {
@@ -23,7 +28,7 @@ const MicroSides = ({ menuSides, changeMenu }) => {
             <button
               key={index}
               className="side-button"
-              onClick={() => changeMenu(MenuEnum.ENTREES)}
+              onClick={() => handleSideClick(side)}
             >
               {side.option.replace(/_/g, " ")}
             </button>

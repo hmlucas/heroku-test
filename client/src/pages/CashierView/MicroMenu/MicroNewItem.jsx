@@ -31,7 +31,7 @@ const MicroNewItem = ({ changeMenu }) => {
       price: 11.3,
     },
     { label: "Drink", nav: MenuEnum.DRINKS, price: 0 },
-    { label: "Appetizer", nav: MenuEnum.APPETIZERS, price: 0 },
+    { label: "Appetizer", nav: MenuEnum.APPETIZERS, price: 2 },
     { label: "A La Carte", nav: MenuEnum.A_LA_CARTE, price: 0 },
   ];
 
