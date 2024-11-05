@@ -3,6 +3,7 @@ import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
+import React from "react";
 
 const MicroApps = ({ menuApps, changeMenu }) => {
   const { updateInProgress, selectTicket, addOptionToTicket } =

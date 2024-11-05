@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import "./MicroCheckout.css";
 import useCashierStore from "../../../store/cashierStore";
+import React from "react";
 
 const MicroCheckout = ({ changeMenu }) => {
   const { removeAllTickets } = useCashierStore();
