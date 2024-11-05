@@ -16,6 +16,7 @@
    cursor: pointer;
    transition: background-color 0.3s;
 }
+
 .cashier-sales-buttons button.selected {
    background-color: #007bff;
    color: white;
@@ -28,11 +29,13 @@
    color: black;
    transition: background-color 0.3s, color 0.3s;
 }
+
 .cashier-sales-buttons .cashier-employee-name {
    border: 1px solid #000000;
    cursor: default;
    transition: background-color 0.3s;
-   user-select: none; /* idk if we want to make it so you can select the text */
+   user-select: none;
+   /* idk if we want to make it so you can select the text */
 }
 
 .cashier-sales-buttons button {

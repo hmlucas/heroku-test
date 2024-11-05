@@ -13,8 +13,7 @@
 
 .cashier-micro-checkout button {
    background-color: #f0f0f0;
-   /* Same styles as before */
-   color: black;
+   color: #000000;
    border: 1px solid #000000;
    border-radius: 7.5px;
    padding: 7vw;
@@ -25,5 +24,4 @@
 
 .cashier-micro-checkout button:hover {
    background-color: #cccbcb;
-   /* Same hover effect */
 }

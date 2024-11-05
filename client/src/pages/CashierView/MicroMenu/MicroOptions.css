@@ -1,59 +1,38 @@
 .cashier-micro-options {
    display: grid;
    grid-template-columns: 1fr;
-   /* Single column layout */
    grid-template-rows: repeat(2, auto);
-   /* Two rows for two buttons */
-   /* Space between buttons */
    width: 100%;
    box-sizing: border-box;
    align-items: center;
-   /* Center buttons vertically */
 }
 
 .cashier-micro-options button {
    background-color: #f0f0f0;
-   /* Background color */
    color: black;
-   /* Text color */
    border: 1px solid #000000;
-   /* Border color */
    border-radius: 7.5px;
-   /* Rounded corners */
    padding: 10vh, 30vw;
-   
-   /* Padding for button size */
    font-size: 3.5vw;
-   /* Font size */
    cursor: pointer;
-   /* Pointer cursor on hover */
    transition: background-color 0.3s;
-   /* Transition for hover effect */
    width: 100%;
    height: 30vh;
-   /* Set width for button */
-   /* Optional: maximum width for larger screens */
    text-align: center;
    margin: 10px;
-   /* Center text within button */
 }
 
 .cashier-micro-options button:hover {
    background-color: #cccbcb;
-   /* Hover effect */
 }
 
-/*TODO FIX THIS RESIZING */
 @media (max-width: 768px) {
    .cashier-micro-options {
       grid-template-columns: repeat(2, 1fr);
-      /* Two columns for column-major layout */
       grid-template-rows: auto;
-      /* Auto height for rows */
    }
 
    .cashier-micro-options button {
       height: auto;
-      /* Allow height to adjust */
    }
 }

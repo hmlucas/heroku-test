@@ -18,23 +18,20 @@
 }
 
 .cashier-ticket-stack {
-  height: 70%; /* Set a maximum height */
-  overflow-y: auto;  /* Enable vertical scrolling */
-  border: 1px solid #ccc; /* Optional: add a border for better visibility */
-  padding: 10px; /* Optional: add some padding */
-}
-.cashier-ticket-stack {
-    /* Set a maximum height */
+    height: 70%;
     overflow-y: auto;
-    /* Enable vertical scrolling */
     border: 1px solid #ccc;
-    /* Optional: add a border for better visibility */
+    padding: 10px;
+}
 
+.cashier-ticket-stack {
+    overflow-y: auto;
+    border: 1px solid #ccc;
 }
 
 .cashier-sales-menu {
     flex: 3;
-    background-color: green;
+    background-color: #008000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,7 +47,7 @@
 
 .cashier-nav-bar {
     flex: 1;
-    background-color: yellow;
+    background-color: #FFFF00;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,12 +71,15 @@
         width: 100%;
         height: 50%;
     }
+
     .cashier-left-panel {
         order: 1;
     }
+
     .cashier-right-panel {
         order: 0;
     }
+
     .cashier-ticket-stack {
         flex: 7;
         order: 0;
