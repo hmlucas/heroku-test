@@ -40,11 +40,7 @@ const MicroApps = ({ menuApps, changeMenu }) => {
     );
   };
 
-  return (
-    <div className="cashier-micro-apps">
-      {renderApps()} {/* Call the render function here */}
-    </div>
-  );
+  return <div className="cashier-micro-apps">{renderApps()}</div>;
 };
 
 MicroApps.propTypes = {

@@ -15,14 +15,14 @@ const MicroCheckout = ({ changeMenu }) => {
 
   const handleCheckout = () => {
     // TODO: Implement checkout logic (e.g., sending order to the database)
-    removeAllTickets(); // Call to remove all tickets on checkout
-    changeMenu(MenuEnum.NEW_ITEM); // Navigate back to new item menu
+    removeAllTickets();
+    changeMenu(MenuEnum.NEW_ITEM);
   };
 
   const renderButtons = () =>
     selection.map((option) => (
       <button key={option.label} onClick={handleCheckout}>
-        {option.label} {/* Display label directly */}
+        {option.label}
       </button>
     ));
 

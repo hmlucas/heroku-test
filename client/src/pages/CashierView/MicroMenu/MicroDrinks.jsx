@@ -41,11 +41,7 @@ const MicroDrinks = ({ menuDrinks, changeMenu }) => {
     );
   };
 
-  return (
-    <div className="cashier-micro-drinks">
-      {renderDrinks()} {/* Call the render function here */}
-    </div>
-  );
+  return <div className="cashier-micro-drinks">{renderDrinks()}</div>;
 };
 
 MicroDrinks.propTypes = {

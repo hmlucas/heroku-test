@@ -19,7 +19,7 @@ const MicroOptions = ({ changeMenu }) => {
           }
         }}
       >
-        {option.label} {/* Display label directly */}
+        {option.label}
       </button>
     ));
   return (

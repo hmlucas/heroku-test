@@ -39,11 +39,7 @@ const MicroSides = ({ menuSides, changeMenu }) => {
     return <p>No sides available.</p>;
   };
 
-  return (
-    <div className="cashier-micro-sides">
-      {renderSides()} {/* Call the render function here */}
-    </div>
-  );
+  return <div className="cashier-micro-sides">{renderSides()}</div>;
 };
 
 MicroSides.propTypes = {

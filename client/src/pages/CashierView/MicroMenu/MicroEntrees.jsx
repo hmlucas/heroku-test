@@ -42,11 +42,7 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
     );
   };
 
-  return (
-    <div className="cashier-micro-entrees">
-      {renderEntrees()} {/* Call the render function here */}
-    </div>
-  );
+  return <div className="cashier-micro-entrees">{renderEntrees()}</div>;
 };
 
 MicroEntrees.propTypes = {

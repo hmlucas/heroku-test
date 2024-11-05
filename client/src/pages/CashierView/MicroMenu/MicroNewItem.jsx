@@ -44,7 +44,6 @@ const MicroNewItem = ({ changeMenu }) => {
       options: [],
     };
     addNewTicket(newTicket);
-    //addTicket(newTicket);
     changeMenu(nav);
   };
   const renderButtons = () =>

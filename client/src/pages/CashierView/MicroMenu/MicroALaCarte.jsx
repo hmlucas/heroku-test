@@ -1,5 +1,5 @@
 import "../CashierView.css";
-import "./DynamicButtons.css"; // Updated import to match the new naming convention
+import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
