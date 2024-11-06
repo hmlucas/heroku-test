@@ -1,18 +1,104 @@
-.cashier-ticket-stack {
+/* General Reset */
+* {
+   margin: 0;
+   padding: 0;
+}
+
+/* Layout for the Cashier View */
+.cashier-view {
+   display: flex;
+   width: 100vw;
+   height: 100vh;
+   overflow: hidden;
+}
+
+/* Left Panel Styling */
+.cashier-left-panel {
    display: flex;
    flex-direction: column;
-   border: 1px solid #000000;
+   width: 30%;
    height: 100%;
 }
 
-.ticket-list {
-   overflow-y: auto;
-   flex-grow: 1;
+/* Ticket Stack Styling (scrollable area) */
+.cashier-ticket-stack {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   /* Full height of the container */
 }
 
+.ticket-list {
+   flex-grow: 1;
+   /* Allow the ticket list to take the remaining space */
+   overflow-y: auto;
+   /* Scrollable ticket list */
+}
+
+/* Styling for the Total Panel */
 .total-panel {
-   padding: 10px;
-   background-color: #f0f0f0;
-   text-align: center;
-   border-top: 1px solid #000000;
+   position: relative;
+   /* Ensure it stays outside the scroll area */
+   width: 100%;
+   padding: 20px;
+   background-color: #f4f4f4;
+   border-top: 5px solid #000;
+   border-radius: 8px 8px 0 0;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   font-size: 18px;
+   color: #333;
+}
+
+.total-panel p {
+   font-size: 16px;
+   color: #333;
+   margin: 5px 0;
+}
+
+.total-panel h3 {
+   font-size: 18px;
+   font-weight: bold;
+   margin-top: 10px;
+}
+
+/* Ticket Item Styling */
+.ticket-item {
+   display: block;
+   width: 95%;
+   box-sizing: border-box;
+   border-style: solid;
+   margin: 5px 0;
+   margin-right: 2.5px;
+   margin-left: 2.5px;
+   padding: 3px;
+   border: 3px solid black !important;
+   background-color: #e0e0e0;
+   color: #000;
+   text-align: left;
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   border-radius: 8px;
+   transition: transform 0.2s, background-color 0.2s;
+}
+
+.ticket-item h4 {
+   margin-bottom: 5px;
+}
+
+.ticket-item p {
+   margin-top: 0;
+   margin-bottom: 5px;
+}
+
+.ticket-item:hover {
+   background-color: #d3d3d3;
+   transform: scale(1.02);
+}
+
+.ticket-item.highlighted {
+   background-color: #9fc9f7;
+}
+
+.ticket-item.active {
+   background-color: #98fb98;
 }

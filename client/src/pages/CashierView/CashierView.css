@@ -24,11 +24,6 @@
     padding: 10px;
 }
 
-.cashier-ticket-stack {
-    overflow-y: auto;
-    border: 1px solid #ccc;
-}
-
 .cashier-sales-menu {
     flex: 3;
     background-color: #008000;
@@ -47,7 +42,7 @@
 
 .cashier-nav-bar {
     flex: 1;
-    background-color: #FFFF00;
+    background-color: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
