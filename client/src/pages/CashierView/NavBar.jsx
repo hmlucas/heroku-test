@@ -5,7 +5,8 @@ import MenuEnum from "./MenuEnum";
 import useCashierStore from "../../store/cashierStore";
 
 const NavBar = ({ activeMenu, changeMenu }) => {
-  const { currentTicket, orderInProgress, emptyTickets } = useCashierStore();
+  const { currentTicket, orderInProgress, emptyTickets, removeTicket } =
+    useCashierStore(); // Make sure removeTicket is part of the store
   const menuOptions = [
     { label: "New Item", value: MenuEnum.NEW_ITEM },
     { label: "Sides", value: MenuEnum.SIDES },
@@ -21,7 +22,7 @@ const NavBar = ({ activeMenu, changeMenu }) => {
       return emptyTickets || orderInProgress;
     }
     if (optionValue === MenuEnum.NEW_ITEM) {
-      return orderInProgress;
+      return false;
     }
     if (!currentTicket) return true; // disable the others
 
@@ -59,7 +60,8 @@ const NavBar = ({ activeMenu, changeMenu }) => {
 
     return true;
   };
-  // insanity but just render buttons for active button
+
+  // Render buttons for active button
   const renderButtons = () =>
     menuOptions.map((option) => {
       const isDisabled = disableState(option.value);
@@ -67,7 +69,16 @@ const NavBar = ({ activeMenu, changeMenu }) => {
         <button
           key={option.value} // Ensure each button has a unique key
           className={activeMenu === option.value ? "selected" : ""}
-          onClick={() => changeMenu(option.value)}
+          onClick={() => {
+            if (
+              option.value === MenuEnum.NEW_ITEM &&
+              currentTicket &&
+              orderInProgress
+            ) {
+              removeTicket();
+            }
+            changeMenu(option.value);
+          }}
           disabled={isDisabled}
         >
           {option.label}
@@ -78,7 +89,7 @@ const NavBar = ({ activeMenu, changeMenu }) => {
   return <div className="cashier-nav-bar">{renderButtons()}</div>;
 };
 
-//required functions
+// required functions
 NavBar.propTypes = {
   activeMenu: PropTypes.number.isRequired,
   changeMenu: PropTypes.func.isRequired,

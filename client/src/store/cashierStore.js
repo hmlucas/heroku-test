@@ -92,6 +92,7 @@ const useCashierStore = create((set) => ({
         emptyTickets: emptyTickets,
       };
     }),
+
   selectTicket: (ticket) =>
     set(() => ({
       currentTicket: ticket,

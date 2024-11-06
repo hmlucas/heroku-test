@@ -1,10 +1,8 @@
-/* General Reset */
 * {
    margin: 0;
    padding: 0;
 }
 
-/* Layout for the Cashier View */
 .cashier-view {
    display: flex;
    width: 100vw;
@@ -12,7 +10,6 @@
    overflow: hidden;
 }
 
-/* Left Panel Styling */
 .cashier-left-panel {
    display: flex;
    flex-direction: column;
@@ -20,25 +17,19 @@
    height: 100%;
 }
 
-/* Ticket Stack Styling (scrollable area) */
 .cashier-ticket-stack {
    display: flex;
    flex-direction: column;
    height: 100%;
-   /* Full height of the container */
 }
 
 .ticket-list {
    flex-grow: 1;
-   /* Allow the ticket list to take the remaining space */
    overflow-y: auto;
-   /* Scrollable ticket list */
 }
 
-/* Styling for the Total Panel */
 .total-panel {
    position: relative;
-   /* Ensure it stays outside the scroll area */
    width: 100%;
    padding: 20px;
    background-color: #f4f4f4;
@@ -61,7 +52,6 @@
    margin-top: 10px;
 }
 
-/* Ticket Item Styling */
 .ticket-item {
    display: block;
    width: 95%;
@@ -90,15 +80,26 @@
    margin-bottom: 5px;
 }
 
-.ticket-item:hover {
-   background-color: #d3d3d3;
-   transform: scale(1.02);
-}
-
 .ticket-item.highlighted {
    background-color: #9fc9f7;
 }
 
 .ticket-item.active {
    background-color: #98fb98;
+}
+
+.ticket-item:disabled {
+   background-color: #a0a0a0;
+   cursor: not-allowed;
+   box-shadow: none;
+}
+
+@media (max-width: 768px) {
+   .cashier-left-panel {
+      width: 100%;
+   }
+
+   .ticket-item {
+      width: 100%;
+   }
 }

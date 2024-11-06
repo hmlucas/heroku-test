@@ -4,14 +4,15 @@ import "./TicketStack.css";
 import { useState, useEffect } from "react";
 
 const TicketStack = () => {
-  const { tickets, selectTicket, currentTicket } = useCashierStore();
+  const { tickets, selectTicket, currentTicket, orderInProgress } =
+    useCashierStore();
   const [selectedTicketId, setSelectedTicketId] = useState(null);
 
   const total = tickets
     .reduce((acc, ticket) => acc + ticket.total_menuitem_price, 0)
     .toFixed(2);
 
-  const tax = (total * 0.0825).toFixed(2); // Calculate the tax (8.25%)
+  const tax = (total * 0.0825).toFixed(2);
 
   const handleTicketSelect = (ticket) => {
     setSelectedTicketId(ticket.ticket_id);
@@ -19,7 +20,6 @@ const TicketStack = () => {
   };
 
   useEffect(() => {
-    // Set selectedTicketId based on currentTicket
     if (currentTicket) {
       setSelectedTicketId(currentTicket.ticket_id);
     }
@@ -39,6 +39,9 @@ const TicketStack = () => {
             onClick={() => handleTicketSelect(ticket)}
             role="button"
             tabIndex="0"
+            disabled={
+              orderInProgress && ticket.ticket_id !== currentTicket?.ticket_id
+            }
           >
             <h4>
               {ticket.meal_type} ${ticket.total_menuitem_price.toFixed(2)}
