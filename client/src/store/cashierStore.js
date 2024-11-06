@@ -5,7 +5,6 @@ const useCashierStore = create((set) => ({
   tickets: [],
   currentTicket: null,
   total: 0,
-  receipt: null, // Stores the receipt information
   currentMicroMenu: 0,
   emptyTickets: true,
   entreeCount: 0,
@@ -100,15 +99,14 @@ const useCashierStore = create((set) => ({
     set(() => ({
       orderInProgress: inProgress,
     })),
-  // New setter for entreeCount
+
   setEntreeCount: (count) =>
     set(() => ({
       entreeCount: count,
     })),
-  // New decrement function for entreeCount
   decrementEntreeCount: () =>
     set((state) => ({
-      entreeCount: Math.max(0, state.entreeCount - 1), // Ensure it doesn't go below 0
+      entreeCount: Math.max(0, state.entreeCount - 1),
     })),
 }));
 

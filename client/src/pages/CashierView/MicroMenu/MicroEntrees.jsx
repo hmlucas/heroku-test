@@ -32,7 +32,6 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
   };
 
   const renderEntrees = () => {
-    //TODO update ticket track number of clicks allowed
     return menuEntrees?.length > 0 ? (
       <div className={`entrees-buttons ${getGridClass()}`}>
         {menuEntrees.map((entree, index) => (
