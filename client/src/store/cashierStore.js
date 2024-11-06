@@ -51,6 +51,39 @@ const useCashierStore = create((set) => ({
         total: state.total + option.additional_charge,
       };
     }),
+  replaceOption: (index, newOption) =>
+    set((state) => {
+      if (!state.currentTicket) {
+        console.warn("No current ticket selected.");
+        return state;
+      }
+
+      const currentOption = state.currentTicket.options[index];
+      const optionPriceDifference =
+        newOption.additional_charge - (currentOption?.additional_charge || 0);
+
+      const updatedOptions = [...state.currentTicket.options];
+      updatedOptions[index] = newOption.option;
+
+      const updatedTicket = {
+        ...state.currentTicket,
+        total_menuitem_price:
+          state.currentTicket.total_menuitem_price + optionPriceDifference,
+        options: updatedOptions,
+      };
+
+      const updatedTickets = state.tickets.map((ticket) =>
+        ticket.ticket_id === state.currentTicket.ticket_id
+          ? updatedTicket
+          : ticket
+      );
+
+      return {
+        currentTicket: updatedTicket,
+        tickets: updatedTickets,
+        total: state.total + optionPriceDifference,
+      };
+    }),
   removeTicket: () =>
     set((state) => {
       if (state.currentTicket == null) {

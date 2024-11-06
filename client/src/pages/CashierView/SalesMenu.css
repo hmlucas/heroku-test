@@ -5,6 +5,8 @@
    width: 100%;
    height: 100%;
    font-size: 1.75vw;
+   border-radius: 8px;
+   
 }
 
 .cashier-sales-buttons>div {
