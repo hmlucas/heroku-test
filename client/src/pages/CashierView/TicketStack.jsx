@@ -2,8 +2,9 @@ import "./CashierView.css";
 import useCashierStore from "../../store/cashierStore";
 import "./TicketStack.css";
 import { useState, useEffect } from "react";
+import MenuEnum from "./MenuEnum";
 
-const TicketStack = () => {
+const TicketStack = ({ changeMenu }) => {
   const { tickets, selectTicket, currentTicket, orderInProgress } =
     useCashierStore();
   const [selectedTicketId, setSelectedTicketId] = useState(null);
@@ -17,6 +18,24 @@ const TicketStack = () => {
   const handleTicketSelect = (ticket) => {
     setSelectedTicketId(ticket.ticket_id);
     selectTicket(ticket);
+    switch (ticket.meal_type) {
+      case "Bowl":
+      case "Plate":
+      case "Bigger Plate":
+        changeMenu(MenuEnum.SIDES);
+        break;
+      case "Drink":
+        changeMenu(MenuEnum.DRINKS);
+        break;
+      case "Appetizer":
+        changeMenu(MenuEnum.APPETIZERS);
+        break;
+      case "A La Carte":
+        changeMenu(MenuEnum.A_LA_CARTE);
+        break;
+      default:
+        changeMenu(MenuEnum.NEW_ITEM);
+    }
   };
 
   useEffect(() => {

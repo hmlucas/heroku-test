@@ -76,7 +76,7 @@ const CashierView = () => {
   return (
     <div className="cashier-view">
       <div className="cashier-left-panel">
-        <TicketStack />
+        <TicketStack changeMenu={changeMenu} />
         <SalesMenu
           activeMenu={activeMenu}
           changeMenu={changeMenu}

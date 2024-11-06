@@ -33,7 +33,6 @@
 .cashier-sales-buttons .cashier-employee-name {
    border: 1px solid #000000;
    cursor: default;
-   transition: background-color 0.3s;
    user-select: none;
    /* idk if we want to make it so you can select the text */
 }
