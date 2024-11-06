@@ -8,6 +8,7 @@ const useCashierStore = create((set) => ({
   currentMicroMenu: 0,
   emptyTickets: true,
   entreeCount: 0,
+  maxEntreeCount: 0,
   orderInProgress: false,
   setCurrentMicroMenu: (menu) =>
     set(() => ({
@@ -84,24 +85,80 @@ const useCashierStore = create((set) => ({
         total: state.total + optionPriceDifference,
       };
     }),
-  removeTicket: () =>
+  replaceEntree: (index, entree) =>
     set((state) => {
-      if (state.currentTicket == null) {
-        console.warn("No ticket selected to remove.");
+      if (!state.currentTicket) {
+        console.warn("No current ticket selected.");
         return state;
       }
+      const currentOption = state.currentTicket.options[index];
+      const optionPriceDifference =
+        entree.additional_charge - (currentOption?.additional_charge || 0);
 
-      const updatedTickets = state.tickets.filter(
-        (ticket) => ticket.ticket_id !== state.currentTicket.ticket_id
+      const updatedOptions = [...state.currentTicket.options];
+
+      //Bowl
+      if (state.maxEntreeCount === 1) {
+        if (updatedOptions[1]) {
+          updatedOptions[1] = entree.option;
+        } else {
+          updatedOptions.push(entree.option);
+        }
+      }
+
+      if (state.maxEntreeCount === 2) {
+        if (state.entreeCount === 1) {
+          if (updatedOptions[2]) {
+            updatedOptions[2] = entree.option;
+          } else {
+            updatedOptions.push(entree.option);
+          }
+        } else if (state.entreeCount === 2) {
+          if (updatedOptions[1]) {
+            updatedOptions[1] = entree.option;
+          } else {
+            updatedOptions.push(entree.option);
+          }
+        }
+      }
+      if (state.maxEntreeCount === 3) {
+        if (state.entreeCount === 1) {
+          if (updatedOptions[3]) {
+            updatedOptions[3] = entree.option;
+          } else {
+            updatedOptions.push(entree.option);
+          }
+        } else if (state.entreeCount === 2) {
+          if (updatedOptions[2]) {
+            updatedOptions[2] = entree.option;
+          } else {
+            updatedOptions.push(entree.option);
+          }
+        } else if (state.entreeCount === 3) {
+          if (updatedOptions[1]) {
+            updatedOptions[1] = entree.option;
+          } else {
+            updatedOptions.push(entree.option);
+          }
+        }
+      }
+      console.log(updatedOptions);
+      const updatedTicket = {
+        ...state.currentTicket,
+        total_menuitem_price:
+          state.currentTicket.total_menuitem_price + optionPriceDifference,
+        options: updatedOptions,
+      };
+      const updatedTickets = state.tickets.map((ticket) =>
+        ticket.ticket_id === state.currentTicket.ticket_id
+          ? updatedTicket
+          : ticket
       );
 
-      const emptyTickets = updatedTickets.length === 0;
-
       return {
+        currentTicket: updatedTicket,
         tickets: updatedTickets,
-        currentTicket: null,
-        orderInProgress: false,
-        emptyTickets: emptyTickets,
+        total: state.total + optionPriceDifference,
       };
     }),
   removeAllTickets: () =>
@@ -111,7 +168,6 @@ const useCashierStore = create((set) => ({
         return state;
       }
 
-      // Clear all tickets
       const updatedTickets = [];
 
       const emptyTickets = true;
@@ -136,6 +192,10 @@ const useCashierStore = create((set) => ({
   setEntreeCount: (count) =>
     set(() => ({
       entreeCount: count,
+    })),
+  setMaxEntreeCount: (count) =>
+    set(() => ({
+      maxEntreeCount: count,
     })),
   decrementEntreeCount: () =>
     set((state) => ({

@@ -6,7 +6,7 @@ import useCashierStore from "../../../store/cashierStore";
 import React from "react";
 
 const MicroNewItem = ({ changeMenu }) => {
-  const { addNewTicket, setEntreeCount } = useCashierStore();
+  const { addNewTicket, setMaxEntreeCount } = useCashierStore();
 
   const selection = [
     //TODO CHANGE manual pricing
@@ -45,7 +45,7 @@ const MicroNewItem = ({ changeMenu }) => {
       options: [],
     };
     if (selectCount > 0) {
-      setEntreeCount(selectCount);
+      setMaxEntreeCount(selectCount);
     }
     addNewTicket(newTicket);
     changeMenu(nav);

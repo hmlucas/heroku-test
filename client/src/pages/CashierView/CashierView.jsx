@@ -10,7 +10,8 @@ import menuOptionsStore from "../../store/menuOptionsStore";
 import useCashierStore from "../../store/cashierStore";
 
 const CashierView = () => {
-  const { setCurrentMicroMenu, currentTicket } = useCashierStore();
+  const { setCurrentMicroMenu, currentTicket, maxEntreeCount, setEntreeCount } =
+    useCashierStore();
   const { selectedEmployeeID, selectedEmployee, fetchEmployeeById } =
     useEmployeeStore();
   const {
@@ -31,6 +32,9 @@ const CashierView = () => {
   const [tickets, setTickets] = useState([]);
 
   const changeMenu = (index) => {
+    if (index === MenuEnum.ENTREES) {
+      setEntreeCount(maxEntreeCount);
+    }
     setCurrentMicroMenu(index);
     setActiveMenu(index);
   };

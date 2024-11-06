@@ -5,8 +5,13 @@ import { useState, useEffect } from "react";
 import MenuEnum from "./MenuEnum";
 
 const TicketStack = ({ changeMenu }) => {
-  const { tickets, selectTicket, currentTicket, orderInProgress } =
-    useCashierStore();
+  const {
+    tickets,
+    selectTicket,
+    currentTicket,
+    orderInProgress,
+    setMaxEntreeCount,
+  } = useCashierStore();
   const [selectedTicketId, setSelectedTicketId] = useState(null);
 
   const total = tickets
@@ -18,23 +23,26 @@ const TicketStack = ({ changeMenu }) => {
   const handleTicketSelect = (ticket) => {
     setSelectedTicketId(ticket.ticket_id);
     selectTicket(ticket);
-    switch (ticket.meal_type) {
-      case "Bowl":
-      case "Plate":
-      case "Bigger Plate":
-        changeMenu(MenuEnum.SIDES);
-        break;
-      case "Drink":
-        changeMenu(MenuEnum.DRINKS);
-        break;
-      case "Appetizer":
-        changeMenu(MenuEnum.APPETIZERS);
-        break;
-      case "A La Carte":
-        changeMenu(MenuEnum.A_LA_CARTE);
-        break;
-      default:
-        changeMenu(MenuEnum.NEW_ITEM);
+
+    //clean up the if statement for mapped
+    const mealMapping = {
+      Bowl: { maxEntreeCount: 1, menu: MenuEnum.SIDES },
+      Plate: { maxEntreeCount: 2, menu: MenuEnum.SIDES },
+      "Bigger Plate": { maxEntreeCount: 3, menu: MenuEnum.SIDES },
+      Drink: { menu: MenuEnum.DRINKS },
+      Appetizer: { menu: MenuEnum.APPETIZERS },
+      "A La Carte": { menu: MenuEnum.A_LA_CARTE },
+    };
+
+    const meal = mealMapping[ticket.meal_type];
+
+    if (meal) {
+      if (meal.maxEntreeCount !== undefined)
+        // only for the meals with entrees
+        setMaxEntreeCount(meal.maxEntreeCount);
+      changeMenu(meal.menu);
+    } else {
+      changeMenu(MenuEnum.NEW_ITEM);
     }
   };
 

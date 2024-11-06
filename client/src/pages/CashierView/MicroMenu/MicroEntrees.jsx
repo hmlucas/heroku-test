@@ -12,6 +12,9 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
     addOptionToTicket,
     entreeCount,
     decrementEntreeCount,
+    tickets,
+    replaceOption,
+    replaceEntree,
   } = useCashierStore();
   const getGridClass = () => {
     const length = menuEntrees.length;
@@ -22,7 +25,9 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
   };
 
   const handleEntreeClick = (entree) => {
-    addOptionToTicket(entree);
+    console.log(entreeCount);
+    //addOptionToTicket(entree);
+    replaceEntree(entreeCount, entree);
     if (entreeCount <= 1) {
       changeMenu(MenuEnum.NEW_ITEM);
       updateInProgress(false);
