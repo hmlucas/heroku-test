@@ -62,9 +62,7 @@ const MicroMenu = ({
 
   return (
     <div className="cashier-micro-menu">
-      <div className="menu-display">
-        {renderMenu()} {/* Render the selected menu */}
-      </div>
+      <div className="menu-display">{renderMenu()}</div>
     </div>
   );
 };

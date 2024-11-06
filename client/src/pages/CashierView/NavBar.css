@@ -1,4 +1,3 @@
-/* TODOclean up resizing nav bar no! */
 .cashier-nav-bar {
    display: grid;
    grid-template-columns: repeat(7, 1fr);
@@ -26,21 +25,18 @@
 
 .cashier-nav-bar button:not(.selected):enabled:hover {
    background-color: #cccbcb;
-   transition: background-color 0.3s, color 0.3s;
 }
 
 .cashier-nav-bar button.selected:hover {
    background-color: #0056b3;
-   transition: background-color 0.3s, color 0.3s;
 }
 
 .cashier-nav-bar button:disabled {
-   background-color: #353535;
+   background-color: #353535 !important;
    color: #a0a0a0;
    cursor: not-allowed;
    opacity: 0.6;
    user-select: none;
-   transition: background-color 0.3s, color 0.3s;
 }
 
 .cashier-nav-bar button.selected {
