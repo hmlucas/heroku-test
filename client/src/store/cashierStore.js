@@ -1,4 +1,3 @@
-// yes this file name is weird.js
 import { create } from "zustand";
 import axiosInstance from "../api/axiosInstance";
 
@@ -9,6 +8,7 @@ const useCashierStore = create((set) => ({
   receipt: null, // Stores the receipt information
   currentMicroMenu: 0,
   emptyTickets: true,
+  entreeCount: 0,
   orderInProgress: false,
   setCurrentMicroMenu: (menu) =>
     set(() => ({
@@ -52,7 +52,6 @@ const useCashierStore = create((set) => ({
         total: state.total + option.additional_charge,
       };
     }),
-
   removeTicket: () =>
     set((state) => {
       if (state.currentTicket == null) {
@@ -100,6 +99,16 @@ const useCashierStore = create((set) => ({
   updateInProgress: (inProgress) =>
     set(() => ({
       orderInProgress: inProgress,
+    })),
+  // New setter for entreeCount
+  setEntreeCount: (count) =>
+    set(() => ({
+      entreeCount: count,
+    })),
+  // New decrement function for entreeCount
+  decrementEntreeCount: () =>
+    set((state) => ({
+      entreeCount: Math.max(0, state.entreeCount - 1), // Ensure it doesn't go below 0
     })),
 }));
 

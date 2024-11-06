@@ -6,8 +6,13 @@ import useCashierStore from "../../../store/cashierStore";
 import React from "react";
 
 const MicroEntrees = ({ menuEntrees, changeMenu }) => {
-  const { updateInProgress, selectTicket, addOptionToTicket } =
-    useCashierStore();
+  const {
+    updateInProgress,
+    selectTicket,
+    addOptionToTicket,
+    entreeCount,
+    decrementEntreeCount,
+  } = useCashierStore();
   const getGridClass = () => {
     const length = menuEntrees.length;
     if (length >= 30) return "grid-6x6";
@@ -18,9 +23,12 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
 
   const handleEntreeClick = (entree) => {
     addOptionToTicket(entree);
-    changeMenu(MenuEnum.NEW_ITEM);
-    updateInProgress(false);
-    selectTicket(null);
+    if (entreeCount <= 1) {
+      changeMenu(MenuEnum.NEW_ITEM);
+      updateInProgress(false);
+      selectTicket(null);
+    }
+    decrementEntreeCount();
   };
 
   const renderEntrees = () => {
