@@ -14,8 +14,8 @@
 .cashier-micro-new-item button {
    background-color: #f0f0f0;
    color: #000000;
-   border: 1px solid #000000;
-   border-radius: 7.5px;
+   border: 0.25vh solid #000000;
+   border-radius: 4%;
    padding: 4.5vw;
    font-size: 2vw;
    cursor: pointer;

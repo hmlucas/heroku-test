@@ -1,17 +1,3 @@
-.cashier-view {
-   display: flex;
-   width: 100vw;
-   height: 100vh;
-   overflow: hidden;
-}
-
-.cashier-left-panel {
-   display: flex;
-   flex-direction: column;
-   width: 30%;
-   height: 100%;
-}
-
 .cashier-ticket-stack {
    display: flex;
    flex-direction: column;
@@ -21,12 +7,13 @@
 .ticket-list {
    flex-grow: 1;
    overflow-y: auto;
+   flex-direction: column-reverse;
 }
 
 .total-panel {
    position: relative;
    width: 100%;
-   padding: 20px;
+   padding: 1%;
    background-color: #f4f4f4;
    border-top: 5px solid #000;
    border-radius: 8px 8px 0 0;
@@ -35,9 +22,9 @@
 }
 
 .total-panel p {
-   font-size: 16px;
+   font-size: 1em;
    color: #333;
-   margin: 5px 0;
+   margin: 0.1% 0;
 }
 
 .total-panel h3 {
@@ -63,7 +50,6 @@
    border-radius: 8px;
    transition: transform 0.2s, background-color 0.2s;
    opacity: 0;
-   /* Make it initially invisible */
 }
 
 .ticket-item h4 {

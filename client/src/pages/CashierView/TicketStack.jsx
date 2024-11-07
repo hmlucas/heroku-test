@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./CashierView.css";
 import useCashierStore from "../../store/cashierStore";
 import "./TicketStack.css";
@@ -21,13 +21,22 @@ const TicketStack = ({ changeMenu }) => {
 
   const tax = (total * 0.0825).toFixed(2);
 
-  // Track new tickets being added
+  // ref for scroll
+  const ticketListRef = useRef(null);
+
   useEffect(() => {
     const lastTicketId = tickets[tickets.length - 1]?.ticket_id;
     if (lastTicketId && !newTicketIds.includes(lastTicketId)) {
       setNewTicketIds((prevIds) => [...prevIds, lastTicketId]);
     }
   }, [tickets, newTicketIds]);
+
+  // scroll to the bottom when tickets change or a new ticket is added
+  useEffect(() => {
+    if (ticketListRef.current) {
+      ticketListRef.current.scrollTop = ticketListRef.current.scrollHeight;
+    }
+  }, [tickets]);
 
   const handleTicketSelect = (ticket) => {
     setSelectedTicketId(ticket.ticket_id);
@@ -61,7 +70,7 @@ const TicketStack = ({ changeMenu }) => {
 
   return (
     <div className="cashier-ticket-stack">
-      <div className="ticket-list">
+      <div className="ticket-list" ref={ticketListRef}>
         {tickets.map((ticket) => (
           <button
             key={ticket.ticket_id}

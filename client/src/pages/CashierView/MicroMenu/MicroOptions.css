@@ -10,8 +10,8 @@
 .cashier-micro-options button {
    background-color: #f0f0f0;
    color: black;
-   border: 1px solid #000000;
-   border-radius: 7.5px;
+   border: 0.25vh solid #000000;
+   border-radius: 4%;
    padding: 10vh, 30vw;
    font-size: 3.5vw;
    cursor: pointer;
@@ -21,11 +21,8 @@
    text-align: center;
    margin: 10px;
    opacity: 0;
-      /* Start with buttons hidden */
-      transform: translateY(50px);
-      /* Start below the visible area */
-      animation: slide-up 0.1s ease-out forwards;
-      /* Add slide animation */
+   transform: translateY(50px);
+   animation: slide-up 0.1s ease-out forwards;
 }
 
 .cashier-micro-options button:hover {

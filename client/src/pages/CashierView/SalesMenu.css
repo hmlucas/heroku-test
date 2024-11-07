@@ -65,6 +65,12 @@
    object-fit: contain;
 }
 
+.cashier-options-button button.selected .cashier-options-image {
+   width: 5.5vw;
+   height: auto;
+   object-fit: contain;
+   filter: brightness(0) invert(1);
+}
 .cashier-sales-buttons button:disabled {
    background-color: #353535;
    color: #a0a0a0;
