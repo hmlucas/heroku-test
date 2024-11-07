@@ -12,17 +12,22 @@ import RippleEffect from "./components/RippleEffect"; // Import the RippleEffect
 function App() {
   return (
     <Router>
-      <RippleEffect>
-        <Routes>
-          <Route path="/" element={<HomeView />} />
-          <Route path="/manager-view/*" element={<ManagerView />} />
-          <Route path="/cashier-login/*" element={<CashierLogin />} />
-          <Route path="/cashier-view/*" element={<CashierView />} />
-          <Route path="/customer-view" element={<CustomerView />} />
-          <Route path="/menu-view" element={<MenuView />} />
-          <Route path="/kitchen-view" element={<KitchenView />} />
-        </Routes>
-      </RippleEffect>
+      <Routes>
+        <Route path="/" element={<HomeView />} />
+        <Route path="/manager-view/*" element={<ManagerView />} />
+        <Route path="/cashier-login/*" element={<CashierLogin />} />
+        <Route
+          path="/cashier-view/*"
+          element={
+            <RippleEffect>
+              <CashierView />
+            </RippleEffect>
+          }
+        />
+        <Route path="/customer-view" element={<CustomerView />} />
+        <Route path="/menu-view" element={<MenuView />} />
+        <Route path="/kitchen-view" element={<KitchenView />} />
+      </Routes>
     </Router>
   );
 }
