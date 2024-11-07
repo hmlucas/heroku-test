@@ -8,7 +8,6 @@ import useCashierStore from "../../store/cashierStore";
 
 const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   //import states
-  //TODO not sure if this needs to change where it imports
   const { emptyTickets, orderInProgress, currentTicket, removeTicket } =
     useCashierStore();
 
@@ -17,20 +16,17 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   const [hasSelectedOrder, setHasSelectedOrder] = useState(false);
 
   useEffect(() => {
-    //TODO placeholder states - should update based on current order state
     /*
     Sales Menu States: 
       - Incomplete order (edit or new one) - no checkout button
       - No tickets - no delete no checkout
       - No selected order (recent deletion) - no delete
     */
-    console.log(emptyTickets);
     setHasTickets(!emptyTickets);
     setHasSelectedOrder(currentTicket !== null);
     setHasIncompleteOrder(orderInProgress);
   }, [emptyTickets, currentTicket, orderInProgress]);
 
-  // TODO Add click functionality
   const optionsAction = () => {
     changeMenu(MenuEnum.OPTIONS);
   };
@@ -70,7 +66,7 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
               {selectedEmployee.first_name} {selectedEmployee.last_name}
             </p>
           ) : (
-            <p>Loading</p>
+            <p>NULL</p>
           )}
         </div>
         <div className="cashier-options-button">

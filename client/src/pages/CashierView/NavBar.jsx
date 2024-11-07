@@ -80,6 +80,7 @@ const NavBar = ({ activeMenu, changeMenu }) => {
             ticket_id: Date.now(),
             menuitem_price: option.price,
             meal_type: option.label,
+            premium_multiplier: 1,
             total_menuitem_price: option.price,
             options: [],
           };

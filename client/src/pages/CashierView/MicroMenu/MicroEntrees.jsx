@@ -25,7 +25,6 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
   };
 
   const handleEntreeClick = (entree) => {
-    console.log(entreeCount);
     //addOptionToTicket(entree);
     replaceEntree(entree);
     if (entreeCount <= 1) {

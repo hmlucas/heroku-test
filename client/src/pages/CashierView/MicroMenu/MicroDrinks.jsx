@@ -25,7 +25,6 @@ const MicroDrinks = ({ menuDrinks, changeMenu }) => {
     if (currentTicket.options.length > 0) {
       replaceOption(0, drink);
     } else {
-      console.log("add drink");
       addOptionToTicket(drink);
     }
     changeMenu(MenuEnum.NEW_ITEM);

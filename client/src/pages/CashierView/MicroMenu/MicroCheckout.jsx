@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import "./MicroCheckout.css";
 import useCashierStore from "../../../store/cashierStore";
+import useEmployeeStore from "../../../store/useEmployeeStore";
 import React from "react";
 
 const MicroCheckout = ({ changeMenu }) => {
   const { removeAllTickets } = useCashierStore();
+  const { selectedEmployeeID } = useEmployeeStore();
   const selection = [
     { label: "Cash" },
     { label: "Credit" },

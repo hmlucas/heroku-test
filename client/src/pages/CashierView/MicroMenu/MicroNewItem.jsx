@@ -41,6 +41,7 @@ const MicroNewItem = ({ changeMenu }) => {
       ticket_id: Date.now(),
       menuitem_price: price,
       meal_type: mealType,
+      premium_multiplier: 1,
       total_menuitem_price: price,
       options: [],
     };
