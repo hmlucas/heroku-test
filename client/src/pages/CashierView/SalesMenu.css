@@ -20,9 +20,8 @@
 }
 
 .cashier-sales-buttons button.selected {
-   background-color: #007bff;
+   background-color: var(--button-selection-color);
    color: white;
-   border: 1px solid #007bff;
    transition: background-color 0.3s, color 0.3s;
 }
 
@@ -50,13 +49,13 @@
 }
 
 .cashier-sales-buttons button:not(.selected):enabled:hover {
-   background-color: #cccbcb;
-   transition: background-color 0.3s, color 0.3s;
+   filter: brightness(0.8);
+   transition: filter 0.3s, color 0.3s;
 }
 
 .cashier-sales-buttons button.selected:enabled:hover {
-   background-color: #0056b3;
-   transition: background-color 0.3s, color 0.3s;
+   filter: brightness(0.8);
+   transition: filter 0.3s, color 0.3s;
 }
 
 .cashier-options-button .cashier-options-image {

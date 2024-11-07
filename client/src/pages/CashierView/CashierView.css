@@ -1,6 +1,6 @@
 /*Custom Colors*/
 :root {
-    --button-selection-color: #ce123c;
+    --button-selection-color: #007bff; /* 007bff ce123c*/
     --button-navbar-color: #f0f0f0;
     --button-disabled-color: #353535;
     --button-micro-menu-color: #f0f0f0;
