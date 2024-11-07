@@ -31,12 +31,12 @@ const TicketStack = ({ changeMenu }) => {
     }
   }, [tickets, newTicketIds]);
 
-  // scroll to the bottom when tickets change or a new ticket is added
+  // scroll to the bottom when ticket is added
   useEffect(() => {
-    if (ticketListRef.current) {
+    if (ticketListRef.current && orderInProgress) {
       ticketListRef.current.scrollTop = ticketListRef.current.scrollHeight;
     }
-  }, [tickets]);
+  }, [tickets, orderInProgress]);
 
   const handleTicketSelect = (ticket) => {
     setSelectedTicketId(ticket.ticket_id);

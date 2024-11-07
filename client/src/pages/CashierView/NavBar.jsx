@@ -51,7 +51,8 @@ const NavBar = ({ activeMenu, changeMenu }) => {
     if (
       mealTypeDisabledOptions[currentTicket.meal_type]?.includes(optionValue)
     ) {
-      return false;
+      if (optionValue !== MenuEnum.ENTREES || currentTicket.options.length > 0)
+        return false;
     }
 
     // disabled button otherwise if it doesnt match
