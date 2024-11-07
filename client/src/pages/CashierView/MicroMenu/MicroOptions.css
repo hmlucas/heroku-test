@@ -20,11 +20,40 @@
    height: 30vh;
    text-align: center;
    margin: 10px;
+   opacity: 0;
+      /* Start with buttons hidden */
+      transform: translateY(50px);
+      /* Start below the visible area */
+      animation: slide-up 0.1s ease-out forwards;
+      /* Add slide animation */
 }
 
 .cashier-micro-options button:hover {
    background-color: #cccbcb;
 }
+
+@media (max-width: 768px) {
+   .cashier-micro-options {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+   }
+
+   .cashier-micro-options button {
+      height: auto;
+   }
+}
+
+@keyframes slide-up {
+   0% {
+      opacity: 0;
+      transform: translateY(50px); /* Start below */
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0); /* End at normal position */
+   }
+}
+
 
 @media (max-width: 768px) {
    .cashier-micro-options {

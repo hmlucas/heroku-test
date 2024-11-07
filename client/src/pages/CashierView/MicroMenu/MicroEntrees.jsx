@@ -27,7 +27,7 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
   const handleEntreeClick = (entree) => {
     console.log(entreeCount);
     //addOptionToTicket(entree);
-    replaceEntree(entreeCount, entree);
+    replaceEntree(entree);
     if (entreeCount <= 1) {
       changeMenu(MenuEnum.NEW_ITEM);
       updateInProgress(false);

@@ -62,6 +62,8 @@
    cursor: pointer;
    border-radius: 8px;
    transition: transform 0.2s, background-color 0.2s;
+   opacity: 0;
+   /* Make it initially invisible */
 }
 
 .ticket-item h4 {
@@ -83,6 +85,23 @@
    box-shadow: none;
 }
 
+/* ticket sliding */
+@keyframes slide-in {
+   0% {
+      transform: translateX(-100%);
+      opacity: 0;
+   }
+
+   100% {
+      transform: translateX(0);
+      opacity: 1;
+   }
+}
+
+.ticket-item.slide-in {
+   animation: slide-in 0.2s ease-out forwards;
+}
+
 @media (max-width: 768px) {
    .cashier-left-panel {
       width: 100%;
@@ -91,4 +110,26 @@
    .ticket-item {
       width: 100%;
    }
+}
+
+@keyframes slide-in-option {
+   0% {
+      transform: translateX(-100%);
+      opacity: 0;
+   }
+
+   100% {
+      transform: translateX(0);
+      opacity: 1;
+   }
+}
+
+/* indiviual options */
+.ticket-item .ticket-options .option-item {
+   animation: slide-in-option 0.1s ease-out forwards;
+   opacity: 0;
+}
+
+.ticket-item .ticket-options .option-item.slide-in-option {
+   animation: slide-in-option 0.1s ease-out forwards;
 }

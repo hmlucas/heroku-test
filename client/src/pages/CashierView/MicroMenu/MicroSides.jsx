@@ -6,7 +6,7 @@ import useCashierStore from "../../../store/cashierStore";
 import React from "react";
 
 const MicroSides = ({ menuSides, changeMenu }) => {
-  const { tickets, addOptionToTicket, replaceOption } = useCashierStore();
+  const { currentTicket, addOptionToTicket, replaceOption } = useCashierStore();
   const getGridClass = () => {
     const length = menuSides.length;
     if (length >= 30) return "grid-6x6";
@@ -16,7 +16,7 @@ const MicroSides = ({ menuSides, changeMenu }) => {
   };
 
   const handleSideClick = (side) => {
-    if (tickets.length > 0) {
+    if (currentTicket.options.length > 0) {
       replaceOption(0, side);
     } else {
       addOptionToTicket(side);

@@ -32,20 +32,19 @@ const useCashierStore = create((set) => ({
         console.warn("No current ticket selected.");
         return state;
       }
-
+      console.log("Option" + option);
       const updatedTicket = {
         ...state.currentTicket,
         total_menuitem_price:
           state.currentTicket.total_menuitem_price + option.additional_charge,
-        options: [...state.currentTicket.options, option.option],
+        options: [...state.currentTicket.options, option],
       };
-
+      console.log(state.tickets);
       const updatedTickets = state.tickets.map((ticket) =>
         ticket.ticket_id === state.currentTicket.ticket_id
           ? updatedTicket
           : ticket
       );
-
       return {
         currentTicket: updatedTicket,
         tickets: updatedTickets,
@@ -64,8 +63,53 @@ const useCashierStore = create((set) => ({
         newOption.additional_charge - (currentOption?.additional_charge || 0);
 
       const updatedOptions = [...state.currentTicket.options];
-      updatedOptions[index] = newOption.option;
+      updatedOptions[index] = newOption;
 
+      const updatedTicket = {
+        ...state.currentTicket,
+        total_menuitem_price:
+          state.currentTicket.total_menuitem_price + optionPriceDifference,
+        options: updatedOptions,
+      };
+      console.log(state.tickets);
+      const updatedTickets = state.tickets.map((ticket) =>
+        ticket.ticket_id === state.currentTicket.ticket_id
+          ? updatedTicket
+          : ticket
+      );
+
+      return {
+        currentTicket: updatedTicket,
+        tickets: updatedTickets,
+        total: state.total + optionPriceDifference,
+      };
+    }),
+  replaceEntree: (entree) =>
+    set((state) => {
+      if (!state.currentTicket) {
+        console.warn("No current ticket selected.");
+        return state;
+      }
+
+      const updatedOptions = [...state.currentTicket.options];
+      let optionIndex = state.maxEntreeCount - state.entreeCount + 1; // Determine index based on maxEntreeCount and entreeCount
+
+      // Ensure valid index
+      if (optionIndex <= 0) optionIndex = 1;
+      // Calculate price difference
+
+      const currentOption = updatedOptions[optionIndex] || {};
+      const optionPriceDifference =
+        entree.additional_charge - (currentOption.additional_charge || 0);
+
+      // Replace or add the entree at the calculated index
+      if (updatedOptions[optionIndex]) {
+        updatedOptions[optionIndex] = entree;
+      } else {
+        updatedOptions.push(entree);
+      }
+
+      // Update the ticket and ticket list
       const updatedTicket = {
         ...state.currentTicket,
         total_menuitem_price:
@@ -85,80 +129,24 @@ const useCashierStore = create((set) => ({
         total: state.total + optionPriceDifference,
       };
     }),
-  replaceEntree: (index, entree) =>
+  removeTicket: () =>
     set((state) => {
-      if (!state.currentTicket) {
-        console.warn("No current ticket selected.");
+      if (state.currentTicket == null) {
+        console.warn("No ticket selected to remove.");
         return state;
       }
-      const currentOption = state.currentTicket.options[index];
-      const optionPriceDifference =
-        entree.additional_charge - (currentOption?.additional_charge || 0);
 
-      const updatedOptions = [...state.currentTicket.options];
-
-      //Bowl
-      if (state.maxEntreeCount === 1) {
-        if (updatedOptions[1]) {
-          updatedOptions[1] = entree.option;
-        } else {
-          updatedOptions.push(entree.option);
-        }
-      }
-
-      if (state.maxEntreeCount === 2) {
-        if (state.entreeCount === 1) {
-          if (updatedOptions[2]) {
-            updatedOptions[2] = entree.option;
-          } else {
-            updatedOptions.push(entree.option);
-          }
-        } else if (state.entreeCount === 2) {
-          if (updatedOptions[1]) {
-            updatedOptions[1] = entree.option;
-          } else {
-            updatedOptions.push(entree.option);
-          }
-        }
-      }
-      if (state.maxEntreeCount === 3) {
-        if (state.entreeCount === 1) {
-          if (updatedOptions[3]) {
-            updatedOptions[3] = entree.option;
-          } else {
-            updatedOptions.push(entree.option);
-          }
-        } else if (state.entreeCount === 2) {
-          if (updatedOptions[2]) {
-            updatedOptions[2] = entree.option;
-          } else {
-            updatedOptions.push(entree.option);
-          }
-        } else if (state.entreeCount === 3) {
-          if (updatedOptions[1]) {
-            updatedOptions[1] = entree.option;
-          } else {
-            updatedOptions.push(entree.option);
-          }
-        }
-      }
-      console.log(updatedOptions);
-      const updatedTicket = {
-        ...state.currentTicket,
-        total_menuitem_price:
-          state.currentTicket.total_menuitem_price + optionPriceDifference,
-        options: updatedOptions,
-      };
-      const updatedTickets = state.tickets.map((ticket) =>
-        ticket.ticket_id === state.currentTicket.ticket_id
-          ? updatedTicket
-          : ticket
+      const updatedTickets = state.tickets.filter(
+        (ticket) => ticket.ticket_id !== state.currentTicket.ticket_id
       );
 
+      const emptyTickets = updatedTickets.length === 0;
+
       return {
-        currentTicket: updatedTicket,
         tickets: updatedTickets,
-        total: state.total + optionPriceDifference,
+        currentTicket: null,
+        orderInProgress: false,
+        emptyTickets: emptyTickets,
       };
     }),
   removeAllTickets: () =>

@@ -6,8 +6,13 @@ import useCashierStore from "../../../store/cashierStore";
 import React from "react";
 
 const MicroDrinks = ({ menuDrinks, changeMenu }) => {
-  const { updateInProgress, selectTicket, addOptionToTicket } =
-    useCashierStore();
+  const {
+    updateInProgress,
+    selectTicket,
+    addOptionToTicket,
+    replaceOption,
+    currentTicket,
+  } = useCashierStore();
 
   const getGridClass = () => {
     const length = menuDrinks.length;
@@ -17,7 +22,12 @@ const MicroDrinks = ({ menuDrinks, changeMenu }) => {
     return "grid-3x3";
   };
   const handleDrinkClick = (drink) => {
-    addOptionToTicket(drink);
+    if (currentTicket.options.length > 0) {
+      replaceOption(0, drink);
+    } else {
+      console.log("add drink");
+      addOptionToTicket(drink);
+    }
     changeMenu(MenuEnum.NEW_ITEM);
     updateInProgress(false);
     selectTicket(null);

@@ -1,7 +1,7 @@
+import { useState, useEffect } from "react";
 import "./CashierView.css";
 import useCashierStore from "../../store/cashierStore";
 import "./TicketStack.css";
-import { useState, useEffect } from "react";
 import MenuEnum from "./MenuEnum";
 
 const TicketStack = ({ changeMenu }) => {
@@ -13,6 +13,7 @@ const TicketStack = ({ changeMenu }) => {
     setMaxEntreeCount,
   } = useCashierStore();
   const [selectedTicketId, setSelectedTicketId] = useState(null);
+  const [newTicketIds, setNewTicketIds] = useState([]);
 
   const total = tickets
     .reduce((acc, ticket) => acc + ticket.total_menuitem_price, 0)
@@ -20,11 +21,18 @@ const TicketStack = ({ changeMenu }) => {
 
   const tax = (total * 0.0825).toFixed(2);
 
+  // Track new tickets being added
+  useEffect(() => {
+    const lastTicketId = tickets[tickets.length - 1]?.ticket_id;
+    if (lastTicketId && !newTicketIds.includes(lastTicketId)) {
+      setNewTicketIds((prevIds) => [...prevIds, lastTicketId]);
+    }
+  }, [tickets, newTicketIds]);
+
   const handleTicketSelect = (ticket) => {
     setSelectedTicketId(ticket.ticket_id);
     selectTicket(ticket);
 
-    //clean up the if statement for mapped
     const mealMapping = {
       Bowl: { maxEntreeCount: 1, menu: MenuEnum.SIDES },
       Plate: { maxEntreeCount: 2, menu: MenuEnum.SIDES },
@@ -38,7 +46,6 @@ const TicketStack = ({ changeMenu }) => {
 
     if (meal) {
       if (meal.maxEntreeCount !== undefined)
-        // only for the meals with entrees
         setMaxEntreeCount(meal.maxEntreeCount);
       changeMenu(meal.menu);
     } else {
@@ -62,7 +69,7 @@ const TicketStack = ({ changeMenu }) => {
               ticket.ticket_id === selectedTicketId ? "selected" : ""
             } ${
               ticket.ticket_id === currentTicket?.ticket_id ? "highlighted" : ""
-            }`}
+            } ${newTicketIds.includes(ticket.ticket_id) ? "slide-in" : ""}`}
             onClick={() => handleTicketSelect(ticket)}
             role="button"
             tabIndex="0"
@@ -73,13 +80,22 @@ const TicketStack = ({ changeMenu }) => {
             <h4>
               {ticket.meal_type} ${ticket.total_menuitem_price.toFixed(2)}
             </h4>
-            <div className="ticket-options">
-              {Object.values(ticket.options)
-                .flat()
-                .map((item, index) => (
-                  <p key={index}>{item.replace(/_/g, " ")}</p>
+            {ticket.options.length > 0 && (
+              <div className="ticket-options">
+                {ticket.options.map((item, index) => (
+                  <p
+                    key={index}
+                    className={`option-item ${
+                      newTicketIds.includes(ticket.ticket_id)
+                        ? "slide-in-option"
+                        : ""
+                    }`}
+                  >
+                    {item.option.replace(/_/g, " ")}
+                  </p>
                 ))}
-            </div>
+              </div>
+            )}
           </button>
         ))}
       </div>
