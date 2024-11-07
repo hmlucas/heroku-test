@@ -63,6 +63,8 @@
    width: 5.5vw;
    height: auto;
    object-fit: contain;
+   user-select: none;
+   pointer-events: none;
 }
 
 .cashier-options-button button.selected .cashier-options-image {
@@ -70,12 +72,13 @@
    height: auto;
    object-fit: contain;
    filter: brightness(0) invert(1);
+   user-select: none;
+   pointer-events: none;
 }
 .cashier-sales-buttons button:disabled {
    background-color: #353535;
-   color: #a0a0a0;
+   color: #a7a7a7;
    cursor: default;
-   opacity: 0.6;
    border: 1px solid #000000;
    user-select: none;
    transition: background-color 0.3s, color 0.3s;

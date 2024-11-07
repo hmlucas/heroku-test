@@ -1,0 +1,22 @@
+/* RippleEffect.css */
+.ripple-container {
+   position: relative;
+   overflow: hidden;
+}
+
+.ripple {
+   position: absolute;
+   border-radius: 50%;
+   background: rgba(0, 0, 0, 0.3);
+   /* Ripple color */
+   animation: ripple-animation 0.3s ease-out forwards;
+}
+
+@keyframes ripple-animation {
+   to {
+      transform: scale(4);
+      /* Adjust size for the ripple */
+      opacity: 0;
+      /* Fade out effect */
+   }
+}

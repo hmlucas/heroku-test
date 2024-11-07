@@ -15,7 +15,7 @@
    width: 100%;
    padding: 1%;
    background-color: #f4f4f4;
-   border-top: 5px solid #000;
+   border-top: 0.5vh solid #000;
    border-radius: 8px 8px 0 0;
    font-size: 18px;
    color: #333;
@@ -38,18 +38,21 @@
    width: 95%;
    box-sizing: border-box;
    border-style: solid;
-   margin: 5px 0;
+   margin: 5px ;
    margin-right: 2.5px;
    margin-left: 2.5px;
    padding: 3px;
-   border-top: 3px solid black !important;
-   background-color: #e0e0e0;
+   background-color: #f5f5f5;
    color: #000;
    text-align: left;
    cursor: pointer;
    border-radius: 8px;
-   transition: transform 0.2s, background-color 0.2s;
-   opacity: 0;
+   transition: transform 0.2s, background-color 0.3s ease-in-out;
+   opacity: 1;
+}
+
+.ticket-item:hover {
+   background-color: #dcdcdc;
 }
 
 .ticket-item h4 {
@@ -67,8 +70,8 @@
 
 .ticket-item:disabled {
    background-color: #a0a0a0;
-   cursor: not-allowed;
-   box-shadow: none;
+   cursor: pointer;
+   border: 0.25vh solid #000000 !important;
 }
 
 /* ticket sliding */
@@ -110,7 +113,7 @@
    }
 }
 
-/* indiviual options */
+/* individual options */
 .ticket-item .ticket-options .option-item {
    animation: slide-in-option 0.1s ease-out forwards;
    opacity: 0;

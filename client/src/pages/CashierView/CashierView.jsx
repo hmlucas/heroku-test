@@ -27,7 +27,6 @@ const CashierView = () => {
     error,
   } = menuOptionsStore();
 
-  //Nav bar micromenu interaction
   const [activeMenu, setActiveMenu] = useState(MenuEnum.NEW_ITEM);
   const [tickets, setTickets] = useState([]);
 
@@ -40,11 +39,11 @@ const CashierView = () => {
   };
 
   const addTicket = (newTicket) => {
-    setTickets((prevTickets) => [...prevTickets, newTicket]); // Add new ticket to the list
+    setTickets((prevTickets) => [...prevTickets, newTicket]);
   };
 
   const removeAllTickets = () => {
-    setTickets([]); // Clear the tickets array
+    setTickets([]);
   };
   //TODO REMOVE Adn replace with functioning ticket stack
   useEffect(() => {
@@ -59,7 +58,6 @@ const CashierView = () => {
         ]);
       } catch (err) {
         console.error("Error fetching data:", err);
-        // Optionally set an error state here if needed
       }
     };
 
