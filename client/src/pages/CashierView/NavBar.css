@@ -9,7 +9,7 @@
 }
 
 .cashier-nav-bar button {
-   background: #f0f0f0;
+   background: var(--button-navbar-color);
    border: 0.1vh solid #000000;
    cursor: pointer;
    font-size: 1.75vw;
@@ -23,27 +23,23 @@
 }
 
 .cashier-nav-bar button:not(.selected):enabled:hover {
-   background-color: #cccbcb;
+   filter: brightness(0.8);
+   transition: filter 0.3s, color 0.3s;
 }
 
 .cashier-nav-bar button.selected:hover {
-   background-color: #0056b3;
+   filter: brightness(0.8);
+   transition: filter 0.3s, color 0.3s;
 }
 
 .cashier-nav-bar button:disabled {
-   background-color: #353535 !important;
+   background-color: var(--button-disabled-color) !important;
    color: #a7a7a7 !important;
    cursor: default;
    user-select: none;
 }
 
 .cashier-nav-bar button.selected {
-   background-color: #007bff;
+   background-color: var(--button-selection-color);
    color: white;
-   border: 1px solid #007bff;
-}
-
-.cashier-nav-bar button:not(.selected) {
-   background-color: #f0f0f0;
-   color: black;
 }

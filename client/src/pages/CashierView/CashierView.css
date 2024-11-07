@@ -1,3 +1,12 @@
+/*Custom Colors*/
+:root {
+    --button-selection-color: #ce123c;
+    --button-navbar-color: #f0f0f0;
+    --button-disabled-color: #353535;
+    --button-micro-menu-color: #f0f0f0;
+    --button-sales-menu-color: #f0f0f0;
+}
+
 * {
     margin: 0;
     padding: 0;
