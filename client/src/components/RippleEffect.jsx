@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "./RippleEffect.css"; // We'll define the styles here
+import "./RippleEffect.css";
 
 const RippleEffect = ({ children }) => {
   const [ripples, setRipples] = useState([]);
@@ -18,11 +18,9 @@ const RippleEffect = ({ children }) => {
     };
 
     setRipples((prevRipples) => [...prevRipples, newRipple]);
-
-    // Remove ripple after animation
     setTimeout(() => {
       setRipples((prevRipples) => prevRipples.slice(1));
-    }, 600); // Match this with the animation duration
+    }, 1200);
   };
 
   return (
