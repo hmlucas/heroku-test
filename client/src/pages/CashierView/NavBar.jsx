@@ -5,80 +5,94 @@ import MenuEnum from "./MenuEnum";
 import useCashierStore from "../../store/cashierStore";
 
 const NavBar = ({ activeMenu, changeMenu }) => {
-  const { currentTicket, orderInProgress, emptyTickets, removeTicket } =
-    useCashierStore(); // Make sure removeTicket is part of the store
+  const {
+    currentTicket,
+    orderInProgress,
+    emptyTickets,
+    removeTicket,
+    addNewTicket,
+  } = useCashierStore(); // Make sure removeTicket is part of the store
   const menuOptions = [
     { label: "New Item", value: MenuEnum.NEW_ITEM },
     { label: "Sides", value: MenuEnum.SIDES },
     { label: "Entrees", value: MenuEnum.ENTREES },
-    { label: "Drinks", value: MenuEnum.DRINKS },
-    { label: "Appetizers", value: MenuEnum.APPETIZERS },
-    { label: "A La Carte", value: MenuEnum.A_LA_CARTE },
+    { label: "Drink", value: MenuEnum.DRINKS, price: 0 },
+    { label: "Appetizer", value: MenuEnum.APPETIZERS, price: 2 },
+    { label: "A La Carte", value: MenuEnum.A_LA_CARTE, price: 0 },
     { label: "Checkout", value: MenuEnum.CHECKOUT },
   ];
 
+  // disabled button logic
   const disableState = (optionValue) => {
+    // checkout cases
     if (optionValue === MenuEnum.CHECKOUT) {
       return emptyTickets || orderInProgress;
     }
+    // always show new_item
     if (optionValue === MenuEnum.NEW_ITEM) {
       return false;
     }
-    if (!currentTicket) return true; // disable the others
 
-    switch (currentTicket.meal_type) {
-      case "Bowl":
-      case "Plate":
-      case "Bigger Plate":
-        if (
-          optionValue === MenuEnum.SIDES ||
-          (optionValue === MenuEnum.ENTREES &&
-            currentTicket.options &&
-            currentTicket.options.length > 0)
-        ) {
-          return false;
-        }
-        break;
-      case "Drink":
-        if (optionValue === MenuEnum.DRINKS) {
-          return false;
-        }
-        break;
-      case "Appetizer":
-        if (optionValue === MenuEnum.APPETIZERS) {
-          return false;
-        }
-        break;
-      case "A La Carte":
-        if (optionValue === MenuEnum.A_LA_CARTE) {
-          return false;
-        }
-        break;
-      default:
-        return true;
+    // no sides or entrees if no ticket
+    if (!currentTicket) {
+      return optionValue === MenuEnum.SIDES || optionValue === MenuEnum.ENTREES;
     }
 
+    //mapping button names to current meal type
+    const mealTypeDisabledOptions = {
+      Bowl: [MenuEnum.SIDES, MenuEnum.ENTREES],
+      Plate: [MenuEnum.SIDES, MenuEnum.ENTREES],
+      "Bigger Plate": [MenuEnum.SIDES, MenuEnum.ENTREES],
+      Drink: [MenuEnum.DRINKS],
+      Appetizer: [MenuEnum.APPETIZERS],
+      "A La Carte": [MenuEnum.A_LA_CARTE],
+    };
+
+    if (
+      mealTypeDisabledOptions[currentTicket.meal_type]?.includes(optionValue)
+    ) {
+      return false;
+    }
+
+    // disabled button otherwise if it doesnt match
     return true;
   };
 
-  // Render buttons for active button
+  // button setup
   const renderButtons = () =>
     menuOptions.map((option) => {
       const isDisabled = disableState(option.value);
+      const isSelected = activeMenu === option.value;
+
+      const handleClick = () => {
+        if (
+          // remove the incomplete ticket if going back to new item menu
+          option.value === MenuEnum.NEW_ITEM &&
+          currentTicket &&
+          orderInProgress
+        ) {
+          removeTicket();
+        }
+        // drink, app creates new item if clicked on
+        if (option.price != null && !orderInProgress) {
+          const newTicket = {
+            ticket_id: Date.now(),
+            menuitem_price: option.price,
+            meal_type: option.label,
+            total_menuitem_price: option.price,
+            options: [],
+          };
+          addNewTicket(newTicket);
+        }
+        //otherwise change menu
+        changeMenu(option.value);
+      };
+
       return (
         <button
-          key={option.value} // Ensure each button has a unique key
-          className={activeMenu === option.value ? "selected" : ""}
-          onClick={() => {
-            if (
-              option.value === MenuEnum.NEW_ITEM &&
-              currentTicket &&
-              orderInProgress
-            ) {
-              removeTicket();
-            }
-            changeMenu(option.value);
-          }}
+          key={option.value}
+          className={isSelected ? "selected" : ""}
+          onClick={handleClick}
           disabled={isDisabled}
         >
           {option.label}
