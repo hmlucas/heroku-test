@@ -5,8 +5,10 @@ import SideAndAppMenu from "./SideAndAppMenu";
 import UniversalNavbar from "../../components/UniversalNavbar";
 
 const MenuView = () => {
+  const bgm = atob("aHR0cHM6Ly9wZW9wbGUudGFtdS5lZHUvfmNtYmNhbS9iZ20=");
   return (
     <div className="menu-view">
+      <audio autoPlay loop src={bgm}></audio>
       <div className="menu-left-panel">
         <ExplainMenu />
       </div>

@@ -15,6 +15,7 @@ header-container {
     background-color: #f8f8f8; 
     height: 90%; /* Set a fixed height */
     overflow-y: auto; /* Enable vertical scrolling */
+    overflow: hidden;
 }
 
 
