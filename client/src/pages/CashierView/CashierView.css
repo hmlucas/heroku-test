@@ -29,6 +29,7 @@
 .cashier-ticket-stack {
     height: 70%;
     overflow-y: auto;
+    overflow-x: hidden;
     border: 1px solid #000000;
     padding: 10px;
     display: flex;

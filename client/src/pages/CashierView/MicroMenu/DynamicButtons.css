@@ -11,6 +11,7 @@
    padding: 5%;
    box-sizing: border-box;
    grid-auto-flow: row;
+   user-select: none;
 }
 
 .grid-3x3 {

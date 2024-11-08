@@ -6,8 +6,31 @@
 
 .ticket-list {
    flex-grow: 1;
-   overflow-y: auto;
+   overflow-y: scroll;
+   overflow-x: hidden;
    flex-direction: column-reverse;
+}
+.ticket-list::-webkit-scrollbar {
+   width: 0.75vh;
+}
+
+.ticket-list::-webkit-scrollbar-thumb {
+   background-color: #888;
+   border-radius: 10px;
+   transition: background-color 0.3s ease;
+}
+
+.ticket-list::-webkit-scrollbar-thumb:hover {
+   background-color: #555;
+}
+
+.ticket-list::-webkit-scrollbar-track {
+   background: #f1f1f1;
+   border-radius: 10px;
+}
+
+.ticket-list::-webkit-scrollbar-track:hover {
+   background: #ddd;
 }
 
 .total-panel {
@@ -24,7 +47,7 @@
 .total-panel p {
    font-size: 1em;
    color: #333;
-   margin: 0.1% 0;
+   margin: 0% 0;
 }
 
 .total-panel h3 {
@@ -35,12 +58,11 @@
 
 .ticket-item {
    display: block;
-   width: 95%;
+   width: 98%;
    box-sizing: border-box;
    border-style: solid;
    margin: 5px ;
-   margin-right: 2.5px;
-   margin-left: 2.5px;
+
    padding: 3px;
    background-color: #f5f5f5;
    color: #000;

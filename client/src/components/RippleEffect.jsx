@@ -1,9 +1,13 @@
 import React, { useState, useRef } from "react";
 import "./RippleEffect.css";
+import useClickStore from "../store/useClickStore";
 
 const RippleEffect = ({ children }) => {
   const [ripples, setRipples] = useState([]);
   const rippleContainerRef = useRef();
+  const incrementClickCount = useClickStore(
+    (state) => state.incrementClickCount
+  );
 
   const handleClick = (event) => {
     const rect = rippleContainerRef.current.getBoundingClientRect();
@@ -21,6 +25,8 @@ const RippleEffect = ({ children }) => {
     setTimeout(() => {
       setRipples((prevRipples) => prevRipples.slice(1));
     }, 1200);
+
+    incrementClickCount();
   };
 
   return (

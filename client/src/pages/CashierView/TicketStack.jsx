@@ -3,6 +3,7 @@ import "./CashierView.css";
 import useCashierStore from "../../store/cashierStore";
 import "./TicketStack.css";
 import MenuEnum from "./MenuEnum";
+import useClickStore from "../../store/useClickStore";
 
 const TicketStack = ({ changeMenu }) => {
   const {
@@ -14,6 +15,7 @@ const TicketStack = ({ changeMenu }) => {
   } = useCashierStore();
   const [selectedTicketId, setSelectedTicketId] = useState(null);
   const [newTicketIds, setNewTicketIds] = useState([]);
+  const { cps } = useClickStore();
 
   const total = tickets
     .reduce((acc, ticket) => acc + ticket.total_menuitem_price, 0)
@@ -114,6 +116,7 @@ const TicketStack = ({ changeMenu }) => {
         <h3>
           Grand Total: ${(parseFloat(total) + parseFloat(tax)).toFixed(2)}
         </h3>
+        {/* <p>Clicks Per Second: {cps.toFixed(2)}</p> */}
       </div>
     </div>
   );
