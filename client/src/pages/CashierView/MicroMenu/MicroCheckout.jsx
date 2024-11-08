@@ -4,7 +4,7 @@ import MenuEnum from "../MenuEnum";
 import "./MicroCheckout.css";
 import useCashierStore from "../../../store/cashierStore";
 import useEmployeeStore from "../../../store/useEmployeeStore";
-import money from "../../../assets/cashierview/money.mp3";
+import moneySound from "../../../assets/cashierview/money.mp3";
 import React from "react";
 
 const MicroCheckout = ({ changeMenu }) => {
@@ -16,7 +16,7 @@ const MicroCheckout = ({ changeMenu }) => {
     { label: "Debit" },
     { label: "Student Card" },
   ];
-  const audio = new Audio(money);
+  const audio = new Audio(moneySound);
 
   const handleCheckout = () => {
     // TODO: Implement checkout logic (e.g., sending order to the database)
