@@ -4,8 +4,10 @@ import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
 import React from "react";
+import ok from "../../../assets/cashierview/ui_menu_ok.mp3";
 
 const MicroApps = ({ menuApps, changeMenu }) => {
+  const okAudio = new Audio(ok);
   const {
     updateInProgress,
     selectTicket,
@@ -21,6 +23,7 @@ const MicroApps = ({ menuApps, changeMenu }) => {
     return "grid-3x3";
   };
   const handleAppClick = (app) => {
+    okAudio.play();
     if (currentTicket.options.length > 0) {
       replaceOption(0, app);
     } else {

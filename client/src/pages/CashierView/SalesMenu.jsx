@@ -5,12 +5,15 @@ import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
 import gearIcon from "../../assets/gear-svgrepo-com.svg";
 import useCashierStore from "../../store/cashierStore";
+import cancel from "../../assets/cashierview/ui_menu_cancel.mp3";
+import select from "../../assets/cashierview/ui_general_focus.mp3";
 
 const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   //import states
   const { emptyTickets, orderInProgress, currentTicket, removeTicket } =
     useCashierStore();
-
+  const selectAudio = new Audio(select);
+  const cancelAudio = new Audio(cancel);
   const [hasIncompleteOrder, setHasIncompleteOrder] = useState(false);
   const [hasTickets, setHasTickets] = useState(false);
   const [hasSelectedOrder, setHasSelectedOrder] = useState(false);
@@ -28,13 +31,16 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   }, [emptyTickets, currentTicket, orderInProgress]);
 
   const optionsAction = () => {
+    selectAudio.play();
     changeMenu(MenuEnum.OPTIONS);
   };
   const deleteAction = () => {
+    cancelAudio.play();
     removeTicket();
     changeMenu(MenuEnum.NEW_ITEM);
   };
   const checkoutAction = () => {
+    selectAudio.play();
     changeMenu(MenuEnum.CHECKOUT);
   };
 

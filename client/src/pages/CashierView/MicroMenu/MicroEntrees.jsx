@@ -4,8 +4,10 @@ import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
 import React from "react";
+import ok from "../../../assets/cashierview/ui_menu_ok.mp3";
 
 const MicroEntrees = ({ menuEntrees, changeMenu }) => {
+  const okAudio = new Audio(ok);
   const {
     updateInProgress,
     selectTicket,
@@ -25,6 +27,7 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
   };
 
   const handleEntreeClick = (entree) => {
+    okAudio.play();
     //addOptionToTicket(entree);
     replaceEntree(entree);
     if (entreeCount <= 1) {

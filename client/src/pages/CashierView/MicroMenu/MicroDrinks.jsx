@@ -4,8 +4,10 @@ import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
 import React from "react";
+import ok from "../../../assets/cashierview/ui_menu_ok.mp3";
 
 const MicroDrinks = ({ menuDrinks, changeMenu }) => {
+  const okAudio = new Audio(ok);
   const {
     updateInProgress,
     selectTicket,
@@ -22,6 +24,7 @@ const MicroDrinks = ({ menuDrinks, changeMenu }) => {
     return "grid-3x3";
   };
   const handleDrinkClick = (drink) => {
+    okAudio.play();
     if (currentTicket.options.length > 0) {
       replaceOption(0, drink);
     } else {
@@ -32,7 +35,6 @@ const MicroDrinks = ({ menuDrinks, changeMenu }) => {
     selectTicket(null);
   };
   const renderDrinks = () => {
-    //TODO Update ticket!
     return menuDrinks?.length > 0 ? (
       <div className={`drinks-buttons ${getGridClass()}`}>
         {menuDrinks.map((drink, index) => (

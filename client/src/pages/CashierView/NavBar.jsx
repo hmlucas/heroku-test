@@ -3,8 +3,12 @@ import "./NavBar.css";
 import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
 import useCashierStore from "../../store/cashierStore";
+import select from "../../assets/cashierview/ui_general_focus.mp3";
+import cancel from "../../assets/cashierview/ui_menu_cancel.mp3";
 
 const NavBar = ({ activeMenu, changeMenu }) => {
+  const selectAudio = new Audio(select);
+  const cancelAudio = new Audio(cancel);
   const {
     currentTicket,
     orderInProgress,
@@ -73,9 +77,16 @@ const NavBar = ({ activeMenu, changeMenu }) => {
           orderInProgress
         ) {
           removeTicket();
+          cancelAudio.play();
+        } else {
+          selectAudio.play();
         }
         // drink, app creates new item if clicked on
-        if (option.price != null && !orderInProgress) {
+        if (
+          option.price != null &&
+          !orderInProgress &&
+          currentTicket === null
+        ) {
           const newTicket = {
             ticket_id: Date.now(),
             menuitem_price: option.price,

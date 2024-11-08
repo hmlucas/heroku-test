@@ -4,6 +4,7 @@ import useCashierStore from "../../store/cashierStore";
 import "./TicketStack.css";
 import MenuEnum from "./MenuEnum";
 import useClickStore from "../../store/useClickStore";
+import select from "../../assets/cashierview/ui_general_focus.mp3";
 
 const TicketStack = ({ changeMenu }) => {
   const {
@@ -16,6 +17,9 @@ const TicketStack = ({ changeMenu }) => {
   const [selectedTicketId, setSelectedTicketId] = useState(null);
   const [newTicketIds, setNewTicketIds] = useState([]);
   const { cps } = useClickStore();
+
+  const selectAudio = new Audio(select);
+  //okAudio.play();
 
   const total = tickets
     .reduce((acc, ticket) => acc + ticket.total_menuitem_price, 0)
@@ -41,6 +45,7 @@ const TicketStack = ({ changeMenu }) => {
   }, [tickets, orderInProgress]);
 
   const handleTicketSelect = (ticket) => {
+    selectAudio.play();
     setSelectedTicketId(ticket.ticket_id);
     selectTicket(ticket);
 

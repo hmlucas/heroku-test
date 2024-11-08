@@ -5,12 +5,13 @@ import useCashierStore from "../../../store/cashierStore";
 import PropTypes from "prop-types";
 import clearOrder from "../../../assets/cashierview/cancel.mp3";
 import React from "react";
+import ok from "../../../assets/cashierview/ui_menu_ok.mp3";
 
 const MicroOptions = ({ changeMenu }) => {
   const selection = [{ label: "Clear Order" }, { label: "Logout" }];
   const { removeAllTickets } = useCashierStore();
   const clearOrderAudio = new Audio(clearOrder);
-
+  const okAudio = new Audio(ok);
   const renderButtons = () =>
     selection.map((option) => (
       <button
@@ -21,6 +22,7 @@ const MicroOptions = ({ changeMenu }) => {
             clearOrderAudio.play();
             changeMenu(MenuEnum.NEW_ITEM);
           } else if (option.label === "Logout") {
+            okAudio.play();
             window.location.href = "/cashier-login";
           }
         }}

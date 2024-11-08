@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 import "./MicroNewItem.css";
 import useCashierStore from "../../../store/cashierStore";
 import React from "react";
+import ok from "../../../assets/cashierview/ui_general_focus.mp3";
 
 const MicroNewItem = ({ changeMenu }) => {
   const { addNewTicket, setMaxEntreeCount } = useCashierStore();
-
+  const okAudio = new Audio(ok);
   const selection = [
     //TODO CHANGE manual pricing
     {
@@ -37,6 +38,7 @@ const MicroNewItem = ({ changeMenu }) => {
   ];
 
   const handleButtonClick = (mealType, nav, price, selectCount = 0) => {
+    okAudio.play();
     const newTicket = {
       ticket_id: Date.now(),
       menuitem_price: price,
