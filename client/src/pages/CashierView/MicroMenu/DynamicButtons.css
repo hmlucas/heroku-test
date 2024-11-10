@@ -60,10 +60,15 @@
 }
 
 .entree-button:hover,
+.entree-button:focus,
 .side-button:hover,
+.side-button:focus,
 .drink-button:hover,
+.drink-button:focus,
 .app-button:hover,
-.alacarte-button:hover {
+.app-button:focus,
+.alacarte-button:hover,
+.alacarte-button:focus {
    background-color: #cccbcb;
 }
 

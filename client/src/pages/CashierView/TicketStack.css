@@ -20,7 +20,8 @@
    transition: background-color 0.3s ease;
 }
 
-.ticket-list::-webkit-scrollbar-thumb:hover {
+.ticket-list::-webkit-scrollbar-thumb:hover,
+.ticket-list::-webkit-scrollbar-thumb:focus {
    background-color: #555;
 }
 
@@ -29,7 +30,8 @@
    border-radius: 10px;
 }
 
-.ticket-list::-webkit-scrollbar-track:hover {
+.ticket-list::-webkit-scrollbar-track:hover,
+.ticket-list::-webkit-scrollbar-track:focus {
    background: #ddd;
 }
 
@@ -73,7 +75,8 @@
    opacity: 1;
 }
 
-.ticket-item:hover {
+.ticket-item:hover,
+.ticket-item:focus {
    background-color: #dcdcdc;
 }
 

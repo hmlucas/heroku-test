@@ -25,7 +25,8 @@
    animation: slide-up 0.1s ease-out forwards;
 }
 
-.cashier-micro-options button:hover {
+.cashier-micro-options button:hover,
+.cashier-micro-options button:focus {
    background-color: #cccbcb;
 }
 

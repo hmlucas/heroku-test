@@ -25,7 +25,8 @@
    animation: slide-up 0.1s ease-out forwards;
 }
 
-.cashier-micro-new-item button:hover {
+.cashier-micro-new-item button:hover,
+.cashier-micro-new-item button:focus {
    background-color: #cccbcb;
 }
 

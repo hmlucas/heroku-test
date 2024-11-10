@@ -48,12 +48,14 @@
    padding: 0;
 }
 
-.cashier-sales-buttons button:not(.selected):enabled:hover {
+.cashier-sales-buttons button:not(.selected):enabled:hover,
+.cashier-sales-buttons button:not(.selected):enabled:focus {
    filter: brightness(0.8);
    transition: filter 0.3s, color 0.3s;
 }
 
-.cashier-sales-buttons button.selected:enabled:hover {
+.cashier-sales-buttons button.selected:enabled:hover,
+.cashier-sales-buttons button.selected:enabled:focus {
    filter: brightness(0.8);
    transition: filter 0.3s, color 0.3s;
 }

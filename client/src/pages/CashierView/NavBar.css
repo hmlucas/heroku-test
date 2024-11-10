@@ -22,12 +22,14 @@
    transition: background-color 0.3s, color 0.3s;
 }
 
-.cashier-nav-bar button:not(.selected):enabled:hover {
+.cashier-nav-bar button:not(.selected):enabled:hover,
+.cashier-nav-bar button:not(.selected):enabled:focus {
    filter: brightness(0.8);
    transition: filter 0.3s, color 0.3s;
 }
 
-.cashier-nav-bar button.selected:hover {
+.cashier-nav-bar button.selected:hover,
+.cashier-nav-bar button.selected:focus {
    filter: brightness(0.8);
    transition: filter 0.3s, color 0.3s;
 }
