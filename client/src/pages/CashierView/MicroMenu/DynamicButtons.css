@@ -1,4 +1,3 @@
-/*TODO FIX THE POOR SCALING on small screen */
 .alacarte-buttons,
 .apps-buttons,
 .drinks-buttons,
@@ -12,6 +11,7 @@
    padding: 5%;
    box-sizing: border-box;
    grid-auto-flow: row;
+   user-select: none;
 }
 
 .grid-3x3 {
@@ -41,14 +41,18 @@
 .alacarte-button {
    background-color: #f0f0f0;
    color: black;
-   border: 1px solid #000000;
-   border-radius: 6px;
+   border: 0.25vh solid #000000;
+   border-radius: 4%;
    padding: 0.5vw;
    font-size: 1.5vw;
    cursor: pointer;
    transition: background-color 0.3s;
    min-width: 60px;
+   opacity: 0;
+   transform: translateY(50px);
+   animation: slide-up 0.1s ease-out forwards;
 }
+
 .entree-button,
 .side-button,
 .app-button {
@@ -56,10 +60,15 @@
 }
 
 .entree-button:hover,
+.entree-button:focus,
 .side-button:hover,
+.side-button:focus,
 .drink-button:hover,
+.drink-button:focus,
 .app-button:hover,
-.alacarte-button:hover {
+.app-button:focus,
+.alacarte-button:hover,
+.alacarte-button:focus {
    background-color: #cccbcb;
 }
 
@@ -82,5 +91,17 @@
    .alacarte-button {
       font-size: 1.5vw;
       padding: 0.8vw;
+   }
+}
+
+@keyframes slide-up {
+   0% {
+      opacity: 0;
+      transform: translateY(50px);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0);
    }
 }

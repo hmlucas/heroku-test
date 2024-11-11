@@ -3,9 +3,12 @@ import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
+import React from "react";
+import ok from "../../../assets/cashierview/ui_menu_ok.mp3";
 
 const MicroSides = ({ menuSides, changeMenu }) => {
-  const { addOptionToTicket } = useCashierStore();
+  const { currentTicket, addOptionToTicket, replaceOption } = useCashierStore();
+  const okAudio = new Audio(ok);
   const getGridClass = () => {
     const length = menuSides.length;
     if (length >= 30) return "grid-6x6";
@@ -15,7 +18,12 @@ const MicroSides = ({ menuSides, changeMenu }) => {
   };
 
   const handleSideClick = (side) => {
-    addOptionToTicket(side);
+    okAudio.play();
+    if (currentTicket.options.length > 0) {
+      replaceOption(0, side);
+    } else {
+      addOptionToTicket(side);
+    }
     changeMenu(MenuEnum.ENTREES);
   };
 
@@ -39,11 +47,7 @@ const MicroSides = ({ menuSides, changeMenu }) => {
     return <p>No sides available.</p>;
   };
 
-  return (
-    <div className="cashier-micro-sides">
-      {renderSides()} {/* Call the render function here */}
-    </div>
-  );
+  return <div className="cashier-micro-sides">{renderSides()}</div>;
 };
 
 MicroSides.propTypes = {

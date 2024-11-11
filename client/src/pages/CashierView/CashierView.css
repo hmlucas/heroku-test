@@ -1,3 +1,12 @@
+/*Custom Colors*/
+:root {
+    --button-selection-color: #007bff; /* 007bff ce123c*/
+    --button-navbar-color: #f0f0f0;
+    --button-disabled-color: #353535;
+    --button-micro-menu-color: #f0f0f0;
+    --button-sales-menu-color: #f0f0f0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -18,27 +27,22 @@
 }
 
 .cashier-ticket-stack {
-  height: 70%; /* Set a maximum height */
-  overflow-y: auto;  /* Enable vertical scrolling */
-  border: 1px solid #ccc; /* Optional: add a border for better visibility */
-  padding: 10px; /* Optional: add some padding */
-}
-.cashier-ticket-stack {
-    /* Set a maximum height */
+    height: 70%;
     overflow-y: auto;
-    /* Enable vertical scrolling */
-    border: 1px solid #ccc;
-    /* Optional: add a border for better visibility */
-
+    overflow-x: hidden;
+    border: 1px solid #000000;
+    padding: 10px;
+    display: flex;
 }
 
 .cashier-sales-menu {
     flex: 3;
-    background-color: green;
+    background-color: #008000;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    aspect-ratio: 16 / 9;
 }
 
 .cashier-right-panel {
@@ -50,10 +54,11 @@
 
 .cashier-nav-bar {
     flex: 1;
-    background-color: yellow;
+    background-color: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
+    aspect-ratio: 10/1;
 }
 
 .cashier-micro-menu {
@@ -62,6 +67,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    aspect-ratio: 5/3;
 }
 
 @media (max-width: 768px) {
@@ -74,12 +80,15 @@
         width: 100%;
         height: 50%;
     }
+
     .cashier-left-panel {
         order: 1;
     }
+
     .cashier-right-panel {
         order: 0;
     }
+
     .cashier-ticket-stack {
         flex: 7;
         order: 0;
@@ -88,6 +97,7 @@
     .cashier-sales-menu {
         flex: 3;
         order: 1;
+        aspect-ratio: 41 / 3;
     }
 
     .cashier-nav-bar {

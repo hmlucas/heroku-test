@@ -3,10 +3,18 @@ import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
+import React from "react";
+import ok from "../../../assets/cashierview/ui_menu_ok.mp3";
 
 const MicroDrinks = ({ menuDrinks, changeMenu }) => {
-  const { updateInProgress, selectTicket, addOptionToTicket } =
-    useCashierStore();
+  const okAudio = new Audio(ok);
+  const {
+    updateInProgress,
+    selectTicket,
+    addOptionToTicket,
+    replaceOption,
+    currentTicket,
+  } = useCashierStore();
 
   const getGridClass = () => {
     const length = menuDrinks.length;
@@ -16,13 +24,17 @@ const MicroDrinks = ({ menuDrinks, changeMenu }) => {
     return "grid-3x3";
   };
   const handleDrinkClick = (drink) => {
-    addOptionToTicket(drink);
+    okAudio.play();
+    if (currentTicket.options.length > 0) {
+      replaceOption(0, drink);
+    } else {
+      addOptionToTicket(drink);
+    }
     changeMenu(MenuEnum.NEW_ITEM);
     updateInProgress(false);
     selectTicket(null);
   };
   const renderDrinks = () => {
-    //TODO Update ticket!
     return menuDrinks?.length > 0 ? (
       <div className={`drinks-buttons ${getGridClass()}`}>
         {menuDrinks.map((drink, index) => (
@@ -41,11 +53,7 @@ const MicroDrinks = ({ menuDrinks, changeMenu }) => {
     );
   };
 
-  return (
-    <div className="cashier-micro-drinks">
-      {renderDrinks()} {/* Call the render function here */}
-    </div>
-  );
+  return <div className="cashier-micro-drinks">{renderDrinks()}</div>;
 };
 
 MicroDrinks.propTypes = {

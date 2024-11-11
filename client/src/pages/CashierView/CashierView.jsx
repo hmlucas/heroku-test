@@ -10,7 +10,8 @@ import menuOptionsStore from "../../store/menuOptionsStore";
 import useCashierStore from "../../store/cashierStore";
 
 const CashierView = () => {
-  const { setCurrentMicroMenu, currentTicket } = useCashierStore();
+  const { setCurrentMicroMenu, currentTicket, maxEntreeCount, setEntreeCount } =
+    useCashierStore();
   const { selectedEmployeeID, selectedEmployee, fetchEmployeeById } =
     useEmployeeStore();
   const {
@@ -26,21 +27,23 @@ const CashierView = () => {
     error,
   } = menuOptionsStore();
 
-  //Nav bar micromenu interaction
   const [activeMenu, setActiveMenu] = useState(MenuEnum.NEW_ITEM);
   const [tickets, setTickets] = useState([]);
 
   const changeMenu = (index) => {
+    if (index === MenuEnum.ENTREES) {
+      setEntreeCount(maxEntreeCount);
+    }
     setCurrentMicroMenu(index);
     setActiveMenu(index);
   };
 
   const addTicket = (newTicket) => {
-    setTickets((prevTickets) => [...prevTickets, newTicket]); // Add new ticket to the list
+    setTickets((prevTickets) => [...prevTickets, newTicket]);
   };
 
   const removeAllTickets = () => {
-    setTickets([]); // Clear the tickets array
+    setTickets([]);
   };
   //TODO REMOVE Adn replace with functioning ticket stack
   useEffect(() => {
@@ -55,7 +58,6 @@ const CashierView = () => {
         ]);
       } catch (err) {
         console.error("Error fetching data:", err);
-        // Optionally set an error state here if needed
       }
     };
 
@@ -76,7 +78,7 @@ const CashierView = () => {
   return (
     <div className="cashier-view">
       <div className="cashier-left-panel">
-        <TicketStack tickets={tickets} />
+        <TicketStack changeMenu={changeMenu} />
         <SalesMenu
           activeMenu={activeMenu}
           changeMenu={changeMenu}

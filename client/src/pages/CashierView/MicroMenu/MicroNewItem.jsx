@@ -3,10 +3,12 @@ import MenuEnum from "../MenuEnum.js";
 import PropTypes from "prop-types";
 import "./MicroNewItem.css";
 import useCashierStore from "../../../store/cashierStore";
+import React from "react";
+import ok from "../../../assets/cashierview/ui_general_focus.mp3";
 
 const MicroNewItem = ({ changeMenu }) => {
-  const { addNewTicket } = useCashierStore();
-
+  const { addNewTicket, setMaxEntreeCount } = useCashierStore();
+  const okAudio = new Audio(ok);
   const selection = [
     //TODO CHANGE manual pricing
     {
@@ -30,21 +32,25 @@ const MicroNewItem = ({ changeMenu }) => {
       className: "bigger-plate",
       price: 11.3,
     },
-    { label: "Drink", nav: MenuEnum.DRINKS, price: 0 },
-    { label: "Appetizer", nav: MenuEnum.APPETIZERS, price: 2 },
-    { label: "A La Carte", nav: MenuEnum.A_LA_CARTE, price: 0 },
+    { label: "Drink", nav: MenuEnum.DRINKS, price: 0, selectCount: 0 },
+    { label: "Appetizer", nav: MenuEnum.APPETIZERS, price: 2, selectCount: 0 },
+    { label: "A La Carte", nav: MenuEnum.A_LA_CARTE, price: 0, selectCount: 0 },
   ];
 
-  const handleButtonClick = (mealType, nav, price) => {
+  const handleButtonClick = (mealType, nav, price, selectCount = 0) => {
+    okAudio.play();
     const newTicket = {
       ticket_id: Date.now(),
       menuitem_price: price,
       meal_type: mealType,
+      premium_multiplier: 1,
       total_menuitem_price: price,
       options: [],
     };
+    if (selectCount > 0) {
+      setMaxEntreeCount(selectCount);
+    }
     addNewTicket(newTicket);
-    //addTicket(newTicket);
     changeMenu(nav);
   };
   const renderButtons = () =>
@@ -52,7 +58,12 @@ const MicroNewItem = ({ changeMenu }) => {
       <button
         key={option.label} // ensure each button has a unique key
         onClick={() =>
-          handleButtonClick(option.label, option.nav, option.price)
+          handleButtonClick(
+            option.label,
+            option.nav,
+            option.price,
+            option.selectCount
+          )
         }
       >
         {option.label}

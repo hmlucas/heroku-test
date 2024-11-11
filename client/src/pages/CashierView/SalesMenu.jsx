@@ -5,40 +5,42 @@ import PropTypes from "prop-types";
 import MenuEnum from "./MenuEnum";
 import gearIcon from "../../assets/gear-svgrepo-com.svg";
 import useCashierStore from "../../store/cashierStore";
+import cancel from "../../assets/cashierview/ui_menu_cancel.mp3";
+import select from "../../assets/cashierview/ui_general_focus.mp3";
 
 const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
   //import states
-  //TODO not sure if this needs to change where it imports
   const { emptyTickets, orderInProgress, currentTicket, removeTicket } =
     useCashierStore();
-
+  const selectAudio = new Audio(select);
+  const cancelAudio = new Audio(cancel);
   const [hasIncompleteOrder, setHasIncompleteOrder] = useState(false);
   const [hasTickets, setHasTickets] = useState(false);
   const [hasSelectedOrder, setHasSelectedOrder] = useState(false);
 
   useEffect(() => {
-    //TODO placeholder states - should update based on current order state
     /*
     Sales Menu States: 
       - Incomplete order (edit or new one) - no checkout button
       - No tickets - no delete no checkout
       - No selected order (recent deletion) - no delete
     */
-    console.log(emptyTickets);
     setHasTickets(!emptyTickets);
     setHasSelectedOrder(currentTicket !== null);
     setHasIncompleteOrder(orderInProgress);
   }, [emptyTickets, currentTicket, orderInProgress]);
 
-  // TODO Add click functionality
   const optionsAction = () => {
+    selectAudio.play();
     changeMenu(MenuEnum.OPTIONS);
   };
   const deleteAction = () => {
+    cancelAudio.play();
     removeTicket();
     changeMenu(MenuEnum.NEW_ITEM);
   };
   const checkoutAction = () => {
+    selectAudio.play();
     changeMenu(MenuEnum.CHECKOUT);
   };
 
@@ -70,7 +72,7 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
               {selectedEmployee.first_name} {selectedEmployee.last_name}
             </p>
           ) : (
-            <p>Loading</p>
+            <p>Guest</p>
           )}
         </div>
         <div className="cashier-options-button">

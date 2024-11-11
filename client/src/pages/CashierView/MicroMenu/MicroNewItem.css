@@ -13,16 +13,20 @@
 
 .cashier-micro-new-item button {
    background-color: #f0f0f0;
-   color: black;
-   border: 1px solid #000000;
-   border-radius: 7.5px;
+   color: #000000;
+   border: 0.25vh solid #000000;
+   border-radius: 4%;
    padding: 4.5vw;
    font-size: 2vw;
    cursor: pointer;
    transition: background-color 0.3s;
+   opacity: 0;
+   transform: translateY(50px);
+   animation: slide-up 0.1s ease-out forwards;
 }
 
-.cashier-micro-new-item button:hover {
+.cashier-micro-new-item button:hover,
+.cashier-micro-new-item button:focus {
    background-color: #cccbcb;
 }
 
@@ -66,5 +70,17 @@
    .cashier-micro-new-item .bigger-plate {
       grid-column: 1;
       grid-row: 2;
+   }
+}
+
+@keyframes slide-up {
+   0% {
+      opacity: 0;
+      transform: translateY(50px);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0);
    }
 }

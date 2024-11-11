@@ -3,10 +3,18 @@ import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
+import React from "react";
+import ok from "../../../assets/cashierview/ui_menu_ok.mp3";
 
 const MicroApps = ({ menuApps, changeMenu }) => {
-  const { updateInProgress, selectTicket, addOptionToTicket } =
-    useCashierStore();
+  const okAudio = new Audio(ok);
+  const {
+    updateInProgress,
+    selectTicket,
+    addOptionToTicket,
+    replaceOption,
+    currentTicket,
+  } = useCashierStore();
   const getGridClass = () => {
     const length = menuApps.length;
     if (length >= 30) return "grid-6x6";
@@ -15,7 +23,12 @@ const MicroApps = ({ menuApps, changeMenu }) => {
     return "grid-3x3";
   };
   const handleAppClick = (app) => {
-    addOptionToTicket(app);
+    okAudio.play();
+    if (currentTicket.options.length > 0) {
+      replaceOption(0, app);
+    } else {
+      addOptionToTicket(app);
+    }
     changeMenu(MenuEnum.NEW_ITEM);
     updateInProgress(false);
     selectTicket(null);
@@ -40,11 +53,7 @@ const MicroApps = ({ menuApps, changeMenu }) => {
     );
   };
 
-  return (
-    <div className="cashier-micro-apps">
-      {renderApps()} {/* Call the render function here */}
-    </div>
-  );
+  return <div className="cashier-micro-apps">{renderApps()}</div>;
 };
 
 MicroApps.propTypes = {

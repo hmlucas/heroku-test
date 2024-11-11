@@ -1,4 +1,3 @@
-/* TODOclean up resizing nav bar no! */
 .cashier-nav-bar {
    display: grid;
    grid-template-columns: repeat(7, 1fr);
@@ -10,11 +9,10 @@
 }
 
 .cashier-nav-bar button {
-   background: #f0f0f0;
-   border: none;
+   background: var(--button-navbar-color);
+   border: 0.1vh solid #000000;
    cursor: pointer;
    font-size: 1.75vw;
-   border: 1px solid #000000;
    width: 100%;
    height: 100%;
    padding: 0;
@@ -24,32 +22,26 @@
    transition: background-color 0.3s, color 0.3s;
 }
 
-.cashier-nav-bar button:not(.selected):enabled:hover {
-   background-color: #cccbcb;
-   transition: background-color 0.3s, color 0.3s;
+.cashier-nav-bar button:not(.selected):enabled:hover,
+.cashier-nav-bar button:not(.selected):enabled:focus {
+   filter: brightness(0.8);
+   transition: filter 0.3s, color 0.3s;
 }
 
-.cashier-nav-bar button.selected:hover {
-   background-color: #0056b3;
-   transition: background-color 0.3s, color 0.3s;
+.cashier-nav-bar button.selected:hover,
+.cashier-nav-bar button.selected:focus {
+   filter: brightness(0.8);
+   transition: filter 0.3s, color 0.3s;
 }
 
 .cashier-nav-bar button:disabled {
-   background-color: #353535;
-   color: #a0a0a0;
-   cursor: not-allowed;
-   opacity: 0.6;
+   background-color: var(--button-disabled-color) !important;
+   color: #a7a7a7 !important;
+   cursor: default;
    user-select: none;
-   transition: background-color 0.3s, color 0.3s;
 }
 
 .cashier-nav-bar button.selected {
-   background-color: #007bff;
+   background-color: var(--button-selection-color);
    color: white;
-   border: 1px solid #007bff;
-}
-
-.cashier-nav-bar button:not(.selected) {
-   background-color: #f0f0f0;
-   color: black;
 }

@@ -13,17 +13,32 @@
 
 .cashier-micro-checkout button {
    background-color: #f0f0f0;
-   /* Same styles as before */
-   color: black;
-   border: 1px solid #000000;
-   border-radius: 7.5px;
+   color: #000000;
+   border: 0.25vh solid #000000;
+   border-radius: 4%;
    padding: 7vw;
    font-size: 3vw;
    cursor: pointer;
    transition: background-color 0.3s;
+   opacity: 0;
+   transform: translateY(50px);
+   animation: slide-up 0.1s ease-out forwards;
 }
 
-.cashier-micro-checkout button:hover {
+.cashier-micro-checkout button:hover,
+.cashier-micro-checkout button:focus {
    background-color: #cccbcb;
-   /* Same hover effect */
+   outline: none;
+}
+
+@keyframes slide-up {
+   0% {
+      opacity: 0;
+      transform: translateY(50px);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
 }

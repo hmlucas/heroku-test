@@ -3,10 +3,21 @@ import "./DynamicButtons.css";
 import PropTypes from "prop-types";
 import MenuEnum from "../MenuEnum";
 import useCashierStore from "../../../store/cashierStore";
+import React from "react";
+import ok from "../../../assets/cashierview/ui_menu_ok.mp3";
 
 const MicroEntrees = ({ menuEntrees, changeMenu }) => {
-  const { updateInProgress, selectTicket, addOptionToTicket } =
-    useCashierStore();
+  const okAudio = new Audio(ok);
+  const {
+    updateInProgress,
+    selectTicket,
+    addOptionToTicket,
+    entreeCount,
+    decrementEntreeCount,
+    tickets,
+    replaceOption,
+    replaceEntree,
+  } = useCashierStore();
   const getGridClass = () => {
     const length = menuEntrees.length;
     if (length >= 30) return "grid-6x6";
@@ -16,14 +27,18 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
   };
 
   const handleEntreeClick = (entree) => {
-    addOptionToTicket(entree);
-    changeMenu(MenuEnum.NEW_ITEM);
-    updateInProgress(false);
-    selectTicket(null);
+    okAudio.play();
+    //addOptionToTicket(entree);
+    replaceEntree(entree);
+    if (entreeCount <= 1) {
+      changeMenu(MenuEnum.NEW_ITEM);
+      updateInProgress(false);
+      selectTicket(null);
+    }
+    decrementEntreeCount();
   };
 
   const renderEntrees = () => {
-    //TODO update ticket track number of clicks allowed
     return menuEntrees?.length > 0 ? (
       <div className={`entrees-buttons ${getGridClass()}`}>
         {menuEntrees.map((entree, index) => (
@@ -42,11 +57,7 @@ const MicroEntrees = ({ menuEntrees, changeMenu }) => {
     );
   };
 
-  return (
-    <div className="cashier-micro-entrees">
-      {renderEntrees()} {/* Call the render function here */}
-    </div>
-  );
+  return <div className="cashier-micro-entrees">{renderEntrees()}</div>;
 };
 
 MicroEntrees.propTypes = {
