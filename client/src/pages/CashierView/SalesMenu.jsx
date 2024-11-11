@@ -72,7 +72,7 @@ const SalesMenu = ({ activeMenu, changeMenu, selectedEmployee }) => {
               {selectedEmployee.first_name} {selectedEmployee.last_name}
             </p>
           ) : (
-            <p>NULL</p>
+            <p>Guest</p>
           )}
         </div>
         <div className="cashier-options-button">
